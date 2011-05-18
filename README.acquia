@@ -1,0 +1,22 @@
+Welcome to your Acquia Cloud repository.
+
+Commit your website's code to Acquia Cloud using Git or SVN. Acquia Cloud
+expects your code (such as index.php, /includes, /modules, and /sites) to be in
+the /docroot directory. Do NOT put your code in the directory that contains this
+README file as it will not work.
+
+After you commit your code, sign in to Acquia Cloud, find your site in the
+list, and select the 'Cloud' link to access your workflow page. Use this page
+to deploy that code to your Development, Staging, or Production environments.
+
+To sign in to Acquia Cloud, visit https://insight.acquia.com
+
+For information about workflows, visit https://docs.acquia.com/cloud/manage
+
+For additional help getting started with development, visit
+https://docs.acquia.com/cloud/getting-started/develop
+
+To help you develop locally, consider trying Dev Desktop:
+https://www.acquia.com/products-services/dev-desktop
+
+For all Acquia Cloud documentation, visit https://docs.acquia.com/cloud
