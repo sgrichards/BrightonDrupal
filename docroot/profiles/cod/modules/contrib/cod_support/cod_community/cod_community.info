@@ -1,0 +1,22 @@
+name = COD Community
+description = Show pages of attendees (requires registration)
+core = 7.x
+package = COD
+install_option = cod
+dependencies[] = cod_base
+dependencies[] = contact
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = menu
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[user_permission][] = administer contact forms
+features[views_view][] = cod_community_attendees
+
+; Information added by Drupal.org packaging script on 2014-09-05
+version = "7.x-1.0-beta3"
+core = "7.x"
+project = "cod_support"
+datestamp = "1409957334"
+

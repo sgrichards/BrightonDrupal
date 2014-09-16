@@ -1,0 +1,14 @@
+name = Views RDF
+description = Views style plugin to render node content as RDF.
+package = Views
+core = 7.x
+dependencies[] = views
+
+files[] = views/plugins/views_plugin_style_rdf.inc
+
+
+; Information added by drush on 2014-09-05
+version = ""
+project = "views_datasource"
+datestamp = "1409960642"
+

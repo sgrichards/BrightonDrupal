@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Revert cod_bof feature to set the correct pathauto variable event OG label.
+ */
+function cod_bof_update_7002() {
+  $revert = array(
+    'cod_bof' => array('variable', 'field_instance'),
+  );
+  features_revert($revert);
+
+  return array();
+}

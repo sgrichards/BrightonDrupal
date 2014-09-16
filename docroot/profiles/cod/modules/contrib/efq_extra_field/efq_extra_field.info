@@ -1,0 +1,9 @@
+name = Entity Field Query Extra Fields
+description = Allow retrieving extra fields from EFQ
+core = 7.x
+
+; Information added by drush on 2014-09-05
+version = ""
+project = "efq_extra_field"
+datestamp = "1409960684"
+

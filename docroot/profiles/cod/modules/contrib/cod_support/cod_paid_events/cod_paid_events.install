@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Install file.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function cod_paid_events_install() {
+  // Set the commerce checkout permissions. These aren't added as part of the
+  // feature because some sites may want to override them.
+  $roles = array(1, 2);
+  $permissions = array('access checkout');
+  foreach ($roles as $role) {
+    user_role_grant_permissions($role, $permissions);
+  }
+}

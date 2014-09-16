@@ -1,0 +1,42 @@
+name = COD Paid Events
+description = Provides paid events options
+core = 7.x
+package = COD
+project = cod_paid_events
+dependencies[] = cod_events
+dependencies[] = cod_registration
+dependencies[] = commerce
+dependencies[] = commerce_cart
+dependencies[] = commerce_checkout
+dependencies[] = commerce_features
+dependencies[] = commerce_order_ui
+dependencies[] = commerce_price
+dependencies[] = commerce_product_reference
+dependencies[] = commerce_product_ui
+dependencies[] = conditional_fields
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = inline_entity_form
+dependencies[] = list
+dependencies[] = options
+dependencies[] = ticket
+dependencies[] = views
+features[commerce_product_type][] = cod_paid_event
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_base][] = commerce_price
+features[field_base][] = field_complete_state
+features[field_base][] = field_ticket_order
+features[field_base][] = field_ticket_related_product
+features[field_instance][] = commerce_product-cod_paid_event-commerce_price
+features[field_instance][] = ticket_type-ticket_type-field_complete_state
+features[field_instance][] = ticket_type-ticket_type-field_ticket_related_product
+features[views_view][] = order_registrations
+install_option = cod
+
+; Information added by Drupal.org packaging script on 2014-09-05
+version = "7.x-1.0-beta3"
+core = "7.x"
+project = "cod_support"
+datestamp = "1409957334"
+
