@@ -1,0 +1,137 @@
+.sf-menu.sf-style-drupalcamp {
+  float: left;
+  margin-bottom: 1em;
+  padding: 0;
+}
+.sf-menu.sf-style-drupalcamp.sf-navbar {
+  width: 100%;
+}
+.sf-menu.sf-style-drupalcamp ul {
+  padding-left: 0;
+}
+
+.sf-menu.sf-style-drupalcamp ul ul {
+  top:3.5em;
+}
+.sf-menu.sf-style-drupalcamp a,
+.sf-menu.sf-style-drupalcamp a:visited,
+.sf-menu.sf-style-drupalcamp span.nolink {
+  color: #fff;
+  padding: 0em 1em;
+  font-size: 1.833em;
+}
+.sf-menu.sf-style-drupalcamp a.sf-with-ul,
+.sf-menu.sf-style-drupalcamp span.nolink.sf-with-ul {
+  padding-right: 2.25em;
+}
+.sf-menu.sf-style-drupalcamp.rtl a.sf-with-ul,
+.sf-menu.sf-style-drupalcamp.rtl span.nolink.sf-with-ul {
+  padding-left: 2.25em;
+  padding-right: 1em;
+}
+.sf-menu.sf-style-drupalcamp span.sf-description {
+  color: #fff;
+  display: block;
+  font-size: 1.833em;
+  line-height: 1.5;
+  margin: 5px 0 0 5px;
+  padding: 0;
+}
+.sf-menu.sf-style-drupalcamp.rtl span.sf-description {
+  margin: 5px 5px 0 0;
+}
+.sf-menu.sf-style-drupalcamp li,
+.sf-menu.sf-style-drupalcamp.sf-navbar {
+  background: none;
+}
+.sf-menu.sf-style-drupalcamp li li {
+  background: #326294;
+}
+.sf-menu.sf-style-drupalcamp li li li {
+  background: #326294;
+}
+.sf-menu.sf-style-drupalcamp li:hover,
+.sf-menu.sf-style-drupalcamp li.sfHover,
+.sf-menu.sf-style-drupalcamp a:focus,
+.sf-menu.sf-style-drupalcamp a:hover,
+.sf-menu.sf-style-drupalcamp a:active,
+.sf-menu.sf-style-drupalcamp span.nolink:hover {
+  background: #326294;
+  color:#000;
+  outline: 0;
+}
+div.sf-accordion-toggle.sf-style-drupalcamp a {
+  background: #bdd2ff;
+  border-left: 1px solid #fff;
+  border-top: 1px solid #cfdeff;
+  color: #13a;
+  padding: 1em;
+}
+div.sf-accordion-toggle.sf-style-drupalcamp a.sf-expanded,
+.sf-menu.sf-style-drupalcamp.sf-accordion li.sf-expanded {
+  background-color: #cfdeff;
+}
+div.sf-accordion-toggle.sf-style-drupalcamp a.sf-expanded,
+.sf-menu.sf-style-drupalcamp.sf-accordion li.sf-expanded > a,
+.sf-menu.sf-style-drupalcamp.sf-accordion li.sf-expanded > span.nolink {
+  font-weight: bold;
+}
+.sf-menu.sf-style-drupalcamp.sf-accordion li a.sf-accordion-button {
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 499;
+}
+.sf-menu.sf-style-drupalcamp.sf-accordion li li a,
+.sf-menu.sf-style-drupalcamp.sf-accordion li li span.nolink {
+  padding-left: 2em;
+}
+.sf-menu.sf-style-drupalcamp.sf-accordion li li li a,
+.sf-menu.sf-style-drupalcamp.sf-accordion li li li span.nolink {
+  padding-left: 3em;
+}
+.sf-menu.sf-style-drupalcamp.sf-accordion li li li li a,
+.sf-menu.sf-style-drupalcamp.sf-accordion li li li li span.nolink {
+  padding-left: 4em;
+}
+.sf-menu.sf-style-drupalcamp.sf-accordion li li li li li a,
+.sf-menu.sf-style-drupalcamp.sf-accordion li li li li li span.nolink {
+  padding-left: 5em;
+}
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li a,
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li span.nolink {
+  padding-left: auto;
+  padding-right: 2em;
+}
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li li a,
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li li span.nolink {
+  padding-left: auto;
+  padding-right: 3em;
+}
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li li li a,
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li li li span.nolink {
+  padding-left: auto;
+  padding-right: 4em;
+}
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li li li li a,
+.sf-menu.sf-style-drupalcamp.rtl.sf-accordion li li li li li span.nolink {
+  padding-left: auto;
+  padding-right: 5em;
+}
+.sf-menu.sf-style-drupalcamp ul.sf-megamenu li.sf-megamenu-wrapper ol,
+.sf-menu.sf-style-drupalcamp ul.sf-megamenu li.sf-megamenu-wrapper ol li {
+  margin: 0;
+  padding: 0;
+}
+.sf-menu.sf-style-drupalcamp ul.sf-megamenu li.sf-megamenu-wrapper a.menuparent,
+.sf-menu.sf-style-drupalcamp ul.sf-megamenu li.sf-megamenu-wrapper span.nolink.menuparent {
+  font-weight: bold;
+}
+.sf-menu.sf-style-drupalcamp ul.sf-megamenu li.sf-megamenu-wrapper ol li.sf-megamenu-column {
+  display: inline;
+  float: left;
+}
+.sf-menu.sf-style-drupalcamp.rtl ul.sf-megamenu li.sf-megamenu-wrapper ol li.sf-megamenu-column {
+  float: right;
+}

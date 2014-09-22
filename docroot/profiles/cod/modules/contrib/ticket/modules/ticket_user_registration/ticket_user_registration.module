@@ -143,7 +143,7 @@ function ticket_user_registration_form_submit(&$form, &$form_state) {
   if (isset($form['ticket_registrant'])) {
     $email = $form_state['values']['ticket_registrant']['ticket_user_registrant_email'];
     if (!$account = user_load_by_mail($email)) {
-      $account = _ticket_user_registration_create_user($email, $form, $form_state, 'ticket_registrant');
+      $account = _create_user($email, $form, $form_state, 'ticket_registrant');
     }
     // If the user is logged in and wants to change profile information...
     elseif ($account->uid == $user->uid) {
@@ -163,7 +163,7 @@ function ticket_user_registration_form_submit(&$form, &$form_state) {
 
         $email = $form_state['values'][$field_name]['ticket_user_registration_email:' . $matches[1][0]];
         if (!$account = user_load_by_mail($email)) {
-          $account = _ticket_user_registration_create_user($email, $form, $form_state, $field_name);
+          $account = _create_user($email, $form, $form_state, $field_name);
         }
         // Set the registrant user id.
         $form_state['complete form'][$field_name]['#entity']->user_uid = $account->uid;
@@ -173,7 +173,7 @@ function ticket_user_registration_form_submit(&$form, &$form_state) {
   }
 }
 
-function _ticket_user_registration_create_user($email, $form, $form_state, $field_name) {
+function _create_user($email, $form, $form_state, $field_name) {
   // Create the user.
   $values = array(
     'name' => $email,
@@ -187,12 +187,6 @@ function _ticket_user_registration_create_user($email, $form, $form_state, $fiel
   entity_form_submit_build_entity('user', $account, $form, $values);
 
   user_save($account);
-
-  // @TODO: make an admin ui to set whether email should be sent.
-  if (variable_get('ticket_user_registration_send_email', TRUE)) {
-    $op = 'register_admin_created';
-    _user_mail_notify($op, $account);
-  }
 
   // Append the first/last name instead of email address to the username
   if (module_exists('realname')) {

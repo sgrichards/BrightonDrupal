@@ -3,7 +3,7 @@
 <div class='clearfix features-components'>
   <div class='column'>
     <div class='info'>
-      <?php print $lock_feature ?><h3><?php print $name ?></h3>
+      <h3><?php print $name ?></h3>
       <div class='description'><?php print $description ?></div>
       <?php print $dependencies ?>
     </div>

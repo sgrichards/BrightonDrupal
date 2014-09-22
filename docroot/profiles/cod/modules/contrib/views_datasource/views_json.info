@@ -7,8 +7,8 @@ dependencies[] = views
 files[] = views/plugins/views_plugin_style_json.inc
 
 
-; Information added by drush on 2014-09-05
+; Information added by drush on 2014-07-08
 version = ""
 project = "views_datasource"
-datestamp = "1409960642"
+datestamp = "1404802477"
 

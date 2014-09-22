@@ -1,0 +1,28 @@
+name = Commons WYSIWYG
+description = Provides a rich text editor for content creation.
+package = Commons - Building blocks
+core = 7.x
+
+dependencies[] = ckeditor
+dependencies[] = features
+dependencies[] = filter
+dependencies[] = strongarm
+
+features[ckeditor_profile][] = Advanced
+features[features_api][] = api:2
+features[filter][] = filtered_html
+features[filter][] = full_html
+features[user_permission][] = use text format filtered_html
+
+; Manually remove the Media: WYSIWYG submodule as a dependency until
+; https://www.drupal.org/node/766264 is fixed which causes Commons WYSIWYG to
+; appear overridden due dynamic alterations made to the text format and CKEditor
+; profiles by the Commons Media module.
+features_exclude[dependencies][media_wysiwyg] = media_wysiwyg
+
+; Information added by Drupal.org packaging script on 2014-08-08
+version = "7.x-3.17"
+core = "7.x"
+project = "commons"
+datestamp = "1407503928"
+

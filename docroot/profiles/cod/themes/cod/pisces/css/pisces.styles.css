@@ -1,6 +1,7 @@
 .site-branding__name {
-  font-size: 1.6em;
-  margin-bottom: 40px; }
+  font-size: 2.6em;
+  margin-bottom: 40px;
+  white-space:nowrap; }
 
 p.button {
   border-bottom: solid 3px #25496e;
@@ -22,7 +23,7 @@ p.button {
     border-bottom: solid 3px #2f5d8c; }
 
 body {
-  background: url(../images/white_wave.png) #f0f1f4 repeat; }
+  background: #eee;}
   body a {
     color: #326294;
     text-decoration: none; }
@@ -308,9 +309,11 @@ p.button {
 
 .view-cod-sponsors .level {
   clear: both; }
-.view-cod-sponsors .sponsor {
+.view-cod-sponsors .sponsor, 
+.view-cod-sponsors div
+ {
   display: inline-block;
-  padding: 20px;
+  padding: 0 20px;
   vertical-align: middle; }
 
 .user-profile h2 {
@@ -322,3 +325,6 @@ p.button {
   .user-profile .user-picture img {
     border: 1px solid #c4c8d4;
     margin: 0.83em 0 12px 12px; }
+  
+  /* extra stuff */
+  .block--views-dc-venues-map-block {width:100%;}

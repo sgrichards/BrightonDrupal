@@ -50,12 +50,12 @@ function user_permission_features_export_options() {
   $modules = array();
   $module_info = system_get_info('module');
   foreach (module_implements('permission') as $module) {
-    $modules[$module] = $module_info[$module]['name'];
+    $modules[$module_info[$module]['name']] = $module;
   }
   ksort($modules);
 
   $options = array();
-  foreach ($modules as $module => $display_name) {
+  foreach ($modules as $display_name => $module) {
     if ($permissions = module_invoke($module, 'permission')) {
       foreach ($permissions as $perm => $perm_item) {
         // Export vocabulary permissions using the machine name, instead of

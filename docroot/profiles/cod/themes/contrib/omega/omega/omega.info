@@ -20,9 +20,9 @@ plugins[panels][layouts] = panels/layouts
 plugins[panels][styles] = panels/styles
 
 
-; Information added by drush on 2014-09-05
+; Information added by drush on 2014-07-08
 version = "7.x-4.2+6-dev"
 core = "7.x"
 project = "omega"
-datestamp = "1409960642"
+datestamp = "1404802530"
 
