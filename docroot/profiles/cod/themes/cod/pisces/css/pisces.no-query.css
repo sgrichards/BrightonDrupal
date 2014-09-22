@@ -22,8 +22,15 @@ p.button {
     border-bottom: solid 3px #2f5d8c; }
 
 body {
-  background: url(../images/white_wave.png) #f0f1f4 repeat; }
-  body a {
+  background:none }
+
+body.page-node-add html, 
+body.cke_editable {
+  background: #fff;
+  background-image:none;
+}
+
+body a {
     color: #326294;
     text-decoration: none; }
     body a:hover, body a:active {
