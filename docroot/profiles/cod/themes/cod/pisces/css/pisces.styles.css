@@ -130,9 +130,9 @@ body.cke_editable {
   text-align: center; }
 
 .l-region--sidebar .block h2 {
-  font-size: 0.9em;
+  font-size: 1.5em;
   margin-top: 0;
-  text-transform: uppercase; }
+ }
 
 p.button {
   text-align: center;
@@ -371,7 +371,7 @@ ul.sf-menu {padding:0; margin:0 !important;}
 .block--webform h2 {
     padding: 10px;
     background: #ff9933;
-    width:229px;
+    width:272px;
     
 }
 
