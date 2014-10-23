@@ -383,4 +383,5 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 
 .l-footer-wrapper .block__content {padding-left:10px;}
 
-#superfish-1 li.sf-item-1 {background:url('images/icon_home.png') no-repeat scroll 0 40% ;text-indent: -9999px;} 
+#superfish-1 li.sf-item-1 {background:url('../images/icon_home.png') no-repeat scroll 0 40% ;} 
+#superfish-1 li.sf-item-1 a {text-indent: -9999px;} 
