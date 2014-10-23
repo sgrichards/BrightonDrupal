@@ -382,7 +382,7 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 {background-color: rgba(0, 0, 0, 0.3);margin:2% 0;}
 
 .l-footer-wrapper .block__content {padding-left:10px;color:#eee;}
-.l-footer-wrapper .block__content {color:#fff;}
+.l-footer-wrapper .block__content a {color:#fff;}
 
 #superfish-1 li.sf-item-1 {background:url('../images/icon_home2.png') no-repeat scroll 0 40% ;} 
 #superfish-1 li.sf-item-1 a, 
