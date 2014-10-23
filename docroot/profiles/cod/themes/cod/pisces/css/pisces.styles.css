@@ -185,7 +185,7 @@ p.button {
     display: inline;
     font-size: 0.88em;
     list-style-image: none;
-    padding: 12px 12px;
+    padding: 12px 4px;
     white-space: nowrap; }
   .l-region--navigation .menu .expanded .menu {
     display: none; }
@@ -388,4 +388,4 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 #superfish-1 li.sf-item-6 a
 {text-indent: -9999px;padding: 0 12px;} 
 
-#superfish-1 li.sf-item-6 {background:url('../images/icon_contact.png') no-repeat scroll 0 40% ;}
+#superfish-1 li.sf-item-6 {background:url('../images/icon_contact.png') no-repeat scroll 0 55% ;}
