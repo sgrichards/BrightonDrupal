@@ -17,6 +17,9 @@ function cod_schedule_ctools_plugin_directory($module, $plugin) {
   if ($module == 'entityreference') {
     return "plugins/entityreference/$plugin";
   }
+  if ($module == 'ctools' && $plugin == 'content_types') {
+    return 'plugins/content_types';
+  }
 }
 
 /**
@@ -57,6 +60,7 @@ function cod_schedule_menu() {
     'weight' => -10,
   );
 
+  /*
   $items['admin/conference/events/%node/schedule'] = array(
     'title' => 'Schedule',
     'type' => MENU_LOCAL_TASK,
@@ -67,7 +71,7 @@ function cod_schedule_menu() {
     'weight' => 0,
     'file' => 'includes/schedule.admin.inc',
   );
-
+  */
   $items['admin/conference/events/%node/schedule/room'] = array(
     'title' => 'Add Room',
     'type' => MENU_LOCAL_ACTION,
@@ -99,7 +103,14 @@ function cod_schedule_menu() {
     'access callback' => 'cod_schedule_schedule_access',
     'access arguments' => array(3),
     'file' => 'includes/schedule.admin.inc',
+    'context' => MENU_CONTEXT_INLINE,
     'type' => MENU_CALLBACK,
+  );
+
+  $items['ajax/cod-schedule/update-session'] = array(
+    'page callback' => 'cod_schedule_update_session',
+    'page arguments' => array(),
+    'access callback' => TRUE,
   );
 
   return $items;
@@ -151,6 +162,7 @@ function cod_schedule_permission() {
   return $perms;
 }
 
+
 /**
  * Implement hook_og_permission().
  * We want to set all the same OG permissions that we get globally.
@@ -201,6 +213,54 @@ function cod_schedule_form_node_form_alter(&$form, &$form_state) {
      $form['field_session_timeslot']['#prefix'] = '<div id="field-cod-session-timeslot">';
      $form['field_session_timeslot']['#suffix'] = '</div>';
    }
+}
+
+function cod_schedule_update_session() {
+  module_load_include('inc', 'cod_schedule', 'includes/schedule.admin');
+
+  if(empty($_POST['session']) || !is_numeric($_POST['session'])) {
+    return;
+  }
+
+  $session_nid = check_plain($_POST['session']);
+  $timeslot_id = check_plain($_POST['timeslot']);
+
+  $session = node_load($session_nid);
+  $wrapper = entity_metadata_wrapper('node', $session);
+
+  // @TODO A session can be in multiple timeslots so we need to figure that out....
+  if(empty($timeslot_id)) {
+    $wrapper->field_session_timeslot->offsetSet(0, null);
+  }
+  else if($timeslot_id == 'NEW') {
+    // We get the timeroom looking like cod-events-schedule-sessions-7-5,
+    // explode and pass it to the field_collection add function.
+    $timeroomstr = check_plain($_POST['timeroom']);
+    $string = explode('-', $timeroomstr);
+    $field_collection = cod_schedule_field_collection_item_add(str_replace('-', '_', 'field_event_timeslots'), 'node', $wrapper->og_group_ref->raw(), $string[4], $string[5], 'session');
+    $field_collection->save();
+    $timeslot_id = $field_collection->item_id;
+  }
+  if(is_numeric($timeslot_id)) {
+    $timeslot = entity_load_single('field_collection_item', $timeslot_id);
+    $fc_wrapper = entity_metadata_wrapper('field_collection_item', $timeslot);
+    $allowed_values = $fc_wrapper->field_timeslot_allowed_types->value();
+    if (in_array('session', $allowed_values)) {
+      $fc_wrapper->field_timeslot_allowed_types->offsetSet(array_search('session', $allowed_values), 'session');
+    }
+    else {
+      $fc_wrapper->field_timeslot_allowed_types->offsetSet(count($allowed_values), 'session');
+    }
+    $fc_wrapper->save();
+
+    $wrapper->field_session_timeslot->offsetSet(0, intval($timeslot_id));
+    $wrapper->field_accepted->set(1);
+  }
+
+  $wrapper->save();
+
+  // @TODO Just returning post for testing but we likely will return error messages 'n stuff
+  drupal_json_output("Updated!");
 }
 
 /**

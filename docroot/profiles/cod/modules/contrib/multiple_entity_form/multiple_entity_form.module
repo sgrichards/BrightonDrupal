@@ -145,26 +145,27 @@ function multiple_entity_form_validate($form, &$form_state) {
       ctools_field_invoke_field_default($field_instance, 'validate', $entity_type, $entity, $errors);
       // Check field-type specific errors.
       ctools_field_invoke_field($field_instance, 'validate', $entity_type, $entity, $errors);
+    }
 
-      // Let other modules validate the entity.
-      // Avoid module_invoke_all() to let $errors be taken by reference.
-      foreach (module_implements('field_attach_validate') as $module) {
-        $function = $module . '_field_attach_validate';
-        $function($entity_type, $entity, $errors);
-      }
+    // Invoke hook_field_attach_validate() to let other modules validate the
+    // entity.
+    // Avoid module_invoke_all() to let $errors be taken by reference.
+    foreach (module_implements('field_attach_validate') as $module) {
+      $function = $module . '_field_attach_validate';
+      $function($entity_type, $entity, $errors);
+    }
 
-      if ($errors) {
-        // Pass field-level validation errors back to widgets for accurate error
-        // flagging.
-        foreach ($errors as $field_errors) {
-          foreach ($field_errors as $langcode => $errors) {
-            $field_state = field_form_get_state($form[$form_key]['#parents'], $field_name, $langcode, $form_state);
-            $field_state['errors'] = $errors;
-            field_form_set_state($form[$form_key]['#parents'], $field_name, $langcode, $form_state, $field_state);
-          }
+    if ($errors) {
+      // Pass field-level validation errors back to widgets for accurate error
+      // flagging.
+      foreach ($errors as $field_errors) {
+        foreach ($field_errors as $langcode => $errors) {
+          $field_state = field_form_get_state($form[$form_key]['#parents'], $field_name, $langcode, $form_state);
+          $field_state['errors'] = $errors;
+          field_form_set_state($form[$form_key]['#parents'], $field_name, $langcode, $form_state, $field_state);
         }
-        ctools_field_invoke_field_default($field_instance, 'form_errors', $entity_type, $entity, $form[$form_key], $form_state);
       }
+      ctools_field_invoke_field_default($field_instance, 'form_errors', $entity_type, $entity, $form[$form_key], $form_state);
     }
   }
 }

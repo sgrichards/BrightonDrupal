@@ -22,12 +22,20 @@ function cod_sponsors_event_entity_integration() {
 /**
  * Implements hook_form_alter().
  */
-function cod_sponsors_form_alter(&$form, &$form_state, $form_id) {
-  if ($form_id == 'sponsor_node_form') {
-    if(isset($form['og_group_ref'])) {
-      $form['og_group_ref'][LANGUAGE_NONE][0]['default']['#multiple'] = FALSE;
+function cod_sponsors_form_sponsor_node_form_alter(&$form, &$form_state, $form_id) {
+  if(isset($form['og_group_ref'])) {
+    $form['og_group_ref'][LANGUAGE_NONE][0]['default']['#multiple'] = FALSE;
+  }
+  // TODO: We make an assumption that Sponsorships Levels are text.
+  if(isset($_GET['sponsorship_level']) &&
+     isset($form['field_sponsor_sponsorship_level']) &&
+     $key = array_search(strtolower(check_plain($_GET['sponsorship_level'])), array_map('strtolower',$form['field_sponsor_sponsorship_level'][$form['field_sponsor_sponsorship_level']['#language']]['#options']))) {
+    $form['field_sponsor_sponsorship_level'][$form['field_sponsor_sponsorship_level']['#language']]['#default_value'] = $key;
+    if (!user_access('edit any sponsor content')) {
+      $form['field_sponsor_sponsorship_level']['#disabled'] = TRUE;
     }
   }
+  // TODO, Hide sponsorship levels
 }
 
 /**

@@ -382,10 +382,10 @@ function ticket_install() {
       'label' => $t('Min per order'),
       'description' => $t('The minimum number of tickets per order.'),
       'settings' => array(
-        'min' => 1,
+        'min' => 0,
       ),
       'required' => TRUE,
-      'default_value' => array(array('value' => 1)),
+      'default_value' => array(array('value' => 0)),
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -492,4 +492,14 @@ function ticket_update_7001(&$sandbox) {
   );
 
   db_drop_field('ticket_registration', 'status');
+}
+
+/**
+ * Update the user's ticket page to only show completed registrations.
+ */
+function ticket_update_7002() {
+  module_load_include('inc', 'ctools', 'includes/export');
+  $view = views_get_view('ticket_user');
+  ctools_export_crud_delete('views_view', $view);
+  return array();
 }

@@ -60,3 +60,15 @@ function cod_sponsors_update_7003() {
 
   return array();
 }
+
+/**
+ * Reset the sponsors menu weight to order correctly on the admin tabs
+ */
+function cod_sponsors_update_7004() {
+  $revert = array(
+    'cod_sponsors' => array('page_manager_pages'),
+  );
+  features_revert($revert);
+
+  return array();
+}

@@ -54,7 +54,7 @@ function cod_session_management_pages_default_page_manager_pages() {
       'type' => 'tab',
       'title' => 'Sessions',
       'name' => 'navigation',
-      'weight' => '0',
+      'weight' => '-3',
     ),
   );
   $page->arguments = array(

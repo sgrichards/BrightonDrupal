@@ -228,6 +228,7 @@ function ticket_views_default_views() {
     'view_registration' => 'view_registration',
     'edit_registration' => 'view_registration',
     'cancel_registration' => 'view_registration',
+    'name' => 'name',
   );
   $handler->display->display_options['style_options']['default'] = 'created';
   $handler->display->display_options['style_options']['info'] = array(
@@ -265,6 +266,13 @@ function ticket_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
@@ -278,6 +286,15 @@ function ticket_views_default_views() {
   $handler->display->display_options['relationships']['ticket_type_ttid']['table'] = 'ticket_registration';
   $handler->display->display_options['relationships']['ticket_type_ttid']['field'] = 'ticket_type_ttid';
   $handler->display->display_options['relationships']['ticket_type_ttid']['required'] = TRUE;
+  /* Relationship: Ticket registration: Attendee */
+  $handler->display->display_options['relationships']['user_uid']['id'] = 'user_uid';
+  $handler->display->display_options['relationships']['user_uid']['table'] = 'ticket_registration';
+  $handler->display->display_options['relationships']['user_uid']['field'] = 'user_uid';
+  /* Relationship: Entity Reference: Referenced Entity */
+  $handler->display->display_options['relationships']['ticket_state_target_id']['id'] = 'ticket_state_target_id';
+  $handler->display->display_options['relationships']['ticket_state_target_id']['table'] = 'field_data_ticket_state';
+  $handler->display->display_options['relationships']['ticket_state_target_id']['field'] = 'ticket_state_target_id';
+  $handler->display->display_options['relationships']['ticket_state_target_id']['label'] = 'registration state';
   /* Field: Ticket type: Host entity */
   $handler->display->display_options['fields']['entity']['id'] = 'entity';
   $handler->display->display_options['fields']['entity']['table'] = 'ticket_type';
@@ -289,6 +306,12 @@ function ticket_views_default_views() {
   $handler->display->display_options['fields']['ticket_type_label']['table'] = 'field_data_ticket_type_label';
   $handler->display->display_options['fields']['ticket_type_label']['field'] = 'ticket_type_label';
   $handler->display->display_options['fields']['ticket_type_label']['relationship'] = 'ticket_type_ttid';
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'user_uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Attendee';
   /* Field: Ticket registration: Date created */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'ticket_registration';
@@ -317,6 +340,13 @@ function ticket_views_default_views() {
   $handler->display->display_options['arguments']['author_uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['author_uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['author_uid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Ticket registration state: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'ticket_state';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'ticket_state_target_id';
+  $handler->display->display_options['filters']['name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['name']['value'] = 'completed';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');

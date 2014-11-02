@@ -30,4 +30,16 @@ function my_form_validate($form, &$form_state) {
 
 function my_form_submit($form, &$form_state) {
   multiple_entity_form_submit($form, $form_state);
+
+  // The helper function does not save the entities, in case you need to perform
+  // additional processing or filtering.
+  foreach ($form['#entity_form_keys'] as $form_key) {
+    $entity_type  = $form[$form_key]['#entity_type'];
+    $entity       = $form[$form_key]['#entity'];
+
+    // Save each entity.
+    // If you have Entity API:
+    entity_save($entity_type, $entity);
+  }
+
 }

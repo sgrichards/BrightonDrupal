@@ -3,9 +3,9 @@ description = Provides FormAPI helpers for creating forms showing multiple entit
 dependencies[] = ctools
 core = 7.x
 
-; Information added by drupal.org packaging script on 2013-04-18
-version = "7.x-1.1"
+; Information added by Drupal.org packaging script on 2014-08-08
+version = "7.x-1.2"
 core = "7.x"
 project = "multiple_entity_form"
-datestamp = "1366294276"
+datestamp = "1407492828"
 

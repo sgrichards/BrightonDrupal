@@ -45,7 +45,7 @@ function hook_ckeditor_plugin() {
       // Description of the plugin - it would be displayed in the plugins management section of profile settings.
       'desc' => t('Plugin description'),
       // The full path to the CKEditor plugins directory, with the trailing slash.
-      'path' => drupal_get_path('module', 'my_module') . '/plugin_dir/',
+      'path' => '/' . drupal_get_path('module', 'my_module') . '/plugin_dir/',
       'buttons' => array(
         'button_name' => array(
           'icon' => 'icon/plugin_name.png',
@@ -82,6 +82,13 @@ function hook_ckeditor_security_filter() {
 }
 
 /**
+ * Hook to alter CKEditor security filters.
+ */
+function hook_ckeditor_security_filter_alter(&$security_filters) {
+  // Modify a $security_filter.
+}
+
+/**
  * Hook to extend/change the ckeditor settings.
  *
  * This hook is invoked from ckeditor_profile_settings_compile(). The settings
@@ -90,8 +97,29 @@ function hook_ckeditor_security_filter() {
  *
  * @param $settings
  *   An associative array of settings.
+ * @param $conf
+ *   An associative array with access to raw profile settings that might be helpful to alter the real $settings.
  */
-function hook_ckeditor_settings_alter(&$settings) {
+function hook_ckeditor_settings_alter(&$settings, $conf) {
   // Change the ckeditor config path.
   $settings['customConfig'] = drupal_get_path('module', 'ckeditor') . '/ckeditor.config.js';
+}
+
+/**
+ * Hook that allows to alter the user default settings.
+ *
+ * @param $settings
+ *   An associative array of settings.
+ */
+function hook_ckeditor_default_settings_alter(&$settings) {
+  $settings['show_toggle'] = 'f';
+}
+
+/**
+ * Hook to extend CKEditor security allowed tags list.
+ *
+ * This hook is invoked from ckeditor_filter_xss() where text is filtered from potentially insecure tags.
+ */
+function hook_ckeditor_filter_xss_allowed_tags() {
+  // Return an array of additional allowed tags
 }

@@ -32,6 +32,17 @@ function cod_events_menu_alter(&$items) {
     $items['admin/conference/events/%/tickets']['type'] = MENU_LOCAL_TASK;
     $items['admin/conference/events/%/tickets']['weight'] = -5;
   }
+
+  if (isset($items['group/%/%/admin/permissions'])) {
+    $items['admin/conference/events/%/permissions'] = $items['group/%/%/admin/permissions'];
+    $items['admin/conference/events/%/permissions']['title'] = 'Permissions';
+    unset($items['admin/conference/events/%/permissions']['title arguments']);
+    unset($items['admin/conference/events/%/permissions']['title callback']);
+    $items['admin/conference/events/%/permissions']['page arguments'][1] = $items['admin/conference/events/%/permissions']['access arguments'][1] = 'node';
+    $items['admin/conference/events/%/permissions']['page arguments'][2] = $items['admin/conference/events/%/permissions']['access arguments'][2] = 3;
+    $items['admin/conference/events/%/permissions']['type'] = MENU_LOCAL_TASK;
+    $items['admin/conference/events/%/permissions']['weight'] = 5;
+  }
 }
 
 function cod_events_menu() {
@@ -345,10 +356,12 @@ function cod_events_og_context_handler_default_event() {
   }
   if (empty($item['map'][2])) {
     // If we don't have this key in the array, it means the user doesn't have
-    // access to create this node.
-    return;
+    // global access to create this node.
+    $node_type = str_replace('-', '_', $item['original_map'][2]);
   }
-  $node_type = str_replace('-', '_', $item['map'][2]);
+  else {
+    $node_type = str_replace('-', '_', $item['map'][2]);
+  }
 
   if (!$fields = og_get_group_audience_fields('node', $node_type)) {
     return;
@@ -460,8 +473,8 @@ function cod_events_add_term($event, $vocabulary) {
 
   $options = array();
   if (!empty($args)) {
-    $path = implode('/', $args);
-    $options['query']['destination'] = '/node/'.$event->nid.'/'.$path;
+    $path = array_shift($args) . '/' . $event->nid . '/' . array_shift($args);
+    $options['query']['destination'] = $path;
   }
   // Check to see if we're using a OG Vocabulary. Probably better way to do this.
   if ($vocab = taxonomy_vocabulary_machine_name_load($vocabulary . '_' . $event->nid)) {

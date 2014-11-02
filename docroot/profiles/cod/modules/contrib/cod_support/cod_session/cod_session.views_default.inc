@@ -1812,6 +1812,22 @@ function cod_session_views_default_views() {
   $handler->display->display_options['fields']['count_1']['label'] = 'Attending';
   $handler->display->display_options['fields']['count_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['count_1']['separator'] = '';
+  if (module_exists('cod_session_ranking')) {
+    /* Field: Content: Session Rank */
+    $handler->display->display_options['fields']['field_session_ranking']['id'] = 'field_session_ranking';
+    $handler->display->display_options['fields']['field_session_ranking']['table'] = 'field_data_field_session_ranking';
+    $handler->display->display_options['fields']['field_session_ranking']['field'] = 'field_session_ranking';
+    $handler->display->display_options['fields']['field_session_ranking']['label'] = 'Moderation Ranking';
+    $handler->display->display_options['fields']['field_session_ranking']['click_sort_column'] = 'rating';
+    $handler->display->display_options['fields']['field_session_ranking']['settings'] = array(
+      'widget' => array(
+        'fivestar_widget' => 'default',
+      ),
+      'expose' => 1,
+      'style' => 'smart',
+      'text' => 'average',
+    );
+  }
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Content: Nid */
   $handler->display->display_options['sorts']['nid']['id'] = 'nid';
@@ -1824,6 +1840,14 @@ function cod_session_views_default_views() {
   $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['sorts']['title']['relationship'] = 'field_room_slots_types_allowed_node';
   $handler->display->display_options['sorts']['title']['expose']['label'] = 'Title';
+  if (module_exists('cod_session_ranking')) {
+    /* Sort criterion: Content: Session Rank (field_session_ranking:rating) */
+    $handler->display->display_options['sorts']['field_session_ranking_rating']['id'] = 'field_session_ranking_rating';
+    $handler->display->display_options['sorts']['field_session_ranking_rating']['table'] = 'field_data_field_session_ranking';
+    $handler->display->display_options['sorts']['field_session_ranking_rating']['field'] = 'field_session_ranking_rating';
+    $handler->display->display_options['sorts']['field_session_ranking_rating']['exposed'] = TRUE;
+    $handler->display->display_options['sorts']['field_session_ranking_rating']['expose']['label'] = 'Session Rank';
+  }
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: OG membership: Group ID */
   $handler->display->display_options['arguments']['gid']['id'] = 'gid';
@@ -1971,7 +1995,6 @@ function cod_session_views_default_views() {
   $handler->display->display_options['filters']['field_accepted_value']['expose']['label'] = 'Status';
   $handler->display->display_options['filters']['field_accepted_value']['expose']['operator'] = 'field_accepted_value_op';
   $handler->display->display_options['filters']['field_accepted_value']['expose']['identifier'] = 'field_accepted_value';
-  $handler->display->display_options['filters']['field_accepted_value']['expose']['remember_roles'] = array();
   $handler->display->display_options['filters']['field_accepted_value']['group_info']['label'] = 'Status';
   $handler->display->display_options['filters']['field_accepted_value']['group_info']['identifier'] = 'field_accepted_value';
   $handler->display->display_options['filters']['field_accepted_value']['group_info']['remember'] = FALSE;
@@ -1990,7 +2013,6 @@ function cod_session_views_default_views() {
       'label' => 'Event ID',
     ),
   );
-
   $export['cod_session_sessions_admin'] = $view;
 
   $view = new view();

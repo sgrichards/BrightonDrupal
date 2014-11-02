@@ -47,7 +47,7 @@ function cod_sponsors_pages_default_page_manager_pages() {
     'type' => 'tab',
     'title' => 'Sponsors',
     'name' => 'navigation',
-    'weight' => '-3',
+    'weight' => '1',
     'parent' => array(
       'type' => 'none',
       'title' => '',

@@ -167,7 +167,7 @@ function cod_session_update_7011() {
 /**
  * Convert from list_integer to a list_text for session status.
  */
-function cod_session_update_7012() {
+function cod_session_update_7013() {
   // Change fields to be varchars first
   db_change_field('field_data_field_accepted', 'field_accepted_value', 'field_accepted_value',
     array('type' => 'varchar', 'length' => 255, 'not null' => FALSE)
@@ -204,6 +204,18 @@ function cod_session_update_7012() {
   // Change the views to use the new machine names as keys.
   $revert = array(
     'cod_session' => array('field_base', 'field_instance', 'views_view'),
+  );
+  features_revert($revert);
+
+  return array();
+}
+
+/**
+ * Reset the session menu weight to order correctly on the admin tabs
+ */
+function cod_session_update_7014() {
+  $revert = array(
+    'cod_session' => array('page_manager_pages'),
   );
   features_revert($revert);
 

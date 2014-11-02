@@ -1,6 +1,14 @@
-
-Views Send 7.x-1.x, xxxx-xx-xx
+Views Send 7.x-1.1, 2014-06-21
 ------------------------------
+#2225631 by hansfn: Using filter_fallback_format() instead of hard-coded value for message text format.
+#2258947 by hansfn: Call to a member function get_value() on a non-object.
+#2089409 by hansfn: Added support for Mandrill.
+
+Views Send 7.x-1.0, 2014-04-15
+------------------------------
+#2202769 by hansfn: Subject not displaying correctly
+#2122909 by hansfn: Unwanted conversion of quotes in fields used for recipient's e-mail and name
+#2023977 by hansfn: Views Send overrides Mail System module configuration
 #1963960 by hansfn: Add hooks.
 #1957442 by hansfn: Token replacement doesn't work for repeated field.
 #1939332 by hansfn: Token list doesn't update.

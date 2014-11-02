@@ -18,11 +18,24 @@ class OgEventsSelectionHandler extends OgSelectionHandler {
     $group_type = $this->field['settings']['target_type'];
 
     // See if the Entity allows for non-member postings
-    $event_entity_types = cod_events_get_group_content_entity_types();
+    $user_access = FALSE;
+    $event = NULL;
+    if ($this->entity && isset($this->entity->og_group_ref[LANGUAGE_NONE][0]['target_id'])) {
+      $event = $this->entity->og_group_ref[LANGUAGE_NONE][0]['target_id'];
+    }
+    // We need to grab the session directly because it hasn't been saved statically yet.
+    elseif (module_exists('og_context') && isset($_SESSION)) {
+      $event = isset($_SESSION['og_context']) ? $_SESSION['og_context'] : og_context('node');
+      $event = isset($event['gid']) ? $event['gid'] : NULL;
+    }
+    if ($event) {
+      $user_access = og_user_access('node', $event, "create " . $this->instance['bundle'] . " content") || og_user_access('node', $event, "update own " . $this->instance['bundle'] . " content") || og_user_access('node', $event, "edit any " . $this->instance['bundle'] . " content");
+    }
+
     if (empty($this->instance['field_mode'])
       || $group_type != 'node'
       || user_is_anonymous()
-      || (isset($this->instance['bundle']) && !(isset($event_entity_types['node'][$this->instance['bundle']]['non_member']) && user_access("create " . $this->instance['bundle'] . " content")))) {
+      || !$user_access) {
       return parent::buildEntityFieldQuery($match, $match_operator);
     }
 

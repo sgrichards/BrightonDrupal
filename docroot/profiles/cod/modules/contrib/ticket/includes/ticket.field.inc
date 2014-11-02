@@ -213,6 +213,27 @@ function ticket_field_formatter_view_form($form, &$form_state, $vars = NULL) {
       '#type' => 'textfield',
     );
 
+    // Change the QTY field depending on the ticket type settings.
+    if (!$wrapper->ticket_type_order_max->value() || $wrapper->ticket_type_order_max->value() > 20) {
+      $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#size'] = 3;
+      $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#default_value'] = '';
+    }
+    elseif ($wrapper->ticket_type_order_max->value() == 1 && count($vars['ticket_types']) == 1) {
+      // If we only have one ticket type, and its max QTY is one, don't show anything
+        $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#type'] = 'value';
+        $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#value'] = '1';
+    }
+    else {
+      $qty_range = array();
+      for ($i = (int)$wrapper->ticket_type_order_min->value(); $i <= (int)$wrapper->ticket_type_order_max->value(); $i++) {
+        $qty_range[$i] = $i;
+      }
+
+      $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#type'] = 'select';
+      $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#default_value'] = (int)$wrapper->ticket_type_order_min->value();
+      $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid]['#options'] = $qty_range;
+    }
+
     if (ticket_type_available($ticket_type)) {
       $form[TICKET_QUANTITY_PREFIX . $ticket_type->ttid] += array(
         '#element_validate' => array(

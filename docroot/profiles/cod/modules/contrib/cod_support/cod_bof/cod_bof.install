@@ -11,3 +11,15 @@ function cod_bof_update_7002() {
 
   return array();
 }
+
+/**
+ * Revert cod_bof feature to set the correct views filter for the bof schedule.
+ */
+function cod_bof_update_7003() {
+  $revert = array(
+    'cod_bof' => array('views_view'),
+  );
+  features_revert($revert);
+
+  return array();
+}

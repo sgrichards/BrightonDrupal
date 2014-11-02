@@ -5,10 +5,9 @@ core = 7.x
 
 dependencies[] = ticket_state
 
-
-; Information added by drush on 2014-07-08
-version = "7.x-1.0-beta1+2-dev"
+; Information added by Drupal.org packaging script on 2014-10-16
+version = "7.x-1.0-beta2"
 core = "7.x"
 project = "ticket"
-datestamp = "1404802489"
+datestamp = "1413472015"
 

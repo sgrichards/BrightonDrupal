@@ -5,140 +5,6 @@
  * Admin page callbacks for the cod_schedule module.
  */
 
-function cod_schedule_schedule_admin_page($node) {
-  // Grab the days.
-  $days = cod_schedule_days($node);
-  if (empty($days)) {
-    return t('Your event must have a <a href="@edit">start and end date</a>. <a href="@edit">Edit</a> event.',
-      array('@edit' => url('admin/conference/events/'. $node->nid .'/edit', array('fragment' => 'edit-field-dates',
-            'query' => array('destination' => 'admin/conference/events/'. $node->nid .'/schedule')))));
-  }
-
-  // Grab the Rooms attached to the event.
-  $room_query = new EntityFieldQueryExtraFields();
-  $rooms = $room_query->entityCondition('entity_type', 'cod_event_room')
-    ->addExtraField('', 'name', 'name', 'cod_event_room')
-    ->fieldCondition('og_group_ref', 'target_id', $node->nid)
-    // TODO: Weight property isn't fully coded.
-    // ->propertyOrderby('weight')
-    ->execute();
-
-  // Provide feedback to help administrators setup the site.
-  if (empty($rooms)) {
-    return t('You must add a room to view the schedule.');
-  }
-
-  // Create the table for each day.
-  foreach ($days as $weight => $day) {
-    $tz = new DateTimeZone($node->field_dates[LANGUAGE_NONE][0]['timezone']);
-    $tz_db = new DateTimeZone($node->field_dates[LANGUAGE_NONE][0]['timezone_db']);
-
-    $tz_time_db = new DateTime("now", $tz_db);
-    $tz_time = new DateTime("now", $tz);
-
-    // Get opposite of the offset.
-    $offset = $tz->getOffset($tz_time_db) * -1;
-
-    $day_start = strtotime($day . ' 00:00:00') + $offset;
-    $day_end = strtotime('+1 day', $day_start);
-
-    $time_query = new EntityFieldQueryExtraFields();
-    $times = $time_query->entityCondition('entity_type', 'cod_event_time')
-      ->addExtraField('', 'date_label', 'date_label', 'cod_event_time')
-      ->fieldCondition('og_group_ref', 'target_id', $node->nid)
-      ->fieldCondition('field_evttime_date', 'value', format_date($day_start, 'custom', 'Y-m-d H:i:s'), '>=')
-      ->fieldCondition('field_evttime_date', 'value2', format_date($day_end, 'custom', 'Y-m-d H:i:s'), '<=')
-      ->fieldOrderBy('field_evttime_date', 'value')
-      ->execute();
-    $header = array(t('Time'));
-    $rows = array();
-
-    if (isset($times['cod_event_time'])) {
-      foreach ($times['cod_event_time'] as $evttid => $time) {
-        $time_entity = entity_load('cod_event_time', array($evttid));
-        $time_label = $time_entity[$evttid]->getTimeLabel();
-        $time_edit_uri = 'admin/conference/times/manage/' . $evttid;
-        $row = array(l($time_label, $time_edit_uri, array('query' => array('destination' => 'admin/conference/events/'.$node->nid.'/schedule'))));
-
-        foreach ($rooms['cod_event_room'] as $roomid => $room) {
-          if (empty($rows)) {
-            $room_label = $room->extraFields->name;
-            $room_edit_uri = 'admin/conference/rooms/manage/' . $roomid;
-            $header[] = l($room_label, $room_edit_uri, array('query' => array('destination' => 'admin/conference/events/'.$node->nid.'/schedule')));
-          }
-
-          $row[] = cod_schedule_schedule_grid_item($node, $evttid, $roomid);
-        }
-        $rows[] = $row;
-      }
-    }
-
-    // Add help content to empty tabs.
-    if (empty($rows)) {
-      $contents =  t('Add a time to build a schedule for this day.');
-    }
-    else {
-      $contents = theme('table', array('header' => $header, 'rows' => $rows));
-    }
-
-    $content_tabs[] = array(
-      'title' => $day,
-      'contents' => $contents,
-      'weight' => $weight,
-    );
-  }
-
-  ctools_include('modal');
-  ctools_modal_add_js();
-  $overrides = array('ajax' => 0, 'style' => 'Zen'); // Override some of the settings for the QT instance.
-  $quicktabs = quicktabs_build_quicktabs('cod_schedule_schedule_builder', $overrides, $content_tabs);
-  return drupal_render($quicktabs['content']);
-}
-
-/**
- * Helper function to generate a sceduler grid item.
- */
-function cod_schedule_schedule_grid_item($event, $time, $room, $reset = FALSE) {
-  $cid = 'cod_schedule:schedule_grid_item:' . $time . ':' . $room;
-  $grid = cache_get($cid);
-
-  if (!isset($grid->data) || $reset) {
-    $items = array();
-    if ($timeslot = cod_schedule_timeslot_load_by_info($time, $room)) {
-      $op = 'edit';
-      if (isset($timeslot->field_timeslot_allowed_types[LANGUAGE_NONE])) {
-        foreach ($timeslot->field_timeslot_allowed_types[LANGUAGE_NONE] as $type) {
-          $items[]['data'] = node_type_get_name($type['value']);
-        }
-      }
-    }
-    else {
-      $op = 'add';
-    }
-
-    // Generate the appropriate link for this timeslot.
-    $items[]['data'] = l(
-      t('@op timeslot', array('@op' => ucwords($op))),
-      'admin/conference/events/' . $event->nid . '/schedule/nojs/' . $op . '/' . $time .'/' . $room,
-      array('attributes' => array('class' => 'ctools-use-modal'))
-    );
-
-    $data = theme('item_list',
-      array(
-        'items' => $items,
-        'attributes' => array(
-          'id' => 'cod-events-schedule-timeslot-' . $time . '-' . $room,
-        ),
-      )
-    );
-
-    cache_set($cid, $data);
-    return $data;
-  }
-
-  return $grid->data;
-}
-
 /**
  * Form constructor for the COD session room form.
  */
@@ -236,7 +102,7 @@ function cod_event_room_form_submit(&$form, &$form_state) {
 function cod_event_room_form_submit_delete(&$form, &$form_state) {
   $evtrid = $form_state['cod_event_room']->evtrid;
   cod_event_room_delete($form_state['cod_event_room']);
-  
+
   $form_state['redirect'] = "admin/conference/rooms/manage/$evtrid/delete";
 }
 
@@ -247,7 +113,7 @@ function cod_event_room_form_submit_delete(&$form, &$form_state) {
 function cod_event_time_form($form, &$form_state, CodEventTime $cod_event_time, $op = 'update', $node = NULL) {
 
   if (isset($node) && is_object($node) && !cod_schedule_days($node)) {
-    drupal_set_message("You must first set a date for the event.", 'warning');
+    drupal_set_message(l(t("You must first set a date for the event."), 'admin/conference/events/'.$node->nid.'/edit',array('fragment' => 'edit-field-dates')), 'warning');
     drupal_goto('admin/conference/events/'.$node->nid.'/schedule');
   }
 
@@ -381,6 +247,7 @@ function cod_schedule_schedule_timeslot_callback($js, $event, $key, $time, $room
   // Check if js is enabled, this parameter will be loaded by ctools.
   if ($js) {
     module_load_include('inc', 'field_collection', 'field_collection.pages');
+
     // Include ctools ajax and modal, dont forget to set ajax TRUE.
     ctools_include('ajax');
     ctools_include('modal');
@@ -447,7 +314,7 @@ function cod_schedule_form_field_collection_item_form_alter(&$form, &$form_state
  *
  * We copied this function from the field collection module but instead of returning a form we return the object
  */
-function cod_schedule_field_collection_item_add($field_name, $entity_type, $entity_id, $time, $room, $revision_id = NULL, $langcode = NULL) {
+function cod_schedule_field_collection_item_add($field_name, $entity_type, $entity_id, $time, $room, $allowed_types = NULL, $langcode = NULL) {
   $info = entity_get_info();
   if (!isset($info[$entity_type])) {
     return MENU_NOT_FOUND;
@@ -481,8 +348,9 @@ function cod_schedule_field_collection_item_add($field_name, $entity_type, $enti
 
   $stub = array(
     'field_name' => $field_name,
-    'field_timeslot_time' => array(LANGUAGE_NONE => array(array('target_id' => $time))),
-    'field_timeslot_room' => array(LANGUAGE_NONE => array(array('target_id' => $room))),
+    'field_timeslot_time' => array($langcode => array(array('target_id' => $time))),
+    'field_timeslot_room' => array($langcode => array(array('target_id' => $room))),
+    'field_timeslot_allowed_types' => array($langcode => array(array('value' => $allowed_types))),
   );
 
   $field_collection_item = entity_create('field_collection_item', $stub);
@@ -490,11 +358,94 @@ function cod_schedule_field_collection_item_add($field_name, $entity_type, $enti
   // as during the form-workflow we have multiple field-collection item entity
   // instances, which we don't want link all with the host.
   // That way the link is going to be created when the item is saved.
-  $field_collection_item->setHostEntity($entity_type, $entity, LANGUAGE_NONE, FALSE);
+  $field_collection_item->setHostEntity($entity_type, $entity, $langcode, FALSE);
   // Make sure the current user has access to create a field collection item.
   if (!field_collection_item_access('create', $field_collection_item)) {
     return MENU_ACCESS_DENIED;
   }
 
   return $field_collection_item;
+}
+
+
+/**
+ * Helper function to generate a sceduler grid item.
+ */
+function cod_schedule_schedule_grid_item($event, $time, $room, $reset = FALSE, $schedule_items) {
+  // @TODO We need to pass the cid on with ajax so we can invalidate the cache
+  $cid = 'cod_schedule:schedule_grid_item:' . $time . ':' . $room;
+  $grid = cache_get($cid);
+
+  if (!isset($grid->data) || $reset) {
+    $items = array();
+    $sessions = array();
+
+    if ($timeslot = cod_schedule_timeslot_load_by_info($time, $room)) {
+
+      if(isset($schedule_items[$timeslot->item_id])) {
+        foreach($schedule_items[$timeslot->item_id] as $session) {
+          $sessions[] = array(
+            'data' => l( t($session->extraFields->title), 'node/' . $session->nid),
+            'data-nid' => $session->nid,
+          );
+        }
+      }
+
+
+      $op = 'edit';
+      /*
+       * @TODO (Connerton) I don't think we need this if we turn the "edit timeslot" link into a gear contextual link
+      if (isset($timeslot->field_timeslot_allowed_types[LANGUAGE_NONE])) {
+        foreach ($timeslot->field_timeslot_allowed_types[LANGUAGE_NONE] as $type) {
+          $items[]['data'] = node_type_get_name($type['value']);
+        }
+      }
+      */
+    }
+    else {
+      $op = 'add';
+    }
+
+    // (Connerton) If there are no session in a timeslot, then the ul element won't even render. This makes sure that happens
+    // However it produces an empty <li class="first last"></li> which doesn't seem to hurt anything. Not sure how I
+    // feel about that....
+    if(empty($sessions)) {
+      $sessions[] = array('data' => '');
+    }
+
+    // Generate the appropriate link for this timeslot.
+    $items[] = array(
+      'title' => t('@op timeslot', array('@op' => ucwords($op))),
+      'href' => 'admin/conference/events/' . $event->nid . '/schedule/nojs/' . $op . '/' . $time .'/' . $room,
+      'attributes' => array('class' => 'ctools-use-modal'),
+    );
+
+    $output = array(
+      'dropdown' => array(
+        '#links' => $items,
+        '#theme' => 'ctools_dropdown',
+      ),
+      'sessions' => array(
+        '#items' => $sessions,
+        '#theme' => 'item_list',
+        '#attributes' => array(
+          'id' => 'cod-events-schedule-sessions-' . $time . '-' . $room,
+          'class' => 'sortable-sessions',
+          'data-timeslot' =>  isset($timeslot->item_id) ? $timeslot->item_id : 'NEW',
+        ),
+      ),
+    );
+    /*   Link to the Ctools modal.
+     *             '#items' => $items,
+                 '#theme' => 'item_list',
+                 '#attributes' => array(
+                   'id' => 'cod-events-schedule-timeslot-' . $time . '-' . $room,
+                 ),
+     */
+
+    cache_set($cid, $output);
+    return $output;
+  }
+
+  return $grid->output;
 }

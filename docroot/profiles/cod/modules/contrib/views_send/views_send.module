@@ -33,9 +33,22 @@ define('VIEWS_SEND_TOKEN_PREFIX', '[');
 define('VIEWS_SEND_TOKEN_POSTFIX', ']');
 
 /**
- * Detect and store Mime Mail module presence.
+ * Detect if there is MIME support (thorough modules like Mime Mail or Mandrill).
  */
-define('VIEWS_SEND_MIMEMAIL', module_exists('mimemail'));
+define('VIEWS_SEND_MIMEMAIL', module_exists('mimemail') || module_exists('mandrill'));
+
+/**
+ * Sets the mailsystem for Views Send (if not already set).
+ */
+function _views_send_mailsystem_set($key) {
+  $mailsystem = mailsystem_get();
+  $mailsystem_key = "views_send_$key";
+  if (empty($mailsystem[$mailsystem_key])) {
+    mailsystem_set(array(
+      $mailsystem_key => $mailsystem['default-system']
+    ));
+  }
+}
 
 /**
  * Gets the selector field if it exists on the passed-in view.
@@ -181,6 +194,8 @@ function views_send_form_alter(&$form, &$form_state, $form_id) {
 
 /**
  * Multistep form callback for the "configure" step.
+ *
+ @TODO: Hide "Sender" (from) if Mandrill is used.
  */
 function views_send_config_form($form, &$form_state, $view, $output) {
   $display = $view->name . ':' . $view->current_display;
@@ -258,7 +273,7 @@ function views_send_config_form($form, &$form_state, $view, $output) {
   $saved_message = variable_get('views_send_message_' . $display);
   $form['mail']['views_send_message'] = array(
     '#type' => 'text_format',
-    '#format' => isset($saved_message['format']) ? $saved_message['format'] : 'plain_text',
+    '#format' => isset($saved_message['format']) ? $saved_message['format'] : filter_fallback_format(),
     '#title' => t('Message'),
     '#description' => t('Enter the body of the message. You can use tokens in the message.'),
     '#required' => TRUE,
@@ -445,8 +460,13 @@ function views_send_confirm_form($form, &$form_state, $view, $output) {
   $configuration = $form_state['configuration'];
 
   if (!VIEWS_SEND_MIMEMAIL && ($configuration['views_send_message']['format'] != 'plain_text')) {
-    drupal_set_message(t("Only plain text is supported in the message. Any HTML will be converted to text. If you want to format the message with HTML, you'll have to install and enable the !mimemail module.",
-      array('!mimemail' => '<a href="http://drupal.org/project/mimemail">Mime Mail</a>'))
+    drupal_set_message(
+      t("Only plain text is supported in the message. Any HTML will be converted to text. If you want to format the message with HTML, you'll have to install and enable the !mimemail or !mandrill module.",
+        array(
+          '!mimemail' => '<a href="http://drupal.org/project/mimemail">Mime Mail</a>',
+          '!mandrill' => '<a href="http://drupal.org/project/mandrill">Mandrill</a>'
+        )
+      )
     );
   }
 
@@ -463,11 +483,20 @@ function views_send_confirm_form($form, &$form_state, $view, $output) {
       '</div>',
   );
 
+  // To: parts. (Mail is mandatory, name is optional.)
   $recipients = array();
-  $to_name_field = $configuration['views_send_tokens'][$configuration['views_send_to_name']];
+  if (!empty($configuration['views_send_to_name'])) {
+    $to_name_field = $configuration['views_send_tokens'][$configuration['views_send_to_name']];
+  }
+  else {
+    $to_name_field = false;
+    $to_name = '';
+  }
   $to_mail_field = $configuration['views_send_tokens'][$configuration['views_send_to_mail']];
   foreach ($form_state['selection'] as $row_id) {
-    list($to_name) = _views_send_get_raw_field_from_views_row($view, $row_id, $to_name_field);
+    if ($to_name_field) {
+      list($to_name) = _views_send_get_raw_field_from_views_row($view, $row_id, $to_name_field);
+    }
     $mail_addresses = _views_send_get_raw_field_from_views_row($view, $row_id, $to_mail_field);
     foreach ($mail_addresses as $mail_address) {
       $recipients[] = check_plain(empty($to_name) ? $mail_address : trim($to_name) . ' <' .  $mail_address . '>');
@@ -618,12 +647,21 @@ function views_send_queue_mail($params, $selected_rows, $view) {
   $from_mail = trim($params['views_send_from_mail']);
   $from_name = $params['views_send_from_name'];
 
+  // To: parts. (Mail is mandatory, name is optional.)
   $to_mail_key = $params['views_send_tokens'][$params['views_send_to_mail']];
-  $to_name_key = $params['views_send_tokens'][$params['views_send_to_name']];
+  if (!empty($params['views_send_to_name'])) {
+    $to_name_key = $params['views_send_tokens'][$params['views_send_to_name']];
+  }
+  else {
+    $to_name_key = false;
+    $to_name = '';
+  }
   foreach ($selected_rows as $row_id) {
     // To: parts.
     $to_mail = implode(',', _views_send_get_raw_field_from_views_row($view, $row_id, $to_mail_key));
-    list($to_name) = _views_send_get_raw_field_from_views_row($view, $row_id, $to_name_key);
+    if ($to_name_key) {
+      list($to_name) = _views_send_get_raw_field_from_views_row($view, $row_id, $to_name_key);
+    }
 
     $subject = $params['views_send_subject'];
     $body = $params['views_send_message']['value'];
@@ -998,10 +1036,7 @@ function _views_send_prepare_mail(&$message, $plain_format=TRUE, $attachments=ar
   $params['headers'] = $headers;
 
   if (VIEWS_SEND_MIMEMAIL) {
-    $mailsystem = mailsystem_get();
-    mailsystem_set(array(
-      "views_send_$key" => $mailsystem['mimemail']
-    ));
+    _views_send_mailsystem_set($key);
     $params['attachments'] = $attachments;
     if ($plain_format) {
       $params['plain'] = TRUE;
@@ -1048,10 +1083,7 @@ function views_send_deliver($message) {
   );
 
   if (VIEWS_SEND_MIMEMAIL) {
-    $mailsystem = mailsystem_get();
-    mailsystem_set(array(
-      "views_send_$key" => $mailsystem['mimemail']
-    ));
+    _views_send_mailsystem_set($key);
   }
 
   // Mime encode the subject before passing to the mail function 

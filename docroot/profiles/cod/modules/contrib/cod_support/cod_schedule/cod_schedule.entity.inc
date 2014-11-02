@@ -133,10 +133,10 @@ class CodEventTime extends Entity {
 
     $timezone = $this->field_evttime_date[LANGUAGE_NONE][0]['timezone'];
     $date_field1 = $this->field_evttime_date[LANGUAGE_NONE][0]['value'];
-    $date_field1 = new DateTime($date_field1, new DateTimeZone('UTC'));
+    $date_field1 = new DateTime($date_field1, new DateTimeZone($timezone));
     $date_field1 = format_date($date_field1->getTimestamp(), $type = 'short');
     $date_field2 = $this->field_evttime_date[LANGUAGE_NONE][0]['value2'];
-    $date_field2 = new DateTime($date_field2, new DateTimeZone('UTC'));
+    $date_field2 = new DateTime($date_field2, new DateTimeZone($timezone));
     $date_field2 = format_date($date_field2->getTimestamp(), $type = 'short');
     $date_label = $date_field1 . '-' . $date_field2;
 
@@ -146,11 +146,11 @@ class CodEventTime extends Entity {
   public function getTimeLabel() {
     $timezone = $this->field_evttime_date[LANGUAGE_NONE][0]['timezone'];
     $date_field1 = $this->field_evttime_date[LANGUAGE_NONE][0]['value'];
-    $date_field1 = new DateTime($date_field1, new DateTimeZone('UTC'));
+    $date_field1 = new DateTime($date_field1, new DateTimeZone($timezone));
     $date_field1 = format_date($date_field1->getTimestamp(), $type = 'cod_time');
 
     $date_field2 = $this->field_evttime_date[LANGUAGE_NONE][0]['value2'];
-    $date_field2 = new DateTime($date_field2, new DateTimeZone('UTC'));
+    $date_field2 = new DateTime($date_field2, new DateTimeZone($timezone));
     $date_field2 = format_date($date_field2->getTimestamp(), $type = 'cod_time');
 
     return $date_field1 . '-' . $date_field2;

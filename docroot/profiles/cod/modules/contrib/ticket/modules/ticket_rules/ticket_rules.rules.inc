@@ -60,7 +60,7 @@ function ticket_rules_rules_action_info() {
     ),
     'group' => t('Ticket'),
     'callbacks' => array(
-      'execute' => 'ticket_rules_set_regitration_state',
+      'execute' => 'ticket_rules_set_registration_state',
     ),
   );
 
@@ -74,7 +74,7 @@ function ticket_rules_rules_action_info() {
     ),
     'group' => t('Ticket'),
     'callbacks' => array(
-      'execute' => 'ticket_rules_advance_regitration_state',
+      'execute' => 'ticket_rules_advance_registration_state',
     ),
   );
 
@@ -84,7 +84,7 @@ function ticket_rules_rules_action_info() {
 /**
  * Callback for ticket_registration_set_state.
  */
-function ticket_rules_set_regitration_state($ticket_registration, $ticket_state) {
+function ticket_rules_set_registration_state($ticket_registration, $ticket_state) {
   $ticket_registration->{TICKET_STATE_FIELD}[LANGUAGE_NONE][0]['target_id'] = reset($ticket_state);
   $ticket_registration->save();
 }
@@ -92,7 +92,7 @@ function ticket_rules_set_regitration_state($ticket_registration, $ticket_state)
 /**
  * Callback for ticket_rules_advance_registration_state.
  */
-function ticket_rules_advance_regitration_state($ticket_registration) {
+function ticket_rules_advance_registration_state($ticket_registration) {
   $current_state = $ticket_registration->{TICKET_STATE_FIELD}[LANGUAGE_NONE][0]['target_id'];
   $states = ticket_state_get_active_states();
   $current_key = array_search($current_state, $states);
