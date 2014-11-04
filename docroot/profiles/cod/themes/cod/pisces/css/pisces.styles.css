@@ -368,6 +368,12 @@ p.button {
 
 ul.sf-menu {padding:0; margin:0 !important;}
 
+.block-block-6 h2 {
+    padding: 10px;
+    background: #33ffcc;
+    width:272px;
+}
+
 .block--webform h2 {
     padding: 10px;
     background: #ff9933;
