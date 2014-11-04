@@ -403,4 +403,4 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 #superfish-1 li.sf-item-6 {background:url('../images/icon_contact.png') no-repeat scroll 0 55% ;}
 
 /* user menu */
-.block--system-user-menu li {float:left; list-style: none; list-style-image: none;}
+.block--system-user-menu ul.menu li {float:left; list-style: none; list-style-image: none;}
