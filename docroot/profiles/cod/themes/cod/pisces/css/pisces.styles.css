@@ -153,7 +153,7 @@ p.button {
   .l-region--footer .block {
     float: left;
     width: 28%;
-    margin: 2%; }
+    margin: 2% 2% 2% 0; }
     .l-region--footer .block:first-child {
       width: 100%; }
     .l-region--footer .block img {
