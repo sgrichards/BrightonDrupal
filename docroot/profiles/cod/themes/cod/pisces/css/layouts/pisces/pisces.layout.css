@@ -142,4 +142,16 @@
     margin-left: 0;
     margin-right: 0;
     clear: none;
-    clear: none; } }
+    clear: none; 
+  } }
+  
+  /* layout overrides */
+  body.page-node-program-sessions .l-content, 
+  body.page-node-program-sessions .panels-flexible-column-new-main {
+    width:100% !important;
+  }
+  
+  body.page-node-program-sessions .l-region--sidebar {
+    display:none;
+  }
+  
