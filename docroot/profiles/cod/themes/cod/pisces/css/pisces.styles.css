@@ -371,13 +371,11 @@ ul.sf-menu {padding:0; margin:0 !important;}
 .block--block-6 h2 {
     padding: 10px;
     background: #0fe5b5;
-    width:272px;
 }
 
 .block--jquery-countdown-timer-jquery-countdown-timer h2 {
     padding: 10px;
     background: #ff9933;
-    width:272px;
 }
 
 .block--block-6 h2 a, 
@@ -386,13 +384,14 @@ ul.sf-menu {padding:0; margin:0 !important;}
     color:#494747;
 }
 
-.block--webform h2 {
+.block--webform h2, 
+.block--block-11 h2
+{
     padding: 10px;
     background: #ff9933;
-    width:272px;
 }
 
-.block--block-11 .block__content {background:#fff;padding:5px;}
+.block--block-11 .block__content {background:rgba(255, 255, 255, 0.8);padding:5px 10px;}
 
 input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transform: uppercase; border-radius: 0;border:0;}
 
