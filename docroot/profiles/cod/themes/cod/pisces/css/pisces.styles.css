@@ -399,7 +399,7 @@ ul.sf-menu {padding:0; margin:0 !important;}
 
 .block--block-11 .block__content {background:rgba(255, 255, 255, 0.8);padding:5px 10px;}
 
-input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transform: uppercase; border-radius: 0;border:0;}
+input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transform: uppercase; border-radius: 0;border:0;margin: 10px 0 32px;}
 
 .block--block-1, 
 .block--system-powered-by
@@ -435,4 +435,4 @@ body.front .entity-ticket-type
 {float:left;}
 
 body.front .entity-ticket-type {width:60%;}
-body.front .form-item-ticket-quantity-6 {width:35%;}
+body.front .form-item-ticket-quantity-6 {width:21%;}
