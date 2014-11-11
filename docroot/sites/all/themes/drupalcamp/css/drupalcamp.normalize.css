@@ -309,7 +309,4 @@ table {
   *behavior: url('../behaviors/box-sizing/boxsizing.php');
 }
 
-form.ticket-field-formatter-view-form {
-  float: left;
-  width: 100%;
-}
+
