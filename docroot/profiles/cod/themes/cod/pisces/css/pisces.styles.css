@@ -363,8 +363,8 @@ p.button {
     margin: 0.83em 0 12px 12px; }
   
 
-  /* extra stuff */
-  .block--views-dc-venues-map-block {width:100%;}
+/* extra stuff */
+.block--views-dc-venues-map-block {width:100%;}
 
 ul.sf-menu {padding:0; margin:0 !important;}
 
@@ -428,3 +428,11 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 /* forms */
 form.ticket-field-formatter-view-form {padding:10px; background:#fff;}
 form.ticket-field-formatter-view-form .description {display:none;}
+
+
+body.front .form-item-ticket-quantity-6, 
+body.front .entity-ticket-type
+{float:left;}
+
+body.front .entity-ticket-type {width:60%;}
+body.front .form-item-ticket-quantity-6 {width:35%;}
