@@ -436,3 +436,7 @@ body.front .entity-ticket-type
 
 body.front .entity-ticket-type {width:60%;}
 body.front .form-item-ticket-quantity-6 {width:21%;}
+
+#block-views-dc-venues-map-block{
+  float: left;
+}
