@@ -1,10 +1,10 @@
 .site-branding__name {
   font-size: 2.6em;
   margin-bottom: 40px;
-  white-space:nowrap; 
+  white-space:nowrap;
   color:#fff;
   text-shadow:
-  -1px -1px 0 #333,  
+  -1px -1px 0 #333,
   1px -1px 0 #333,
   -1px 1px 0 #333,
   1px 1px 0 #333;
@@ -67,7 +67,7 @@ p.button {
   }
 
 .l-content {
-  background-color: rgba(255,255,255,0.7); 
+  background-color: rgba(255,255,255,0.7);
 }
 
 .not-front .l-content, .not-front .l-region--sidebar .block { }
@@ -96,7 +96,7 @@ table {
 body {
   color: #494747;
   font-size: 16px;
-  font-family: "PT Sans", sans-serif; 
+  font-family: "PT Sans", sans-serif;
 }
 
 
@@ -116,7 +116,7 @@ html body.not-front {
   background-size: cover;
 }
 
-body.page-node-add html, 
+body.page-node-add html,
 body.cke_editable {
   background: #fff;
   background-image:none;
@@ -345,7 +345,7 @@ p.button {
 .view-cod-sponsors {background:#fff;}
 .view-cod-sponsors .level {
   clear: both; }
-.view-cod-sponsors .sponsor, 
+.view-cod-sponsors .sponsor,
 .view-cod-sponsors div
  {
   display: inline-block;
@@ -361,7 +361,7 @@ p.button {
   .user-profile .user-picture img {
     border: 1px solid #c4c8d4;
     margin: 0.83em 0 12px 12px; }
-  
+
 
 /* extra stuff */
 .block--views-dc-venues-map-block {width:100%;}
@@ -378,20 +378,20 @@ ul.sf-menu {padding:0; margin:0 !important;}
     background: #ff9933;
 }
 
-.block--block-6 h2 a, 
+.block--block-6 h2 a,
 .block--block-11 h2
 {
     color:#494747;
 }
 
-.block--webform h2, 
+.block--webform h2,
 .block--block-11 h2
 {
     padding: 10px;
     background: #ff9933;
 }
 
-.block--block-6 h2, 
+.block--block-6 h2,
 .block--block-11 h2
 {
     margin-bottom:0;
@@ -401,7 +401,7 @@ ul.sf-menu {padding:0; margin:0 !important;}
 
 input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transform: uppercase; border-radius: 0;border:0;margin: 10px 0 32px;}
 
-.block--block-1, 
+.block--block-1,
 .block--system-powered-by
 {background-color: rgba(0, 0, 0, 0.3);margin:2% 0;}
 
@@ -409,11 +409,11 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 .l-footer-wrapper .block__content a {color:#fff;}
 
 /*
-#superfish-1 li#menu-1335-1 {background:url('../images/icon_home2.png') no-repeat scroll 0 40% ;} 
-#superfish-1 li#menu-1335-1 a, 
+#superfish-1 li#menu-1335-1 {background:url('../images/icon_home2.png') no-repeat scroll 0 40% ;}
+#superfish-1 li#menu-1335-1 a,
 #superfish-1 li.sf-item-6 a
-{text-indent: -9999px;padding: 0 8px;} 
-#superfish-1 li.sf-item-6 a {padding: 0 26px;} 
+{text-indent: -9999px;padding: 0 8px;}
+#superfish-1 li.sf-item-6 a {padding: 0 26px;}
 
 #superfish-1 li.sf-item-6 {background:url('../images/icon_contact.png') no-repeat scroll 0 55% ;}
 */
@@ -426,13 +426,17 @@ input.form-submit {padding: 10px 20px;background: #000; color: #fff;text-transfo
 
 
 /* forms */
-form.ticket-field-formatter-view-form {padding:10px; background:#fff;}
+form.ticket-field-formatter-view-form {padding:10px; background:#fff; float: left;width: 100%;}
 form.ticket-field-formatter-view-form .description {display:none;}
 
 
-body.front .form-item-ticket-quantity-6, 
+body.front .form-item-ticket-quantity-6,
 body.front .entity-ticket-type
 {float:left;}
 
 body.front .entity-ticket-type {width:60%;}
 body.front .form-item-ticket-quantity-6 {width:21%;}
+
+#block-views-dc-venues-map-block{
+  float: left;
+}
