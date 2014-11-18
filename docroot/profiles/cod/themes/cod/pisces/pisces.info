@@ -12,6 +12,7 @@ stylesheets[all][] = css/pisces.normalize.css
 stylesheets[all][] = css/pisces.hacks.css
 stylesheets[all][] = css/pisces.styles.css
 stylesheets[all][] = css/pisces.no-query.css
+stylesheets[all][] = css/test.css
 
 ; ========================================
 ; Scripts
@@ -23,6 +24,9 @@ scripts[] = js/pisces.behaviors.js
 ; ========================================
 regions[branding] = Branding
 regions[header] = Header
+regions[header1] = Header 1
+regions[header2] = Header 2
+regions[header3] = Header 3
 regions[navigation] = Navigation
 regions[highlighted] = Highlighted
 regions[help] = Help
@@ -85,4 +89,12 @@ version = "7.x-1.0-beta2"
 core = "7.x"
 project = "cod"
 datestamp = "1404802468"
+
+
+fonts[google_fonts_api][] = "Lobster Two&subset=latin#700"
+fonts[google_fonts_api][] = "Lobster Two&subset=latin#700italic"
+fonts[google_fonts_api][] = "Rajdhani&subset=devanagari#300"
+fonts[google_fonts_api][] = "Rajdhani&subset=latin#300"
+fonts[google_fonts_api][] = "Rajdhani&subset=latin#700"
+fonts[google_fonts_api][] = "Rajdhani&subset=devanagari#regular"
 
