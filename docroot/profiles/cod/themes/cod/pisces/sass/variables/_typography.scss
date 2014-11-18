@@ -2,3 +2,10 @@
   font-size: 1.6em;
   margin-bottom: 40px;
 }
+
+@mixin lobster {
+  font-family: 'Lobster Two';
+  font-style: italic;
+  font-weight: 700;
+}
+

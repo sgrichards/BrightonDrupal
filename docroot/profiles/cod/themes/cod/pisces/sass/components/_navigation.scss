@@ -1,3 +1,6 @@
+$tablet-up: 768px;
+
+
 @import "../abstractions/placeholders";
 
 .l-region--navigation {
@@ -126,3 +129,81 @@
     @include border-radius-multi(6px,6px,0,0);
   }
 }
+
+.l-region--navigation {
+  .block__content {
+    @include breakpoint($tablet-up) {
+      text-align: center;
+      font-size: 0px;
+      letter-spacing: 0px;
+      word-spacing: 0px;
+      line-height: 0;
+    }
+  }
+  ul.menu {
+    //margin: 8px 0 3px;
+    display: inline-block;
+    float: none;
+    font-size: 22px;
+    li {
+      padding: 0;
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        //padding: 16px 20px;
+        &:hover, &.active {
+          background: #0064b2;
+        }
+      }
+        li a:hover {
+          background: #00508e;
+        }
+    }
+  }
+}
+
+@include breakpoint(0 767px) {
+  .l-navigation {
+    margin-top: 10px;
+    > .l-constrained {
+      width: 100%;
+    }
+  }
+}
+
+.sf-menu.sf-style-drupalcamp {
+  a,
+  a:visited,
+  span.nolink {
+    padding: 12px 1em;
+    font-size: 20px;
+    @include breakpoint($tablet-up) {
+      padding: 16px 1em;
+    }
+    @include breakpoint(813px) {
+      font-size: 22px;
+    }
+  }
+}
+
+// MOBILE MENU TOGGLE
+// =============================================================================
+
+.sf-accordion-toggle {
+  a {
+    text-indent: -9999px;
+    display: block;
+    width: 34px;
+    height: 26px;
+    background: url(../images/mobile-menu.png) no-repeat center;
+    background-size: 34px 26px;
+    top: 50px;
+    position: absolute;
+    right: 5%;
+  }
+}
+
+

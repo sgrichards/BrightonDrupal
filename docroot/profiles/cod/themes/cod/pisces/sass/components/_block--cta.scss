@@ -1,0 +1,78 @@
+$tablet-up : 768px;
+
+.block--cta {
+  margin-bottom: 20px;
+  @include breakpoint($tablet-up) {
+    margin-bottom: 0;
+    float: left;
+    width: 30%;
+    margin-right: 5%;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .block-content {
+    h2 {
+      text-align: center;
+      margin: 0;
+      font-size: 30px;
+
+      a {
+        line-height: 0.9em;
+        display: block;
+        font-family: 'Lobster Two';
+        font-style: italic;
+        font-weight: 700;
+        margin: 0;
+        color: #fff;
+        text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+        //width: 90%;
+        //margin: 0 auto;
+        padding: 12px 0;
+        border: 1px solid #494747;
+        @include border-radius(5px);
+        width: 70%;
+        margin: 0 auto;
+        @include breakpoint($tablet-up) {
+          width: 100%;
+          padding: 15px 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+.block--cta--1 {
+  display: none;
+  @include breakpoint($tablet-up) {
+    display: block;
+  }
+  .block-content {
+    a {
+      // background: #2CC990;
+      background: #FCB941;
+    }
+  }
+}
+.block--cta--2 {
+  .block-content {
+    a {
+      // background: #EEE657;
+      background: #2CC990;
+    }
+
+  }
+}
+.block-cta--3 {
+  display: none;
+  @include breakpoint($tablet-up) {
+    display: block;
+  }
+  .block-content {
+    a {
+      // background: #FC6042;
+      background: #FC6042;
+    }
+  }
+}
+

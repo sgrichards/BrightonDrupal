@@ -4,7 +4,7 @@
  * Styles for the Pisces layout.
  ******************************************************************************/
 .l-constrained, .l-region--highlighted, .l-region--footer {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
   *zoom: 1; }
   .l-constrained:after, .l-region--highlighted:after, .l-region--footer:after {
@@ -13,29 +13,32 @@
     clear: both; }
 
 /* Header */
-.l-branding {
-  text-align: center;
+.l-header {
+  text-align: left;
   width: 100%; }
+  .l-header > .l-constrained, .l-header > .l-region--highlighted, .l-header > .l-region--footer {
+    padding: 20px 0 10px; }
+
+article {
+  clear: both; }
 
 /* Content Area */
-.l-highlighted-wrapper {
-  padding: 25px 0; }
-
 .l-region--help {
   margin-bottom: 25px; }
 
 .l-content {
-  padding: 25px;
   margin-bottom: 4px; }
 
 /* Sidebars */
 .l-region--sidebar .block {
-  padding: 25px 1em 0 1em;
+  padding: 25px 1em;
   margin-bottom: 4px; }
 
 /* Footer */
 .l-footer-wrapper {
-  padding: 25px 0; }
+  padding: 10px 0; }
+  .l-footer-wrapper p {
+    margin: 0; }
 
 @media (min-width: 768px) {
   .l-content {
@@ -69,19 +72,10 @@
 @media (min-width: 980px) {
   /* Header */
   .l-branding {
-    width: 70%;
+    width: 41.37931%;
     float: left;
     margin-right: -100%;
     margin-left: 0%;
-    clear: none;
-    padding: 0 0 30px 0;
-    text-align: left; }
-
-  .l-region--header {
-    width: 58.12808%;
-    float: right;
-    margin-left: 0;
-    margin-right: 0;
     clear: none;
     text-align: left; }
 
@@ -93,7 +87,7 @@
     clear: none; } }
 @media (min-width: 1200px) {
   .l-constrained, .l-region--highlighted, .l-region--footer {
-    width: 80%; }
+    width: 60%; }
 
   /* Sidebars */
   .l-content {
@@ -142,16 +136,4 @@
     margin-left: 0;
     margin-right: 0;
     clear: none;
-    clear: none; 
-  } }
-  
-  /* layout overrides */
-  body.page-node-program-sessions .l-content, 
-  body.page-node-program-sessions .panels-flexible-column-new-main {
-    width:100% !important;
-  }
-  
-  body.page-node-program-sessions .l-region--sidebar {
-    display:none;
-  }
-  
+    clear: none; } }

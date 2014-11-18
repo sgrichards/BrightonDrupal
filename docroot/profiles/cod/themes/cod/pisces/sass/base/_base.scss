@@ -1,5 +1,12 @@
+$tablet-up: 768px;
+
 body {
-  background: url(../images/white_wave.png) $lt-gray repeat;
+  background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+  background-size: auto 100%;
+  @include breakpoint(1150px) {
+    background-size: 100%;
+    background-position: center bottom;
+  }
   a {
     color: $blue;
     text-decoration: none;
@@ -9,14 +16,29 @@ body {
   }
 }
 
-.l-header {
-  padding-top: 18px;
+.l-highlighted-wrapper {
+  padding-bottom: 20px;
+  @include breakpoint($tablet-up) {
+    padding-bottom: 40px;
+  }
+}
+.l-main-wrapper {
+  padding: 20px 0 150px;
+  @include breakpoint($tablet-up) {
+    padding: 40px 0 290px;
+  }
+  // background: url(../images/pavilion-bw.jpg) no-repeat bottom;
+  //background: url(../images/beach-color-bw.png) no-repeat bottom;
+  // background-size: 100%;
+  //background: url(../images/beach-bw.jpg) no-repeat bottom;
+  // background-size: 100%;
+  // needs latest Compass, add '@import "compass"' to your scss
 }
 
 .l-navigation {
   background-color: $blue;
   color: $white;
-  margin-bottom: 1em;
+  //margin-bottom: 40px;
   a {
     color: $white;
     &:hover {
@@ -25,35 +47,53 @@ body {
   }
 }
 
-.l-highlighted-wrapper {
-  background: url(../images/highlighted.png) $gray-blue top left repeat-x;
-  height: 300px;
-}
+// .l-highlighted-wrapper {
+//   background: url(../images/highlighted.png) $gray-blue top left repeat-x;
+//   height: 300px;
+// }
 
-.l-region--highlighted {
-  color: $white;
-  h2 {
-    font-size: 2em;
-    margin-bottom: 1.5em;
-    text-align: center;
-  }
-  p {
-    a {
-      color: $white;
-      text-decoration: none;
-    }
-  }
-  padding: 30px;
-}
+// .l-region--highlighted {
+//   //color: $white;
+//   h2 {
+//     font-size: 2em;
+//     margin-bottom: 1.5em;
+//     text-align: center;
+//   }
+//   p {
+//     a {
+//       color: $white;
+//       text-decoration: none;
+//     }
+//   }
+//   padding: 30px;
+// }
 
-.front {
-  .l-main-wrapper {
-    background-color: $white;
-  }
+
+.l-footer-wrapper {
+  background-color: shade(#a6a6a6, 20%);
 }
 
 .not-front {
   .l-content, .l-region--sidebar .block {
     background-color: $white;
+    @include border-radius(5px);
+    padding: 20px;
+    @include breakpoint($tablet-up) {
+      padding: 30px;
+    }
+  }
+}
+
+.l-content {
+  background: white;
+  @include border-radius(5px);
+  padding: 20px;
+  @include breakpoint($tablet-up) {
+    padding: 30px;
+  }
+  p {
+    margin: 0 0 1em;
+    font-size: 18px;
+    line-height: 1.4em;
   }
 }

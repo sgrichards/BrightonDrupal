@@ -1,0 +1,30 @@
+ul.quicktabs-tabs {
+  padding-left: 0;
+  border-bottom: 4px solid $blue;
+  padding-bottom: 2px;
+  @include breakpoint($tablet-up) {
+    padding-bottom: 4px;
+  }
+  li {
+    margin-right: 10px;
+    a {
+      padding: 8px 6px 6px;
+      background: white;
+      @include border-radius(5px 5px 0 0);
+      border: 1px solid #494747;
+      border-bottom: 0;
+      font-size: 16px;
+      @include breakpoint($tablet-up) {
+        padding: 8px 16px 6px;
+        font-size: 18px;
+      }
+    }
+    &.active {
+      a {
+        background: $blue;
+        color: white;
+        border: 1px solid $blue;
+      }
+    }
+  }
+}

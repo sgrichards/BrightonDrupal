@@ -1,7 +1,24 @@
 body {
   color: $dk-gray;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.4em;
   font-family: "PT Sans", sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6, a.site-branding__name, .field--name-field-dates { font-family: 'Lobster Two'; font-style: italic; font-weight: 700; }
+
+h1 {
+  font-size: 50px;
+  line-height: 1em;
+  margin: 10px 0 25px;
+  @include breakpoint($tablet-up) {
+    margin: 10px 0 40px;
+  }
+}
+
+h2 {
+  font-size: 35px;
 }
 
 .front {
@@ -31,3 +48,11 @@ p.button {
   text-align: center;
   max-width: 180px;
 }
+
+
+
+
+
+
+
+

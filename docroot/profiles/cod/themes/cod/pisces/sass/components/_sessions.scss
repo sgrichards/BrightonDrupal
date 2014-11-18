@@ -1,0 +1,59 @@
+.panels-flexible-column-new-main {
+  width: 100%;
+}
+
+ul.quicktabs-tabs {
+  padding-left: 0;
+  li {
+    padding: 0;
+    margin-right: 10px;
+    a {
+      padding: 10px 20px;
+      background: red;
+      @include border-radius(5px 5px 0 0);
+    }
+  }
+}
+.view-cod-session-sessions {
+  .views-row {
+    border-bottom: 1px solid black;
+    padding: 25px 0;
+    overflow: hidden;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  h2 {
+    font-family: "PT Sans", sans-serif;
+    //font-weight: normal;
+    margin: 0;
+    font-style: normal;
+    font-size: 25px;
+    margin: 0 0 10px;
+  }
+}
+
+.views-field-field-profile-first {
+  float: left;
+  margin-right: 6px;
+}
+.views-field-field-profile-first,
+.views-field-field-profile-last {
+  font-weight: bold;
+  font-size: 25px;
+}
+.views-field-body {
+  padding: 10px 0;
+  p {
+    margin: 0;
+
+  }
+}
+
+.views-field-field-experience {
+  font-weight: bold;
+  .views-label {
+    float: left;
+    margin-right: 6px;
+  }
+}

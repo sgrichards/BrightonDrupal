@@ -1,0 +1,35 @@
+$tablet-up : 768px;
+
+.block--featured {
+  width: 100%;
+  background: white;
+  margin: 0 auto;
+  border: 1px solid #494747;
+  @include border-radius(5px);
+  padding: 10px;
+  background: repeating-linear-gradient(
+  45deg,
+  #017edf,
+  #017edf 20px,
+  #ffffff 20px,
+  #ffffff 40px
+  );
+  margin-bottom: 40px;
+  @include breakpoint($tablet-up) {
+    width: 80%;
+  }
+  .block-content {
+    background: white;
+    border: 1px solid #494747;
+    padding: 30px;
+   @include border-radius(5px);
+  }
+  h2 {
+    margin: 0 0 15px;
+    text-align: center;
+  }
+  p {
+    margin: 0;
+    text-align: center;
+  }
+}

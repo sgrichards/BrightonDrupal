@@ -1,0 +1,91 @@
+// LAYOUT
+// =============================================================================
+
+.header-1 {
+  float: left;
+  //margin-right: 20px;
+  @include breakpoint(0 767px) {
+      width: 107px;
+  }
+  @include breakpoint(600px) {
+    margin-right: 20px;
+  }
+
+}
+.header-2 {
+  //width: 100%;
+  float: left;
+  padding: 8px 0 0;
+  text-align: center;
+  @include breakpoint(600px) {
+    text-align: left;
+  }
+  @include breakpoint(790px) {
+    text-align: center;
+    width: 418px;
+    position: absolute;
+    left: 50%;
+    margin: 0 0 0 -209px;
+  }
+}
+
+.l-header > .l-constrained {
+    position: relative;
+}
+
+// STYLES
+// =============================================================================
+
+.l-header {
+  >.l-constrained {
+    @include breakpoint(768px) {
+      background: url(../images/gull.png) no-repeat right bottom;
+    }
+  }
+}
+
+// Site name
+#site-name span,
+.camp-dates {
+  @include lobster;
+  margin: 0;
+  //margin-bottom: 40px;
+  white-space: nowrap;
+  color: #fff;
+  text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+  &:hover {
+    text-decoration: none;
+  }
+}
+#site-name {
+  span {
+    font-size: 2.2em;
+    line-height: 1em;
+    @include breakpoint(840px) {
+      font-size: 2.6em;
+      line-height: 1em;
+    }
+
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+.camp-dates {
+  font-size: 1.8em;
+  line-height: 1.2em;
+  @include breakpoint(840px) {
+    font-size: 2em;
+    line-height: 1.2em;
+  }
+}
+
+// to finish
+
+.block--system-user-menu {
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+

@@ -1,0 +1,13 @@
+// RESPONSIVE TABLE STYLES
+// =============================================================================
+
+.table-responsive {
+  min-height: .01%;
+  overflow-x: auto;
+  width: 100%;
+  margin-bottom: 15px;
+  overflow-y: hidden;
+}
+.table-responsive > table {
+  margin-bottom: 0;
+}

@@ -1,19 +1,16 @@
 <div<?php print $attributes; ?>>
   <header class="l-header" role="banner">
     <div class="l-constrained">
-      <div class="l-branding site-branding">
-        <?php if ($logo): ?>
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" class="site-branding__logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
-        <?php endif; ?>
-        <?php if ($site_name): ?>
-          <a href="<?php print $front_page; ?>" class="site-branding__name" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-        <?php endif; ?>
-        <?php if ($site_slogan): ?>
-          <h2 class="site-branding__slogan"><?php print $site_slogan; ?></h2>
-        <?php endif; ?>
-        <?php print render($page['branding']); ?>
+      <div class="header-1">
+        <?php print render($page['header1']); ?>
       </div>
-      <?php print render($page['header']); ?>
+      <div class="header-2">
+        <?php print render($page['header2']); ?>
+      </div>
+      <div class="header-3">
+        <?php print render($page['header3']); ?>
+      </div>
+
     </div>
     <div class="l-navigation">
       <div class="l-constrained">
@@ -24,13 +21,14 @@
 
   <?php print render($page['hero']); ?>
 
-  <?php if (!empty($page['highlighted'])): ?>
+
+
+  <div class="l-main-wrapper">
+    <?php if (!empty($page['highlighted'])): ?>
     <div class="l-highlighted-wrapper">
       <?php print render($page['highlighted']); ?>
     </div>
   <?php endif; ?>
-
-  <div class="l-main-wrapper">
     <div class="l-main l-constrained">
       <a id="main-content"></a>
       <?php print $messages; ?>

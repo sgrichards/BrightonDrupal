@@ -24,22 +24,28 @@ $grids: add-grid(12 at $tab);
 $gutters: 1/16;
 
 
+
+
 .l-constrained {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
   @include pie-clearfix;
 }
 
 /* Header */
-.l-branding {
-  text-align: center;
+.l-header {
+  text-align: left;
   width: 100%;
+  > .l-constrained {
+    padding: 20px 0 10px;
+  }
+}
+article {
+  clear: both;
 }
 
 /* Content Area */
-.l-highlighted-wrapper {
-  padding: $vert-spacing-unit 0;
-}
+
 .l-region--highlighted {
   @extend .l-constrained;
 }
@@ -47,7 +53,7 @@ $gutters: 1/16;
   margin-bottom: $vert-spacing-unit;
 }
 .l-content {
-  padding: $vert-spacing-unit;
+  //padding: $vert-spacing-unit;
   margin-bottom: 4px;
 }
 
@@ -59,7 +65,11 @@ $gutters: 1/16;
 
 /* Footer */
 .l-footer-wrapper {
-  padding: $vert-spacing-unit 0;
+  //padding: $vert-spacing-unit 0;
+  padding: 10px 0;
+  p {
+    margin: 0;
+  }
 }
 .l-region--footer {
   @extend .l-constrained;
@@ -93,10 +103,6 @@ $gutters: 1/16;
     @include grid-span(5, 1);
     text-align: left;
   }
-  .l-region--header {
-    @include grid-span(7, 6);
-    text-align: left;
-  }
   .l-region--navigation {
     @include grid-span(12, 1);
   }
@@ -104,7 +110,7 @@ $gutters: 1/16;
 
 @include breakpoint($desk, true) {
   .l-constrained {
-    width: 80%;
+    width: 60%;
   }
 
   /* Sidebars */

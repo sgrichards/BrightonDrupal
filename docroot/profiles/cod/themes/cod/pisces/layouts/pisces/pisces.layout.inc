@@ -5,7 +5,9 @@ template = pisces-layout
 
 ; Regions
 regions[branding]       = Branding
-regions[header]         = Header
+regions[header1]        = Header 1
+regions[header2]        = Header 2
+regions[header3]        = Header 3
 regions[navigation]     = Navigation bar
 regions[hero]           = Hero
 regions[highlighted]    = Highlighted
