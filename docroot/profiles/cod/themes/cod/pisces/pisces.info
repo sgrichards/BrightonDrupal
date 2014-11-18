@@ -91,10 +91,4 @@ project = "cod"
 datestamp = "1404802468"
 
 
-fonts[google_fonts_api][] = "Lobster Two&subset=latin#700"
-fonts[google_fonts_api][] = "Lobster Two&subset=latin#700italic"
-fonts[google_fonts_api][] = "Rajdhani&subset=devanagari#300"
-fonts[google_fonts_api][] = "Rajdhani&subset=latin#300"
-fonts[google_fonts_api][] = "Rajdhani&subset=latin#700"
-fonts[google_fonts_api][] = "Rajdhani&subset=devanagari#regular"
 
