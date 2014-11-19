@@ -21,12 +21,16 @@ $tablet-up : 768px;
   .block-content {
     background: white;
     border: 1px solid #494747;
-    padding: 30px;
+    padding: 20px;
    @include border-radius(5px);
+   @include breakpoint($tablet-up) {
+    padding: 30px;
+   }
   }
   h2 {
     margin: 0 0 15px;
     text-align: center;
+    line-height: 1em;
   }
   p {
     margin: 0;

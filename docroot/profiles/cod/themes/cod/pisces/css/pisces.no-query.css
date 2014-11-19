@@ -22,7 +22,7 @@ p.button {
     border-bottom: solid 3px #0178d5; }
 
 body {
-  background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+  background: url(../images/seaside.jpg) no-repeat bottom;
   background-size: auto 100%; }
   body a {
     color: #017edf;
@@ -34,7 +34,7 @@ body {
   padding-bottom: 20px; }
 
 .l-main-wrapper {
-  padding: 20px 0 150px; }
+  padding: 20px 0 50px; }
 
 .l-navigation {
   background-color: #017edf;
@@ -183,7 +183,7 @@ p.button {
   .block--featured .block-content {
     background: white;
     border: 1px solid #494747;
-    padding: 30px;
+    padding: 20px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
@@ -192,7 +192,8 @@ p.button {
     border-radius: 5px; }
   .block--featured h2 {
     margin: 0 0 15px;
-    text-align: center; }
+    text-align: center;
+    line-height: 1em; }
   .block--featured p {
     margin: 0;
     text-align: center; }
@@ -252,13 +253,13 @@ p.button {
     text-decoration: none; }
 
 #site-name span {
-  font-size: 2.2em;
+  font-size: 2em;
   line-height: 1em; }
 #site-name a:hover {
   text-decoration: none; }
 
 .camp-dates {
-  font-size: 1.8em;
+  font-size: 1.6em;
   line-height: 1.2em; }
 
 p.button {

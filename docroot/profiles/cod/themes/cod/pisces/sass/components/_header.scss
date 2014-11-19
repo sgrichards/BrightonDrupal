@@ -59,7 +59,7 @@
 }
 #site-name {
   span {
-    font-size: 2.2em;
+    font-size: 2em;
     line-height: 1em;
     @include breakpoint(840px) {
       font-size: 2.6em;
@@ -72,7 +72,7 @@
   }
 }
 .camp-dates {
-  font-size: 1.8em;
+  font-size: 1.6em;
   line-height: 1.2em;
   @include breakpoint(840px) {
     font-size: 2em;

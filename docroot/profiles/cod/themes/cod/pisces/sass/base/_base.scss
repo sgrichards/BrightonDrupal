@@ -1,8 +1,11 @@
 $tablet-up: 768px;
 
 body {
-  background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+  background: url(../images/seaside.jpg) no-repeat bottom;
   background-size: auto 100%;
+  @include breakpoint($tablet-up) {
+    background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+  }
   @include breakpoint(1150px) {
     background-size: 100%;
     background-position: center bottom;
@@ -23,7 +26,7 @@ body {
   }
 }
 .l-main-wrapper {
-  padding: 20px 0 150px;
+  padding: 20px 0 50px;
   @include breakpoint($tablet-up) {
     padding: 40px 0 290px;
   }
