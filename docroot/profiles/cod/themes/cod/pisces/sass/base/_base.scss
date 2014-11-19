@@ -1,16 +1,25 @@
 $tablet-up: 768px;
 
-body {
-  background: url(../images/seaside.jpg) no-repeat bottom;
-  background-size: auto 100%;
+
+body.html {
+  background: #A4C2E7;
   @include breakpoint($tablet-up) {
-    background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+    background: url(../images/seaside2.jpg) no-repeat 40% top fixed;
     background-size: auto 100%;
   }
   @include breakpoint(1150px) {
     background-size: 100%;
     background-position: center bottom;
   }
+}
+
+body {
+  // background: url(../images/seaside2.jpg) no-repeat bottom;
+  // background-size: auto 100%;
+  // @include breakpoint($tablet-up) {
+  //   background: url(../images/seaside2.jpg) no-repeat 40% top fixed;
+  //   background-size: auto 100%;
+  // }
   a {
     color: $blue;
     text-decoration: none;

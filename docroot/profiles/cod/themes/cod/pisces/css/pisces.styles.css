@@ -21,22 +21,22 @@ p.button {
     background-color: #018cf8;
     border-bottom: solid 3px #0178d5; }
 
-body {
-  background: url(../images/seaside.jpg) no-repeat bottom;
-  background-size: auto 100%; }
+body.html {
+  background: #A4C2E7; }
   @media (min-width: 768px) {
-    body {
-      background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+    body.html {
+      background: url(../images/seaside2.jpg) no-repeat 40% top fixed;
       background-size: auto 100%; } }
   @media (min-width: 1150px) {
-    body {
+    body.html {
       background-size: 100%;
       background-position: center bottom; } }
-  body a {
-    color: #017edf;
-    text-decoration: none; }
-    body a:hover, body a:active {
-      text-decoration: underline; }
+
+body a {
+  color: #017edf;
+  text-decoration: none; }
+  body a:hover, body a:active {
+    text-decoration: underline; }
 
 .l-highlighted-wrapper {
   padding-bottom: 20px; }
