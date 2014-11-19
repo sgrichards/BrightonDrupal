@@ -1,0 +1,21 @@
+
+.l-region--footer {
+  .block--system-user-menu.block {
+    float: right;
+    ul {
+      margin: 0;
+      padding: 0px;
+      li {
+        list-style: none !important;
+        float: left;
+        margin-right: 10px;
+        a {
+          color: white;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+

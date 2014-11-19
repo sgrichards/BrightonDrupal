@@ -252,12 +252,22 @@ p.button {
 
 @media (min-width: 768px) {
   .l-region--footer .block {
-    float: left;
-    width: 28%; }
-    .l-region--footer .block:first-child {
-      width: 100%; }
+    float: left; }
     .l-region--footer .block img {
       width: 100%; } }
+.l-region--footer .block--system-user-menu.block {
+  float: right; }
+  .l-region--footer .block--system-user-menu.block ul {
+    margin: 0;
+    padding: 0px; }
+    .l-region--footer .block--system-user-menu.block ul li {
+      list-style: none !important;
+      float: left;
+      margin-right: 10px; }
+      .l-region--footer .block--system-user-menu.block ul li a {
+        color: white;
+        text-decoration: underline; }
+
 .header-1 {
   float: left; }
   @media (min-width: 0) and (max-width: 767px) {
@@ -319,11 +329,6 @@ p.button {
     .camp-dates {
       font-size: 2em;
       line-height: 1.2em; } }
-
-.block--system-user-menu {
-  position: absolute;
-  top: 10px;
-  right: 0; }
 
 p.button {
   border-bottom: solid 3px #0161ac;
