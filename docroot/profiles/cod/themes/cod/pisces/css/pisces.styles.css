@@ -26,7 +26,8 @@ body {
   background-size: auto 100%; }
   @media (min-width: 768px) {
     body {
-      background: url(../images/seaside.jpg) no-repeat 40% top fixed; } }
+      background: url(../images/seaside.jpg) no-repeat 40% top fixed;
+      background-size: auto 100%; } }
   @media (min-width: 1150px) {
     body {
       background-size: 100%;
@@ -330,7 +331,7 @@ p.button {
   text-decoration: none; }
 
 .camp-dates {
-  font-size: 1.6em;
+  font-size: 1.8em;
   line-height: 1.2em; }
   @media (min-width: 840px) {
     .camp-dates {
