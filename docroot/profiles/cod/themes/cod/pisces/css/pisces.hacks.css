@@ -17,4 +17,4 @@
 
 .view-cod-sponsors {text-align: center;}
 .view-cod-sponsors .views-row {}
-.view-cod-sponsors .views-row.sponsor-group {display:inline-block;}
+.view-cod-sponsors .views-row.sponsor-group {display:inline-block;margin: 0 20px;vertical-align:middle; }
