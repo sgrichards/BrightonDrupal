@@ -1,0 +1,95 @@
+<?php
+
+/**
+ * @file
+ * The og_bulkadd module file.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function og_bulkadd_menu() {
+  $items['group/%/%/admin/people/bulk-add-user'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('og_bulkadd_users_form', 1, 2),
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 5,
+    'title' => 'Bulk adding users',
+    'access callback' => 'og_bulkadd_access',
+    'access arguments' => array(1, 2),
+  );
+  return $items;
+}
+
+/**
+ * Menu access callback.
+ */
+function og_bulkadd_access($group_type, $gid) {
+  if (user_access('access user profiles')) {
+   return og_ui_user_access_group('add user', $group_type, $gid);
+  }
+  return FALSE;
+}
+
+/**
+ * Mass adding users form
+ */
+function og_bulkadd_users_form($form, &$form_state, $group_type, $group_id) {
+  // Get all users
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'user')
+    ->propertyCondition('status', 1)
+    ->propertyOrderBy('name')
+    ->execute();
+  if (isset($result['user'])) {
+    $user_uids = array_keys($result['user']);
+  }
+
+  $field_names = og_get_group_audience_fields();
+  $field_name = key($field_names);
+  // Ger group members
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'user')
+    ->propertyCondition('status', 1)
+    ->fieldCondition($field_name, 'target_id', $group_id)
+    ->execute();
+  $group_member_uids = array();
+  if (isset($result['user'])) {
+    $group_member_uids = array_keys($result['user']);
+  }
+
+  $nonmember_uids = array_diff($user_uids, $group_member_uids);
+  $users = user_load_multiple($nonmember_uids);
+  $user_options = array();
+  foreach ($users as $user) {
+    $user_options[$user->uid] = $user->name;
+  }
+
+  $form['users'] = array(
+    '#type' => 'select',
+    '#default_value' => NULL,
+    '#title' => t('Select the users to add'),
+    '#options' => $user_options,
+    '#multiple' => TRUE,
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add users'),
+  );
+
+  return $form;
+}
+
+/**
+ * Form submit callback.
+ */
+function og_bulkadd_users_form_submit($form, &$form_state) {
+  foreach ($form_state['values']['users'] as $uid) {
+    $field_names = og_get_group_audience_fields();
+    $field_name = key($field_names);
+    $ret = og_membership_create($form_state['build_info']['args'][0], $form_state['build_info']['args'][1], 'user', $uid, $field_name);
+    $ret->save();
+  }
+  $form_state['redirect'] = 'group/' . $form_state['build_info']['args'][0] . '/' . $form_state['build_info']['args'][1] . '/admin/people';
+}
