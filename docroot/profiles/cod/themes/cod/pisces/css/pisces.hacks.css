@@ -18,4 +18,4 @@
 .view-cod-sponsors {text-align: center;}
 .view-cod-sponsors .views-row {}
 .view-cod-sponsors .views-row.sponsor-group {display:inline-block;margin: 0 20px;vertical-align:middle; }
-.view-cod-sponsors h2 {color:#017edf; border-bottom: 1px solid #000;}
+.view-cod-sponsors h2 {color:#017edf; border-bottom: 1px solid #000;padding-bottom: 10px; text-align: left;}
