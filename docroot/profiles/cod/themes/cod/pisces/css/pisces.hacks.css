@@ -11,3 +11,6 @@
 .view-cod-community-attendees .views-field-field-profile-job-title, 
 .view-cod-community-attendees .views-field-field-profile-org-1 {font-size:90%;line-height: 1.1em;}
 .view-cod-community-attendees h5 {margin: 0.2em 0;color:#017edf;}
+
+.block .view-cod-sponsors td {width:50%; text-align:center;}
+.block--views-cod-sponsors-block-1 {margin-top:20px;border-top:1px solid #000;}
