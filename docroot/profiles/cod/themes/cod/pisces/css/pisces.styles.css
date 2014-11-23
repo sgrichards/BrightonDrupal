@@ -107,10 +107,8 @@ table {
   table td {
     padding: 10px 10px; }
   table td:first-child {
-    padding-right: 10px;
-    width: 130px; }
-  table tr:nth-child(even) {
-    background: #f1f2f5; }
+    padding-right: 10px; }
+  table tr:nth-child(even) {}
 
 body {
   color: #494747;
