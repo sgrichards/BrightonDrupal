@@ -14,3 +14,7 @@
 
 .block .view-cod-sponsors td {width:50%; text-align:center;}
 .block--views-cod-sponsors-block-1 {margin-top:20px;border-top:1px solid #000;}
+
+.view-cod-sponsors {text-align: center;}
+.view-cod-sponsors .views-row {}
+.view-cod-sponsors .views-row.sponsor-group {display:inline-block;}
