@@ -1,0 +1,19 @@
+; $Id:
+name = Views Infinite Scroll
+description = Provides an Infinite Scrolling pager for Views
+package = Views
+core = 7.x
+dependencies[] = views
+
+files[] = views_infinite_scroll.module
+files[] = views_infinite_scroll.views.inc
+files[] = views_plugin_pager_infinite_scroll.inc
+files[] = drush/views_infinite_scroll.drush.inc
+files[] = theme/views_infinite_scroll_theme.inc
+
+; Information added by Drupal.org packaging script on 2014-10-02
+version = "7.x-1.2+1-dev"
+core = "7.x"
+project = "views_infinite_scroll"
+datestamp = "1412258938"
+
