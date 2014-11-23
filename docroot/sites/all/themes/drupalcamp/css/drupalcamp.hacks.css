@@ -9,4 +9,7 @@
   }
 }
 
-.view-cod-community-attendees table td {text-align:center;}
+.view-cod-community-attendees table tr {background-color:#fff !important; border-bottom:1px solid #ccc;}
+.view-cod-community-attendees table td {text-align:center;vertical-align:top;}
+.view-cod-community-attendees .views-field-field-profile-job-title, 
+.view-cod-community-attendees .views-field-field-profile-org-1 {font-size:90%;}
