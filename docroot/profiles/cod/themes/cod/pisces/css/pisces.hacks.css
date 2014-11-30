@@ -24,3 +24,8 @@
 
 /* hp keynote block */
 .hpkeynote {width:30%; display:inline-block; padding: 0 5px;}
+
+.dots {border-right: 1px dotted #017edf;}
+
+/* overrides */
+.block--featured {width: 100%;}
