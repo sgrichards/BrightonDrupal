@@ -23,9 +23,15 @@
 .block--block-46 {margin-top: -58px; text-align: center;}
 
 /* hp keynote block */
-.hpkeynote {width:32%; display:inline-block; padding: 0 24px;}
+.hpkeynote {width:32%; display:inline-block; padding: 0 24px;vertical-align: text-top;}
 
 .dots {border-right: 1px dotted #017edf;}
 
 /* overrides */
 .block--featured {width: 100% !important;}
+
+@media (min-width: 600px) {
+    .hpkeynote {width:99%;} 
+    
+    body.front .view-cod-sponsors .view-content td {width:100%;}
+}
