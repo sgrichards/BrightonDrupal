@@ -45,12 +45,12 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .ticket-type-ticket-type,
 .ticket-field-formatter-view-form .form-item-ticket-quantity-6, 
 .ticket-field-formatter-view-form .ticket-type-ticket-type,
-.ticket-field-formatter-view-form .form-item-ticket-quantity-11 {background:#eee;margin-top:10px;padding:5px;}
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11 {background:#f5f5f5;margin-top:10px;padding:5px;}
 
 .ticket-field-formatter-view-form .ticket-type-ticket-type {width:60%;float:left;}
-.ticket-field-formatter-view-form .form-item-ticket-quantity-6 {width:34%;float:left;}
+.ticket-field-formatter-view-form .form-item-ticket-quantity-6 {width:34%;float:right;}
 
-.ticket-field-formatter-view-form .ticket-type-ticket-type {width:60%;float:right;}
+.ticket-field-formatter-view-form .ticket-type-ticket-type {width:60%;float:left;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;}
 
 .ticket-field-formatter-view-form .form-submit {text-align:right;}
