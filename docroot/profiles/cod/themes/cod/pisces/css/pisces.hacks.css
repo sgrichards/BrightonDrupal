@@ -37,3 +37,5 @@
 /* overrides */
 .block--featured {width: 100% !important;}
 
+body.page-node-286 li {list-style: none; list-style-image: none;}
+
