@@ -25,15 +25,14 @@
 /* hp keynote block */
 @media (max-width: 600px) {
     .hpkeynote {width:99%;} 
-    
     body.front .view-cod-sponsors .view-content td {width:100%;}
-    
     body.front .view-cod-sponsors img {width:95px; height:auto;}
 }
 
-.hpkeynote {width:32%; display:inline-block; padding: 0 24px;vertical-align: text-top;}
-
-.dots {border-right: 1px dotted #017edf;}
+@media (min-width: 768px) {
+  .hpkeynote {width:32%; display:inline-block; padding: 0 24px;vertical-align: text-top;}
+  .dots {border-right: 1px dotted #017edf;}
+}
 
 /* overrides */
 .block--featured {width: 100% !important;}
