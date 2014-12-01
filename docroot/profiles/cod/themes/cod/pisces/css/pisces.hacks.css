@@ -39,3 +39,20 @@
 
 body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
+/* hp form tickets */
+.ticket-field-formatter-view-form {background:#b0dafb;padding:10px 10px 50px 10px;}
+
+.ticket-field-formatter-view-form .ticket-type-ticket-type,
+.ticket-field-formatter-view-form .form-item-ticket-quantity-6, 
+.ticket-field-formatter-view-form .ticket-type-ticket-type,
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11 {background:#eee;margin-top:10px;padding:5px;}
+
+.ticket-field-formatter-view-form .ticket-type-ticket-type {width:60%;float:left;}
+.ticket-field-formatter-view-form .form-item-ticket-quantity-6 {width:34%;float:left;}
+
+.ticket-field-formatter-view-form .ticket-type-ticket-type {width:60%;float:right;}
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;}
+
+.ticket-field-formatter-view-form .form-submit {text-align:right;}
+
+.ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
