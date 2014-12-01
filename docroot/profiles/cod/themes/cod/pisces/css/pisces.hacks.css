@@ -53,11 +53,21 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .ticket-type-ticket-type {width:66%;display:inline-block;min-height:140px;height:140px;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;min-height:120px;height:120px;}
 
-.ticket-field-formatter-view-form .form-submit {
+.ticket-field-formatter-view-form .form-submit, 
+.redbutton {
   background: none repeat scroll 0 0 #ff0000;
   border: medium none;
   color: #fff;
   float: right;
+  padding: 5px 15px;
+  text-transform: uppercase;
+  clear:both;
+}
+
+.redbutton {
+  background: none repeat scroll 0 0 #ff0000;
+  border: medium none;
+  color: #fff;
   padding: 5px 15px;
   text-transform: uppercase;
   clear:both;
