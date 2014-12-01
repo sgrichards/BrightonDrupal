@@ -73,4 +73,8 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
   clear:both;
 }
 
+.redbutton a {
+  color: #fff;
+}
+
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
