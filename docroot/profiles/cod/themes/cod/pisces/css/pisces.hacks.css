@@ -8,7 +8,7 @@
 
 .view-cod-community-attendees table tr {background-color:#fff !important; border-bottom:1px solid #000;}
 .view-cod-community-attendees table td {text-align:center;vertical-align:top;width:25% !important;}
-.view-cod-community-attendees .views-field-field-profile-job-title, 
+.view-cod-community-attendees .views-field-field-profile-job-title,
 .view-cod-community-attendees .views-field-field-profile-org-1 {font-size:90%;line-height: 1.1em;}
 .view-cod-community-attendees h5 {margin: 0.2em 0;color:#017edf;}
 
@@ -24,12 +24,17 @@
 
 /* hp keynote block */
 @media (max-width: 600px) {
-    .hpkeynote {width:99%;} 
+    .page-node-5 .hpkeynote, .hpkeynote {width:99%;}
     body.front .view-cod-sponsors .view-content td {width:100%;}
     body.front .view-cod-sponsors img {width:95px; height:auto;}
+      .page-node-5 .left{ float: left; width: 49%}
+  .page-node-5 .right{float: left;}
 }
 
 @media (min-width: 768px) {
+  .page-node-5 .left{ float: left; width: 49%}
+  .page-node-5 .right{float: left; width: 49%}
+   .page-node-5 .hpkeynote{width: 49%;}
   .hpkeynote {width:32%; display:inline-block; padding: 0 24px;vertical-align: text-top;}
   .dots {border-right: 1px dotted #017edf;}
 }
@@ -43,7 +48,7 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form {background:#b0dafb;padding:10px 20px 50px 20px;}
 
 .ticket-field-formatter-view-form .ticket-type-ticket-type,
-.ticket-field-formatter-view-form .form-item-ticket-quantity-6, 
+.ticket-field-formatter-view-form .form-item-ticket-quantity-6,
 .ticket-field-formatter-view-form .ticket-type-ticket-type,
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {background:#f5f5f5;margin-top:10px;padding:5px;}
 
@@ -53,7 +58,7 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .ticket-type-ticket-type {width:66%;display:inline-block;min-height:140px;height:140px;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;min-height:120px;height:120px;}
 
-.ticket-field-formatter-view-form .form-submit, 
+.ticket-field-formatter-view-form .form-submit,
 .redbutton {
   background: none repeat scroll 0 0 #ff0000;
   border: medium none;
@@ -78,3 +83,12 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 }
 
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
+
+
+ .page-node-5 .block--cta--1,
+ .page-node-5 .block--cta--2,
+ .page-node-5 .block-cta--3{
+    display: none;
+ }
+
+
