@@ -1,4 +1,5 @@
 @media all and (max-width: 800px) {
+  .page-node-5 .intro-right{display: none;}
   #toolbar, #admin-menu {
     display: none; }
 
@@ -27,13 +28,19 @@
     .page-node-5 .hpkeynote, .hpkeynote {width:99%;}
     body.front .view-cod-sponsors .view-content td {width:100%;}
     body.front .view-cod-sponsors img {width:95px; height:auto;}
-      .page-node-5 .left{ float: left; width: 49%}
+  .page-node-5 .left{ float: left; width: 49%}
   .page-node-5 .right{float: left;}
+    .page-node-5 .intro-left{ float: left; width: 100%; margin-bottom: 20px;}
+
 }
 
 @media (min-width: 768px) {
-  .page-node-5 .left{ float: left; width: 49%}
-  .page-node-5 .right{float: left; width: 49%}
+  .page-node-5 .left{ float: left; width: 49%;}
+  .page-node-5 .right{float: left; width: 49%;}
+  .page-node-5 .intro-left{ float: left; width: 27%; margin-bottom: 20px;}
+  .page-node-5 .intro-right{float: left; width: 72%; margin-bottom: 20px;}
+  .page-node-5 h2{clear:both; }
+
    .page-node-5 .hpkeynote{width: 49%;}
   .hpkeynote {width:32%; display:inline-block; padding: 0 24px;vertical-align: text-top;}
   .dots {border-right: 1px dotted #017edf;}
