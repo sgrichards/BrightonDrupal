@@ -6,7 +6,7 @@
   html body.toolbar, html body.admin-menu {
     padding-top: 0 !important;
     margin-top: 0 !important; } }
-
+.page-node-5 .l-content {float: left;}
 .view-cod-community-attendees table tr {background-color:#fff !important; border-bottom:1px solid #000;}
 .view-cod-community-attendees table td {text-align:center;vertical-align:top;width:25% !important;}
 .view-cod-community-attendees .views-field-field-profile-job-title,
@@ -28,7 +28,7 @@
     .page-node-5 .hpkeynote, .hpkeynote {width:99%;}
     body.front .view-cod-sponsors .view-content td {width:100%;}
     body.front .view-cod-sponsors img {width:95px; height:auto;}
-  .page-node-5 .left{ float: left; width: 49%}
+  .page-node-5 .left{ float: left; width: 99%}
   .page-node-5 .right{float: left;}
     .page-node-5 .intro-left{ float: left; width: 100%; margin-bottom: 20px;}
 
