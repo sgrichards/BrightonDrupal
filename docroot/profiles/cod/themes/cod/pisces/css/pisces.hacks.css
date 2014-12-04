@@ -90,7 +90,10 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
 
-
+  .page-node-5 .keynote-images{
+    width: 50%;
+margin: 20px auto 0;
+  }
  .page-node-5 .block--cta--1,
  .page-node-5 .block--cta--2,
  .page-node-5 .block-cta--3{
