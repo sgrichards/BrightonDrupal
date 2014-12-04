@@ -1,4 +1,7 @@
 @media all and (max-width: 800px) {
+  .page-node-5 #block-block-47 {float: left;}
+  .page-node-5 #block-block-47 .block-content{float: left;}
+  .page-node-5 #block-block-47 .hpkeynote{clear: both;margin-top:20px;float: left;}
   .page-node-5 .intro-right{display: none;}
   #toolbar, #admin-menu {
     display: none; }
@@ -31,7 +34,7 @@
   .page-node-5 .left{ float: left; width: 99%}
   .page-node-5 .right{float: left;}
     .page-node-5 .intro-left{ float: left; width: 100%; margin-bottom: 20px;}
-
+    .page-node-5 .keynote-images{display: none;}
 }
 
 @media (min-width: 768px) {
@@ -94,10 +97,11 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
     width: 50%;
 margin: 20px auto 0;
   }
- .page-node-5 .block--cta--1,
- .page-node-5 .block--cta--2,
- .page-node-5 .block-cta--3{
+
+  .page-node-5 .block--cta--1,
+  .page-node-5 .block--cta--2,
+  .page-node-5 .block-cta--3{
     display: none;
- }
+  }
 
 
