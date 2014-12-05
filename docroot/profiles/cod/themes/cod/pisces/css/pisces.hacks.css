@@ -71,7 +71,6 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .ticket-type-ticket-type {width:66%;display:inline-block;min-height:140px;height:140px;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;min-height:120px;height:120px;}
 
-.ticket-field-formatter-view-form .form-submit,
 .redbutton {
   background: none repeat scroll 0 0 #ff0000;
   border: medium none;
@@ -107,7 +106,7 @@ margin: 20px auto 0;
   .page-node-5 .block-cta--3{
     display: none;
   }
-  .front #edit-submit,
+ .ticket-field-formatter-view-form .form-submit,
   .page-node-5 .buybutton{
     clear: both;
     text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
@@ -132,6 +131,6 @@ margin: 20px auto 0;
     padding: 20px;
     font-size: 2.8em;
   }
-  .front #edit-submit{
+ .ticket-field-formatter-view-form .form-submit{
     float: right !important;
   }
