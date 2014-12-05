@@ -1,14 +1,18 @@
 @media all and (max-width: 800px) {
-  .page-node-5 #block-block-47 {float: left;}
-  .page-node-5 #block-block-47 .block-content{float: left;}
-  .page-node-5 #block-block-47 .hpkeynote{clear: both;margin-top:20px;float: left;}
-  .page-node-5 .intro-right{display: none;}
+
   #toolbar, #admin-menu {
     display: none; }
 
   html body.toolbar, html body.admin-menu {
+
     padding-top: 0 !important;
     margin-top: 0 !important; } }
+    @media all and (max-width: 800px) {
+  .page-node-5 #block-block-47 {float: left;}
+  .page-node-5 #block-block-47 .block-content{float: left;}
+  .page-node-5 #block-block-47 .hpkeynote{clear: both;margin-top:20px;float: left;}
+  .page-node-5 .intro-right{display: none;}
+    }
 .page-node-5 .l-content {float: left;}
 .view-cod-community-attendees table tr {background-color:#fff !important; border-bottom:1px solid #000;}
 .view-cod-community-attendees table td {text-align:center;vertical-align:top;width:25% !important;}
@@ -103,5 +107,28 @@ margin: 20px auto 0;
   .page-node-5 .block-cta--3{
     display: none;
   }
-
+  .page-node-5 .buybutton{
+    clear: both;
+    text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
+    border: 1px solid #494747;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    margin: 0 auto;
+    float: left;
+    background-color: #FCB941;
+    width: 33%;
+    line-height: 0.9em;
+    display: block;
+    font-family: 'Lobster Two';
+    font-style: italic;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    padding: 20px;
+    font-size: 2.8em;
+  }
 
