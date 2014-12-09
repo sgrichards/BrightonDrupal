@@ -16,7 +16,7 @@
 .block--views-cod-sponsors-block-1 {margin-top:20px;border-top:1px solid #000;}
 
 .view-cod-sponsors {text-align: center;}
-.view-cod-sponsors .views-row {}
+.view-cod-sponsors .views-row.sponsor-group {width:30%; }
 .view-cod-sponsors .views-row.sponsor-group {display:inline-block;margin: 0 20px;vertical-align:middle; }
 .view-cod-sponsors .views-row.sponsor-group .views-field-field-sponsor-logo {vertical-align:middle; min-height:200px; height:200px; }
 .view-cod-sponsors .views-row.sponsor-group .views-field-field-sponsor-logo img {vertical-align:middle;}
