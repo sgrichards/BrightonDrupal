@@ -88,7 +88,6 @@ article {
 @media (min-width: 1200px) {
   .l-constrained, .l-region--highlighted, .l-region--footer {
     width: 60%; }
-
   /* Sidebars */
   .l-content {
     width: 66.50246%;

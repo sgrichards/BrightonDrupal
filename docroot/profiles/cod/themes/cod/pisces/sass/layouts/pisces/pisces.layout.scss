@@ -24,9 +24,8 @@ $grids: add-grid(12 at $tab);
 $gutters: 1/16;
 
 
-
-
 .l-constrained {
+  // width: 90%;
   width: 90%;
   margin: 0 auto;
   @include pie-clearfix;
