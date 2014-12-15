@@ -62,6 +62,10 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11
 {width:38%;display:inline-block;}
 
+.ticket-field-formatter-view-form .form-item-ticket-quantity-16, 
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11
+{padding-top:20px;}
+
 .field--name-field-ticket-title { 
   font-family: "Lobster Two";
   font-style: italic;
