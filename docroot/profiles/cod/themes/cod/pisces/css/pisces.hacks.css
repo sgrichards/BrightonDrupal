@@ -57,6 +57,10 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;min-height:120px;height:120px;}
 */
 
+.ticket-field-formatter-view-form .form-item-ticket-quantity-6, 
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11
+{width:34%;float:right;clear:right;}
+
 .ticket-field-formatter-view-form .form-submit, 
 .redbutton {
   background: none repeat scroll 0 0 #ff0000;
