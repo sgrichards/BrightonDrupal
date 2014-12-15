@@ -62,6 +62,15 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11
 {width:38%;display:inline-block;}
 
+.field--name-field-ticket-title { 
+  font-family: "Lobster Two";
+  font-style: italic;
+  font-weight: 700;
+  font-weight:35px;
+}
+    
+    
+
 .ticket-field-formatter-view-form .form-submit, 
 .redbutton {
   background: none repeat scroll 0 0 #ff0000;
