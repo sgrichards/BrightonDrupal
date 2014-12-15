@@ -42,6 +42,7 @@
 body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 /* hp form tickets */
+/*
 .ticket-field-formatter-view-form {background:#b0dafb;padding:10px 20px 50px 20px;}
 
 .ticket-field-formatter-view-form .ticket-type-ticket-type,
@@ -54,6 +55,7 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 .ticket-field-formatter-view-form .ticket-type-ticket-type {width:66%;display:inline-block;min-height:140px;height:140px;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;min-height:120px;height:120px;}
+*/
 
 .ticket-field-formatter-view-form .form-submit, 
 .redbutton {
