@@ -102,3 +102,11 @@ body.front .ticket-field-formatter-view-form .description {display:none;}
 }
 
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
+
+/* sessions */
+.view-accepted-sessions h2 {
+  font-family: "PT Sans",sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  margin: 0 0 10px;
+}
