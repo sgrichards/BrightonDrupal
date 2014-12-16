@@ -20,7 +20,11 @@
 .view-cod-sponsors .views-row.sponsor-group {display:inline-block;margin: 0 20px;vertical-align:middle; }
 .view-cod-sponsors .views-row.sponsor-group .views-field-field-sponsor-logo {vertical-align:middle; min-height:200px; height:200px; }
 .view-cod-sponsors .views-row.sponsor-group .views-field-field-sponsor-logo img {vertical-align:middle;}
-.view-cod-sponsors h2 {color:#017edf; border-bottom: 1px solid #000;padding-bottom: 10px; text-align: left;}
+.view-cod-sponsors h2
+{color:#017edf; border-bottom: 1px solid #000;padding-bottom: 10px; text-align: left;}
+
+.view-accepted-sessions .views-row
+{border-bottom: 1px solid #000;padding-bottom: 10px; text-align: left;}
 
 .block--block-46 {margin-top: -58px; text-align: center;}
 
@@ -47,6 +51,7 @@
 body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 /* hp form tickets */
+/*
 .ticket-field-formatter-view-form {background:#b0dafb;padding:10px 20px 50px 20px;}
 
 .ticket-field-formatter-view-form .ticket-type-ticket-type,
@@ -59,6 +64,27 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 .ticket-field-formatter-view-form .ticket-type-ticket-type {width:66%;display:inline-block;min-height:140px;height:140px;}
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11 {width:34%;float:right;min-height:120px;height:120px;}
+*/
+
+.ticket-field-formatter-view-form .ticket-type-ticket-type,
+.ticket-field-formatter-view-form .form-item-ticket-quantity-16,
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11
+{width:40%;display:inline-block;}
+
+.ticket-field-formatter-view-form .form-item-ticket-quantity-16,
+.ticket-field-formatter-view-form .form-item-ticket-quantity-11
+{padding-top:20px;}
+
+body.front .ticket-field-formatter-view-form .description {display:none;}
+
+.field--name-field-ticket-title {
+  font-family: "Lobster Two";
+  font-style: italic;
+  font-weight: 700;
+  font-size:35px;
+}
+
+
 
 .ticket-field-formatter-view-form .form-submit,
 .redbutton {
@@ -86,6 +112,7 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
 
+<<<<<<< HEAD
 
  .page-node-5 .block--cta--1,
  .page-node-5 .block--cta--2,
@@ -94,3 +121,12 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
  }
 
 
+=======
+/* sessions */
+.view-accepted-sessions h2 {
+  font-family: "PT Sans",sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  margin: 0 0 10px;
+}
+>>>>>>> 3aef23676a351f3bac18147e77afd5d12759a01c
