@@ -17,7 +17,9 @@
 
 .view-cod-sponsors {text-align: center;}
 .view-cod-sponsors .views-row.sponsor-group {width:30% !important; }
-.view-cod-sponsors .views-row.sponsor-group {display:inline-block;margin: 0 20px;vertical-align:middle; }
+.view-cod-sponsors .views-row.sponsor-group, 
+.view-cod-sponsors .views-row 
+{display:inline-block;margin: 0 20px;vertical-align:middle; }
 .view-cod-sponsors .views-row.sponsor-group .views-field-field-sponsor-logo {vertical-align:middle; min-height:200px; height:200px; }
 .view-cod-sponsors .views-row.sponsor-group .views-field-field-sponsor-logo img {vertical-align:middle;}
 .view-cod-sponsors h2
