@@ -152,7 +152,7 @@ p.button {
       border-radius: 5px;
       width: 70%;
       margin: 0 auto; }
-
+.lock-cta--3,
 .block--cta--1 {
   display: none; }
   .block--cta--1 .block-content a {
@@ -160,7 +160,7 @@ p.button {
 
 .block--cta--2 .block-content a {
   background: #2CC990; }
-
+.accepted-sess,
 .block-cta--3 {
   display: none; }
   .block-cta--3 .block-content a {

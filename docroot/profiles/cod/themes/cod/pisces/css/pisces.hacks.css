@@ -111,22 +111,7 @@ body.front .ticket-field-formatter-view-form .description {display:none;}
 }
 
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
-
-<<<<<<< HEAD
-
- .page-node-5 .block--cta--1,
- .page-node-5 .block--cta--2,
  .page-node-5 .block-cta--3{
     display: none;
  }
 
-
-=======
-/* sessions */
-.view-accepted-sessions h2 {
-  font-family: "PT Sans",sans-serif;
-  font-size: 25px;
-  font-style: normal;
-  margin: 0 0 10px;
-}
->>>>>>> 3aef23676a351f3bac18147e77afd5d12759a01c

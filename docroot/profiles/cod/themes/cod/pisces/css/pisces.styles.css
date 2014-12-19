@@ -164,6 +164,7 @@ p.button {
     text-align: center;
     margin: 0;
     font-size: 30px; }
+
     .block--cta .block-content h2 a {
       line-height: 0.9em;
       display: block;
@@ -191,6 +192,7 @@ p.button {
 
 .block--cta--1 {
   display: none; }
+
   @media (min-width: 768px) {
     .block--cta--1 {
       display: block; } }
@@ -200,8 +202,6 @@ p.button {
 .block--cta--2 .block-content a {
   background: #2CC990; }
 
-.block-cta--3 {
-  display: none; }
   @media (min-width: 768px) {
     .block-cta--3 {
       display: block; } }
@@ -683,3 +683,47 @@ ul.quicktabs-tabs {
   .user-profile .user-picture img {
     border: 1px solid #c4c8d4;
     margin: 0.83em 0 12px 12px; }
+
+
+
+/* Business day */
+
+.business-page-featured{
+  clear: both;
+margin-top: 30px;
+float: left;
+}
+
+.page-node-5 h2{
+  float: left;
+  width: 100%;
+  clear: both;
+}
+.page-node-5 .field--type-text-with-summary ul{
+  clear: both;
+}
+.page-node-5 .l-content p{
+  clear:both;
+}
+    .buybutton{
+      font-family: 'Lobster Two';
+      font-style: italic;
+      font-size: 2em;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: -1px -1px 0 #333,1px -1px 0 #333,-1px 1px 0 #333,1px 1px 0 #333;
+      padding: 12px 0;
+      border: 1px solid #494747;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -o-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -khtml-border-radius: 5px;
+      float: left;
+      clear: both;
+      padding: 20px 53px;
+      background-color: #FCB941;
+    }
+
+
+
