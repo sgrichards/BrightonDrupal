@@ -48,14 +48,16 @@
     .page-node-5 .intro-left{ float: left; width: 100%; margin-bottom: 20px;}
     .page-node-5 .keynote-images{display: none;}
 }
+@media (max-width: 780px) {
+  .page-node-5 .keynote-images{display: none;}
 
+}
 @media (min-width: 768px) {
   .page-node-5 .left{ float: left; width: 49%;}
   .page-node-5 .right{float: left; width: 49%;}
   .page-node-5 .intro-left{ float: left; width: 27%; margin-bottom: 20px;}
   .page-node-5 .intro-right{float: left; width: 72%; margin-bottom: 20px;}
   .page-node-5 h2{clear:both; }
-
   .hpkeynote {width:49%; display:inline-block; padding: 0 24px;vertical-align: text-top;}
   .dots {border-right: 1px dotted #017edf;}
 }
@@ -66,7 +68,7 @@
 body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 /* hp form tickets */
-<<<<<<< HEAD
+
 /*
 .ticket-field-formatter-view-form {background:#b0dafb;padding:10px 20px 50px 20px;}
 =======
@@ -91,7 +93,7 @@ body.page-node-286 ul li {list-style: none; list-style-image: none;}
 
 .ticket-field-formatter-view-form .form-item-ticket-quantity-16,
 .ticket-field-formatter-view-form .form-item-ticket-quantity-11
-{padding-top:20px;}
+{padding-top:20px;width: 20%;}
 
 body.front .ticket-field-formatter-view-form .description {display:none;}
 
@@ -128,24 +130,22 @@ body.front .ticket-field-formatter-view-form .description {display:none;}
 }
 
 .ticket-field-formatter-view-form .field--name-ticket-type-label {font-weight:bold;}
-<<<<<<< HEAD
  .page-node-5 .block-cta--3{
     display: none;
  }
 
-=======
 
   .page-node-5 .keynote-images{
     width: 50%;
 margin: 20px auto 0;
-  }
+}
 
   .page-node-5 .block--cta--1,
   .page-node-5 .block--cta--2,
   .page-node-5 .block-cta--3{
     display: none;
   }
- .ticket-field-formatter-view-form .form-submit,
+
   .page-node-5 .buybutton{
     clear: both;
     text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
@@ -159,7 +159,7 @@ margin: 20px auto 0;
     margin: 0 auto;
     float: left;
     background-color: #FCB941;
-    width: 33%;
+    width: auto;
     line-height: 0.9em;
     display: block;
     font-family: 'Lobster Two';
@@ -167,12 +167,13 @@ margin: 20px auto 0;
     font-weight: 700;
     margin: 0;
     color: #fff;
-    padding: 20px;
-    font-size: 2.8em;
+    padding: 20px 40px;
+    font-size: 2em;
   }
  .ticket-field-formatter-view-form .form-submit{
     float: right !important;
     padding: 4px 7px 10px;
 font-size: 2em;
+margin-right: 50px;
+margin-top: 25px;
   }
->>>>>>> update

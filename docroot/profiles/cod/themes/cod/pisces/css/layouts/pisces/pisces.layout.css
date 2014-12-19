@@ -87,7 +87,7 @@ article {
     clear: none; } }
 @media (min-width: 1200px) {
   .l-constrained, .l-region--highlighted, .l-region--footer {
-    width: 60%; }
+    width: 90%; }
   /* Sidebars */
   .l-content {
     width: 66.50246%;
@@ -135,4 +135,9 @@ article {
     margin-left: 0;
     margin-right: 0;
     clear: none;
-    clear: none; } }
+    clear: none; }
+
+
+   }
+
+
