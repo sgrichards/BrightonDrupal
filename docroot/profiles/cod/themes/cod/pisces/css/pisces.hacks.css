@@ -48,6 +48,24 @@
     .page-node-5 .intro-left{ float: left; width: 100%; margin-bottom: 20px;}
     .page-node-5 .keynote-images{display: none;}
 }
+@media (max-width: 940px) {
+  .ticket-field-formatter-view-form input.form-submit{
+    float: left !important;
+    margin-bottom:30px;
+    padding:20px 40px;
+    width: 66%;
+  }
+  .field--name-body .field__items .field__item h2{
+    display: block;
+    clear: both;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+  }
+  .field--name-field-ticket-title{
+    margin-bottom:20px;
+  }
+}
 @media (max-width: 780px) {
   .page-node-5 .keynote-images{display: none;}
 
