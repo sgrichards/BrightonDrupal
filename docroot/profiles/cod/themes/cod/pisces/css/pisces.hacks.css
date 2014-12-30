@@ -198,9 +198,11 @@ margin: 20px auto 0;
 /* quicktabs overrides */
 
 ul.quicktabs-tabs li a {
+  background: none repeat scroll 0 0 #fff !important;
     color: #017edf !important;
 } 
 
 ul.quicktabs-tabs li.active a {
     background: none repeat scroll 0 0 #017edf !important;
+    color: #017edf !important;
 }
