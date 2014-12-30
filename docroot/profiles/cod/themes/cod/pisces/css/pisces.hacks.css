@@ -123,17 +123,6 @@ body.front .ticket-field-formatter-view-form .description {display:none;}
 }
 
 
-
-.redbutton {
-  background: none repeat scroll 0 0 #ff0000;
-  border: medium none;
-  color: #fff;
-  float: right;
-  padding: 5px 15px;
-  text-transform: uppercase;
-  clear:both;
-}
-
 .redbutton {
   background: none repeat scroll 0 0 #ff0000;
   border: medium none;
@@ -195,3 +184,23 @@ margin: 20px auto 0;
     margin-right: 50px;
     margin-top: 25px;
   }
+  
+  /* sessions/schedule views */
+  .view-cod-session-schedule .views-field-field-slot-datetime-1, 
+  .view-cod-session-schedule .views-field-field-evttime-date-1, 
+  .view-cod-bof-schedule .views-field-field-slot-datetime-1, 
+  .view-cod-bof-schedule .views-field-field-evttime-date-1, 
+  .view-cod-schedule .views-field-field-slot-datetime-1, 
+  .view-cod-schedule .views-field-field-evttime-date-1 {
+    text-align: left;
+}
+
+/* quicktabs overrides */
+
+ul.quicktabs-tabs li a {
+    color: #017edf !important;
+} 
+
+ul.quicktabs-tabs li.active a {
+    background: none repeat scroll 0 0 #017edf !important;
+}
