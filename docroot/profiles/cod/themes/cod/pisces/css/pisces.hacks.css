@@ -204,5 +204,5 @@ ul.quicktabs-tabs li a {
 
 ul.quicktabs-tabs li.active a {
     background: none repeat scroll 0 0 #017edf !important;
-    color: #017edf !important;
+    color: #fff !important;
 }
