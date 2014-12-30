@@ -192,7 +192,7 @@ margin: 20px auto 0;
   .view-cod-bof-schedule .views-field-field-evttime-date-1, 
   .view-cod-schedule .views-field-field-slot-datetime-1, 
   .view-cod-schedule .views-field-field-evttime-date-1 {
-    text-align: left;
+    text-align: left !important;
 }
 
 /* quicktabs overrides */
