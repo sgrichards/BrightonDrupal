@@ -206,3 +206,7 @@ ul.quicktabs-tabs li.active a {
     background: none repeat scroll 0 0 #017edf !important;
     color: #fff !important;
 }
+
+body.not-logged-in ul.tabs--primary, 
+body.not-logged-in ul.tabs--secondary 
+{display:none;}
