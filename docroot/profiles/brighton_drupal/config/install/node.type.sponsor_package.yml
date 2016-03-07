@@ -1,0 +1,17 @@
+uuid: 173943d5-5149-4718-8307-7d320778a783
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Sponsor Package'
+type: sponsor_package
+description: 'Defines sponsorship packages'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

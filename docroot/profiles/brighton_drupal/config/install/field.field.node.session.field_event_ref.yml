@@ -1,0 +1,28 @@
+uuid: 727bd7e6-9dcb-4d9e-a803-3c5ec591b615
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_ref
+    - node.type.event
+    - node.type.session
+_core:
+  default_config_hash: oxE2I5FtfU_s-Dkv6LgQQ-OqpzGdEWM84Y1AmI5nfi8
+id: node.session.field_event_ref
+field_name: field_event_ref
+entity_type: node
+bundle: session
+label: Event
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: _none
+field_type: entity_reference

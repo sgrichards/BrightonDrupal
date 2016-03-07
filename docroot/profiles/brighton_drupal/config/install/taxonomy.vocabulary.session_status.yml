@@ -1,0 +1,9 @@
+uuid: 05584833-3bb4-472e-af2f-4783757ccd95
+langcode: en
+status: true
+dependencies: {  }
+name: 'Session Status'
+vid: session_status
+description: 'Defines session status terms'
+hierarchy: 0
+weight: 0

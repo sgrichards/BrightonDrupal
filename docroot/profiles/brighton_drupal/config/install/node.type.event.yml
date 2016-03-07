@@ -1,0 +1,19 @@
+uuid: 2ad71777-17f9-46b6-9105-5cdd73bca870
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: EnDO4tKxr4SmPGbBJ_I259sju_llAWRmE-OZckaMg74
+name: Event
+type: event
+description: 'Drupal event'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

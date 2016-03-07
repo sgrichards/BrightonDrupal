@@ -1,0 +1,20 @@
+uuid: 5e42003f-3ea4-400b-a400-cf8bc6bfd833
+langcode: en
+status: false
+dependencies:
+  theme:
+    - dcb
+_core:
+  default_config_hash: 1TQP4b3ZnlzvIH9bj6cpCz_SyUHdJjLQkZnHpikjjhw
+id: dcb_page_title
+theme: dcb
+region: '-1'
+weight: -2
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

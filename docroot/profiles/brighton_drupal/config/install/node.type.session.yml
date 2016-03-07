@@ -1,0 +1,19 @@
+uuid: 5b5584a5-6fd5-4a69-ae3a-58a7fae6c668
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: OU3TmVdJTCJRiZ3C4TysW1MFv_fuCDTRn1RRSW-4v5s
+name: Session
+type: session
+description: 'Session instances as used in an Event'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

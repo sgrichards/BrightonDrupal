@@ -1,0 +1,21 @@
+uuid: 8dbe3df5-3b7f-45e9-b11b-2737e4df9231
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_time_slot
+    - node.type.session
+  module:
+    - datetime
+id: node.session.field_time_slot
+field_name: field_time_slot
+entity_type: node
+bundle: session
+label: 'Time slot'
+description: 'Start/end times for a scheduled session'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

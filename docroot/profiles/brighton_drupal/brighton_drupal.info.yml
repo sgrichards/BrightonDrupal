@@ -1,0 +1,44 @@
+name: Brighton Drupal
+type: profile
+description: Custom install profile for Brighton Drupal community site.
+core: 8.x
+
+distribution:
+  name: Drupalcamp
+
+dependencies:
+  - node
+  - block
+  - ckeditor
+  - config
+  - contextual
+  - menu_link_content
+  - datetime
+  - block_content
+  - quickedit
+  - editor
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - taxonomy
+  - search
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - help
+  - admin_toolbar
+  - toolbar
+  - breakpoint
+  - ctools
+  - token
+  - pathauto
+  - paragraphs
+  - entity_reference_revisions
+themes:
+  - adminimal_theme
+  - bootstrap

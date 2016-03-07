@@ -1,0 +1,29 @@
+uuid: f02929d3-2565-451f-a44c-765b5c92860a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stripes
+    - node.type.page
+  module:
+    - entity_reference_revisions
+id: node.page.field_stripes
+field_name: field_stripes
+entity_type: node
+bundle: page
+label: Stripes
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      text_block: text_block
+    target_bundles_drag_drop:
+      text_block:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

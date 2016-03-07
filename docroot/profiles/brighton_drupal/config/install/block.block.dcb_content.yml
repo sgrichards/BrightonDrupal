@@ -1,0 +1,22 @@
+uuid: d02e95ff-71c7-4c09-971d-29824dbbe232
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dcb
+_core:
+  default_config_hash: fNNLN48MSGSLiqwIFywCuxH2Dk_IxDbaP0kYhg_IPrg
+id: dcb_content
+theme: dcb
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

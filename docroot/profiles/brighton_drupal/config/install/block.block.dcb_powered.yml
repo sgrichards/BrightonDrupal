@@ -1,0 +1,22 @@
+uuid: e39a3237-06af-4bb2-be5e-94c90a6cb0be
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dcb
+_core:
+  default_config_hash: iggZSiUKz4mYP1YPJ8SsUfFu79HIgOTt6IDy3Up59aM
+id: dcb_powered
+theme: dcb
+region: footer
+weight: -7
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal 8'
+  provider: system
+  label_display: '0'
+visibility: {  }

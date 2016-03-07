@@ -1,0 +1,12 @@
+legacy_homepage:
+    path: /
+    defaults: { _file: list.php }
+
+legacy_list:
+    path: /list
+    defaults: { _file: list.php }
+
+legacy_show:
+    path: /todo
+    defaults:
+      _file: todo.php

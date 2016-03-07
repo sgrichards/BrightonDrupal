@@ -1,0 +1,41 @@
+parameters:
+  router_file:  %kernel.config_dir%/routing.yml
+  file_locator.paths: [%kernel.config_dir%]
+  exception_handler: 'Todo\Controller\ExceptionController::exceptionAction'
+  database_host: localhost
+  database_user: root
+  database_password: root
+services:
+  request_stack: 
+    class: Symfony\Component\HttpFoundation\RequestStack
+  file_locator: 
+    class: Symfony\Component\Config\FileLocator
+    arguments: [ '%file_locator.paths%' ]
+  yaml_file_loader: 
+    class: Symfony\Component\Routing\Loader\YamlFileLoader
+    arguments: [ '@file_locator' ]
+  router: 
+    class: Symfony\Component\Routing\Router
+    arguments: [ '@yaml_file_loader', '%router_file%' ]
+  controller_listener: 
+    class: Todo\EventListener\ControllerListener
+    arguments: [ '@service_container' ]
+  router_listener: 
+    class: Symfony\Component\HttpKernel\EventListener\RouterListener
+    arguments: [ '@router', '@request_stack' ]
+  exception_listener: 
+    class: Symfony\Component\HttpKernel\EventListener\ExceptionListener
+    arguments: [ '%exception_handler%' ]
+  request_context: 
+    class: Symfony\Component\Routing\RequestContext
+  consoller_resolver: 
+    class: Symfony\Component\HttpKernel\Controller\ControllerResolver
+  event_dispatcher: 
+    class: Symfony\Component\EventDispatcher\EventDispatcher
+    calls: 
+    - [ addSubscriber, [ '@router_listener' ] ]
+    - [ addSubscriber, [ '@exception_listener' ] ]
+    - [ addSubscriber, [ '@controller_listener' ] ]
+  http_kernel: 
+    class: Symfony\Component\HttpKernel\HttpKernel
+    arguments: [ '@event_dispatcher', '@consoller_resolver' ]

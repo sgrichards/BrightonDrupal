@@ -1,0 +1,23 @@
+uuid: 9467ddee-46c7-4c53-a008-8de1748f64a3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_url
+    - node.type.sponsor
+  module:
+    - link
+id: node.sponsor.field_url
+field_name: field_url
+entity_type: node
+bundle: sponsor
+label: URL
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 0
+field_type: link

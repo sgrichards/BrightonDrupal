@@ -1,0 +1,24 @@
+uuid: c5c63b02-c28d-4247-a052-8292b1cf6d00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.sponsor_package.body
+    - node.type.sponsor_package
+  module:
+    - text
+    - user
+id: node.sponsor_package.default
+targetEntityType: node
+bundle: sponsor_package
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 100
+hidden: {  }

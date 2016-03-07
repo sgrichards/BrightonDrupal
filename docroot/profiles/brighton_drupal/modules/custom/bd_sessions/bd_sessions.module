@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains bd_sessions.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function bd_sessions_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the bd_sessions module.
+    case 'help.page.bd_sessions':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Toggle session submissions module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
