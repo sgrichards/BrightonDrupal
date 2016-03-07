@@ -725,7 +725,6 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
-$settings['install_profile'] = 'brighton_drupal';
 
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/dcb2016/dcb2016-settings.inc';
