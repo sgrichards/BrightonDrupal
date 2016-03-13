@@ -20,6 +20,7 @@ h6 {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
+    
 
 h1,
 h2,
@@ -27,6 +28,32 @@ h3,
 h4 {
     font-family: "Montserrat", Arial, sans-serif;
     font-weight: 400;
+}
+
+.navbar-header h1 {
+    font-size: 28px;
+    margin-top: 10px;
+    color: #337ab7;
+    text-transform: uppercase;
+}
+
+.navbar-header h3 { 
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+.header h2 {
+    padding-top: 125px;
+    padding-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.header iframe {
+    padding-bottom: 20px;
+}
+
+.header .intro-social-buttons  {
+    padding-bottom: 75px;
 }
 
 .green {
@@ -83,7 +110,10 @@ h4 {
     background: url('../img/photo-1444328536659-9e4acce56d69.png') no-repeat center center;
     background-size: cover;
 }
-
+.intro-header.btn-bg {
+    background: url('../img/slide2.png') no-repeat center center;
+    background-size: cover;
+}
 .intro-message {
     position: relative;
     padding-top: 5%;
@@ -191,6 +221,10 @@ h4 {
 .banner-social-buttons {
     float: right;
     margin-top: 0;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: rgba(249, 249, 249, 0.16);
 }
 
 @media(max-width:1199px) {

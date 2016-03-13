@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.text_block.field_id
     - field.field.paragraph.text_block.field_paragraph_background
     - field.field.paragraph.text_block.field_paragraph_body
     - field.field.paragraph.text_block.field_paragraph_title
@@ -14,6 +15,13 @@ targetEntityType: paragraph
 bundle: text_block
 mode: default
 content:
+  field_id:
+    type: string
+    weight: 2
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
   field_paragraph_body:
     weight: 1
     label: hidden

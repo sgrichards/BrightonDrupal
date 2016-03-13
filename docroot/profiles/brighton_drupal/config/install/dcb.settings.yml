@@ -1,7 +1,7 @@
 favicon:
   mimetype: image/vnd.microsoft.icon
   path: ''
-  url: 'http://brightondrupal.dev/profiles/brighton_drupal/themes/custom/dcb/favicon.ico'
+  url: 'http://brightondrupal.dev/themes/custom/dcb/favicon.ico'
   use_default: 1
 schema: '8000'
 features:
@@ -13,5 +13,6 @@ logo:
   path: 'public://dcb2016logo.png'
   url: ''
   use_default: 0
-cdn_provider: jsdelivr
 cdn_provider_import_data: ''
+navbar_inverse: 0
+navbar_position: static-top

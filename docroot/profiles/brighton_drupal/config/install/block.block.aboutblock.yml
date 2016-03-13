@@ -1,0 +1,31 @@
+uuid: 0ca211d4-ea8a-487e-9007-7f0c6092f0d1
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:html_block:c8713d5e-08c7-4d82-9c09-9e95fc615018'
+  module:
+    - block_content
+    - system
+  theme:
+    - dcb
+id: aboutblock
+theme: dcb
+region: highlighted
+weight: -7
+provider: null
+plugin: 'block_content:c8713d5e-08c7-4d82-9c09-9e95fc615018'
+settings:
+  id: 'block_content:c8713d5e-08c7-4d82-9c09-9e95fc615018'
+  label: 'About block'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

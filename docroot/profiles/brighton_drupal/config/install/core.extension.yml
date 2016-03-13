@@ -1,16 +1,23 @@
 module:
   admin_toolbar: 0
+  bd_sessions: 0
   block: 0
   block_content: 0
   breakpoint: 0
   ckeditor: 0
   config: 0
+  config_devel: 0
+  config_packager: 0
+  config_update: 0
   contextual: 0
   ctools: 0
   datetime: 0
+  devel: 0
   dynamic_page_cache: 0
   editor: 0
   entity_reference_revisions: 0
+  features: 0
+  features_ui: 0
   field: 0
   field_ui: 0
   file: 0
@@ -19,6 +26,7 @@ module:
   image: 0
   link: 0
   menu_ui: 0
+  metatag: 0
   node: 0
   options: 0
   page_cache: 0
@@ -35,6 +43,7 @@ module:
   update: 0
   user: 0
   views_ui: 0
+  webprofiler: 0
   menu_link_content: 1
   pathauto: 1
   views: 10

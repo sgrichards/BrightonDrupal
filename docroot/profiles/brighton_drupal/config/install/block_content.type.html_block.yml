@@ -1,0 +1,8 @@
+uuid: acedbdba-6e6d-4a4d-942c-44cee1947025
+langcode: en
+status: true
+dependencies: {  }
+id: html_block
+label: 'HTML Block'
+revision: 0
+description: 'Arbitrary html block'

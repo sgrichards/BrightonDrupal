@@ -1,0 +1,23 @@
+profile:
+  name: 'Drupal Brighton'
+  machine_name: drupal_brighton
+  add: 1
+  description: 'Drupalling on the south coast'
+assignment:
+  enabled:
+    exclude: '-10'
+    profile: '-5'
+    base-type: '-2'
+    core-type: '0'
+    namespace: '5'
+    dependency: '10'
+  method_weights:
+    exclude: '-10'
+    profile: '-5'
+    base-type: '-2'
+    core-type: '0'
+    namespace: '5'
+    dependency: '10'
+langcode: en
+_core:
+  default_config_hash: dDkJP_HDyBgPL-DwBuT_b9ZJndOvqF9_zqYekh5UNuQ
