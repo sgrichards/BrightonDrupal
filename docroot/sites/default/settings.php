@@ -726,6 +726,8 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 
+$config_directories['sync'] = 'profiles/brighton_drupal/config/install';
+
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/dcb2016/dcb2016-settings.inc';
 }
