@@ -3,6 +3,11 @@ global-styling:
     theme:
       css/style.css: {}
       css/landing-page.css: {}
+      font-awesome/css/font-awesome.min.css: {}
+  js:
+    theme:
+      js/jquery.simple-text-rotator.js: {}
+      js/rotator.js: {}
 
 bootstrap-scripts:
   js:

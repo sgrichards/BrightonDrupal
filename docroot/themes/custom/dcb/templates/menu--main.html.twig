@@ -27,7 +27,7 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('menu', 'nav', 'navbar-nav') }}>
+      <ul{{ attributes.addClass('nav', 'navbar-nav', 'navbar-right') }}>
     {% else %}
       <ul{{ attributes.addClass('dropdown-menu') }}>
     {% endif %}
@@ -44,6 +44,7 @@
       {% endif %}
       </li>
     {% endfor %}
+    <li><a href="https://www.eventbrite.co.uk/e/drupalcamp-brighton-2016-tickets-22172941866" class="green" target="_blank">Tickets</a></li>
     </ul>
   {% endif %}
 {% endmacro %}
