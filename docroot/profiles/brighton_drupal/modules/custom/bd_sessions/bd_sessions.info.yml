@@ -1,5 +1,0 @@
-name: bd_sessions
-type: module
-description: Toggle session submissions module
-core: 8.x
-package: BD

@@ -1,0 +1,33 @@
+uuid: c3c564ad-4e17-4c4f-ac08-8dc5015b63ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_class
+field_name: field_class
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: content-section-a
+      label: content-section-a
+    -
+      value: intro-header-1
+      label: intro-header-1
+    -
+      value: content-section-b
+      label: content-section-b
+    -
+      value: intro-header-2
+      label: intro-header-2
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

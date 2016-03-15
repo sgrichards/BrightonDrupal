@@ -1,0 +1,63 @@
+uuid: d787c8d5-f4b5-4710-8600-e79b8ee4a496
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.stripe
+    - field.field.paragraph.text_block.field_class
+    - field.field.paragraph.text_block.field_id
+    - field.field.paragraph.text_block.field_paragraph_body
+    - field.field.paragraph.text_block.field_paragraph_title
+    - paragraphs.paragraphs_type.text_block
+  module:
+    - options
+    - text
+id: paragraph.text_block.stripe
+targetEntityType: paragraph
+bundle: text_block
+mode: stripe
+content:
+  created:
+    type: timestamp_ago
+    weight: 0
+    label: above
+    settings:
+      future_format: '@interval hence'
+      past_format: '@interval ago'
+      granularity: 2
+    third_party_settings: {  }
+  field_class:
+    weight: 3
+    label: visually_hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+  field_id:
+    type: string
+    weight: 2
+    label: visually_hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_paragraph_body:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_paragraph_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  uid:
+    type: entity_reference_entity_view
+    weight: 0
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+hidden: {  }

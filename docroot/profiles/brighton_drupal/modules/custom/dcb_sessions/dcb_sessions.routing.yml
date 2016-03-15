@@ -1,0 +1,18 @@
+
+dcb_sessions.config_form:
+  path: '/admin/config/dcb_sessions/config'
+  defaults:
+    _form: '\Drupal\dcb_sessions\Form\ConfigForm'
+    _title: 'ConfigForm'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+dcb_sessions.session_form_controller_build:
+  path: 'session/submit'
+  defaults:
+    _controller: '\Drupal\dcb_sessions\Controller\SessionFormController::build'
+    _title: 'Submit a session'
+  requirements:
+    _user_is_logged_in: 'TRUE'

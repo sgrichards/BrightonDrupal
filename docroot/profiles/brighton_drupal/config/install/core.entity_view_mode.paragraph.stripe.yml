@@ -1,0 +1,10 @@
+uuid: bdb31b32-44fd-4b78-b309-9e104f17d3b2
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.stripe
+label: Stripe
+targetEntityType: paragraph
+cache: true

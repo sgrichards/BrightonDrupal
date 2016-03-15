@@ -1,7 +1,0 @@
-bd_sessions.config_form:
-  title: 'Session Config'
-  route_name: bd_sessions.config_form
-  description: 'Configure session submission status'
-  parent: system.admin_config_system
-  weight: 99
-

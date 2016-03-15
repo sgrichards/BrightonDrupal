@@ -3,20 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.text_block.field_class
     - field.field.paragraph.text_block.field_id
-    - field.field.paragraph.text_block.field_paragraph_background
     - field.field.paragraph.text_block.field_paragraph_body
     - field.field.paragraph.text_block.field_paragraph_title
-    - image.style.thumbnail
     - paragraphs.paragraphs_type.text_block
   module:
-    - image
     - text
 id: paragraph.text_block.default
 targetEntityType: paragraph
 bundle: text_block
 mode: default
 content:
+  field_class:
+    weight: 4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
   field_id:
     weight: 3
     settings:
@@ -24,13 +27,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: string_textfield
-  field_paragraph_background:
-    weight: 2
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
-    type: image_image
   field_paragraph_body:
     weight: 1
     settings:

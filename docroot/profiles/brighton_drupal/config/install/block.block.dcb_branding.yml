@@ -11,7 +11,7 @@ _core:
 id: dcb_branding
 theme: dcb
 region: '-1'
-weight: 1
+weight: -4
 provider: null
 plugin: system_branding_block
 settings:

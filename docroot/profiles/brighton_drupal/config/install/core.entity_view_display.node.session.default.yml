@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.session.body
     - field.field.node.session.field_categories
     - field.field.node.session.field_event_ref
+    - field.field.node.session.field_level
     - field.field.node.session.field_session_status
     - field.field.node.session.field_time_slot
     - node.type.session
@@ -19,6 +20,13 @@ mode: default
 content:
   field_categories:
     weight: 103
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+  field_level:
+    weight: 104
     label: above
     settings:
       link: true

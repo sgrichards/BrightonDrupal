@@ -1,0 +1,56 @@
+uuid: 87ee4868-673e-4e77-b609-9fc5998e5a16
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.node.session_submission
+    - field.field.node.session.body
+    - field.field.node.session.field_categories
+    - field.field.node.session.field_event_ref
+    - field.field.node.session.field_level
+    - field.field.node.session.field_session_status
+    - field.field.node.session.field_time_slot
+    - node.type.session
+  module:
+    - text
+_core:
+  default_config_hash: _NttPEq-VF5fiN5ataqlVjGMJyfc-jrVkbYEoHuHpFc
+id: node.session.session_submission
+targetEntityType: node
+bundle: session
+mode: session_submission
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_categories:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+  field_level:
+    type: options_select
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_event_ref: true
+  field_session_status: true
+  field_time_slot: true
+  path: true
+  promote: true
+  sticky: true
+  uid: true

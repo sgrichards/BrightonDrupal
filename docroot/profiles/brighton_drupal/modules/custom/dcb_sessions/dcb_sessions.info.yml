@@ -1,0 +1,5 @@
+name: dcb_sessions
+type: module
+description: Manage sessions on dcb
+core: 8.x
+package: dcb

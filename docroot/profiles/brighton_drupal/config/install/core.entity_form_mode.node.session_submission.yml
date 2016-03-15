@@ -1,0 +1,10 @@
+uuid: ec0583a4-6219-415e-b91b-275e6f0a8d88
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.session_submission
+label: 'Session submission'
+targetEntityType: node
+cache: true

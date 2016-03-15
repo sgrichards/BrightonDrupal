@@ -11,7 +11,7 @@ _core:
 id: dcb_breadcrumbs
 theme: dcb
 region: '-1'
-weight: 0
+weight: -7
 provider: null
 plugin: system_breadcrumb_block
 settings:

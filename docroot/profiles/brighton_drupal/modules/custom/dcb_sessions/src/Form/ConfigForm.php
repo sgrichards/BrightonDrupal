@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains Drupal\bd_sessions\Form\ConfigForm.
+ * Contains Drupal\dcb_sessions\Form\ConfigForm.
  */
 
-namespace Drupal\bd_sessions\Form;
+namespace Drupal\dcb_sessions\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -13,7 +13,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Class ConfigForm.
  *
- * @package Drupal\bd_sessions\Form
+ * @package Drupal\dcb_sessions\Form
  */
 class ConfigForm extends ConfigFormBase {
 
@@ -22,7 +22,7 @@ class ConfigForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'bd_sessions.config',
+      'dcb_sessions.config',
     ];
   }
 
@@ -37,17 +37,15 @@ class ConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('bd_sessions.config');
-    $form['submissions_enabled'] = [
+    $config = $this->config('dcb_sessions.config');
+    $form['session_submissions_active'] = [
       '#type' => 'checkbox',
-      '#title' => $this->t('Submissions enabled?'),
-      '#description' => $this->t('Check to enable session submissions'),
-      '#default_value' => $config->get('submissions_enabled'),
+      '#title' => $this->t('Session submissions active?'),
+      '#default_value' => $config->get('session_submissions_active'),
     ];
     $form['default_event'] = [
       '#type' => 'entity_autocomplete',
       '#title' => $this->t('Default event'),
-      '#description' => $this->t('Select the default event for new session submissions'),
       '#default_value' => $config->get('default_event'),
       '#target_type' => 'event',
     ];
@@ -67,8 +65,8 @@ class ConfigForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     parent::submitForm($form, $form_state);
 
-    $this->config('bd_sessions.config')
-      ->set('submissions_enabled', $form_state->getValue('submissions_enabled'))
+    $this->config('dcb_sessions.config')
+      ->set('session_submissions_active', $form_state->getValue('session_submissions_active'))
       ->set('default_event', $form_state->getValue('default_event'))
       ->save();
   }

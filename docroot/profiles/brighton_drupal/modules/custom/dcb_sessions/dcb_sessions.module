@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Contains dcb_sessions.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dcb_sessions_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dcb_sessions module.
+    case 'help.page.dcb_sessions':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Manage sessions on dcb') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ * @param array $entity_types
+ */
+function dcb_sessions_entity_type_build(array &$entity_types) {
+  $entity_types['node']->setFormClass('session_submission', 'Drupal\node\NodeForm');
+}

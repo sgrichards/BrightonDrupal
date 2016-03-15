@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.session.body
     - field.field.node.session.field_categories
     - field.field.node.session.field_event_ref
+    - field.field.node.session.field_level
     - field.field.node.session.field_session_status
     - field.field.node.session.field_time_slot
     - node.type.session
@@ -43,6 +44,14 @@ content:
     type: entity_reference_autocomplete
   field_event_ref:
     weight: 32
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+  field_level:
+    weight: 36
     settings:
       match_operator: CONTAINS
       size: 60

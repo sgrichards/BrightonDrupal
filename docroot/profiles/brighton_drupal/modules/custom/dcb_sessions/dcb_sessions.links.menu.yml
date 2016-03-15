@@ -1,0 +1,7 @@
+dcb_sessions.config_form:
+  title: 'dcb session config'
+  route_name: dcb_sessions.config_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99
+

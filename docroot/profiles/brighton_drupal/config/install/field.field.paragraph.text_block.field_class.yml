@@ -1,0 +1,23 @@
+uuid: 4dac166e-e770-4eb7-b452-8269020afa59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_class
+    - paragraphs.paragraphs_type.text_block
+  module:
+    - options
+id: paragraph.text_block.field_class
+field_name: field_class
+entity_type: paragraph
+bundle: text_block
+label: class
+description: 'Select the class that defines the style for this stripe.'
+required: false
+translatable: false
+default_value:
+  -
+    value: content-section-a
+default_value_callback: ''
+settings: {  }
+field_type: list_string
