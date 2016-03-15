@@ -5,3 +5,16 @@
  *
  * Place your custom PHP code in this file.
  */
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ * @param array $suggestions
+ * @param array $variables
+ * @param $hook
+ */
+function dcb_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if ($hook == 'form') {
+    // add form__{form_id} based suggestions
+    $suggestions[] = $hook . '__' . $variables['element']['#form_id'];
+  }
+}
