@@ -9,6 +9,7 @@ projects[metatag][subdir] = "contrib"
 projects[paragraphs][subdir] = "contrib"
 projects[pathauto][subdir] = "contrib"
 projects[token][subdir] = "contrib"
+projects[r4302login][subdir] = "contrib"
 
 ; Themes
 projects[adminimal_theme][subdir] = "contrib"
