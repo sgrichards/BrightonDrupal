@@ -10,6 +10,7 @@ projects[paragraphs][subdir] = "contrib"
 projects[pathauto][subdir] = "contrib"
 projects[token][subdir] = "contrib"
 projects[r4302login][subdir] = "contrib"
+projects[email_registration][subdir] = "contrib"
 
 ; Themes
 projects[adminimal_theme][subdir] = "contrib"
