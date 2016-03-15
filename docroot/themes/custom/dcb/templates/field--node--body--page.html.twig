@@ -37,16 +37,21 @@
  * @see template_preprocess_field()
  */
 #}
-{% set classes = [
-  'field',
-  'field--name-' ~ field_name|clean_class,
-  'field--type-' ~ field_type|clean_class,
-  'field--label-' ~ label_display,
-] %}
-{% set title_classes = [
-  'field--label',
-  label_display == 'visually_hidden' ? 'sr-only',
-] %}
+{%
+  set classes = [
+    'field',
+    'field--name-' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    'container',
+  ]
+%}
+{%
+  set title_classes = [
+    'field--label',
+    label_display == 'visually_hidden' ? 'sr-only',
+  ]
+%}
 
 {% if label_hidden %}
   {% if multiple %}
@@ -57,7 +62,7 @@
     </div>
   {% else %}
     {% for item in items %}
-      <h2{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</h2>
+      <div{{ attributes.addClass(classes, 'field--item') }}>{{ item.content }}</div>
     {% endfor %}
   {% endif %}
 {% else %}
@@ -65,11 +70,11 @@
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
     {% if multiple %}
       <div class="field__items">
-        {% endif %}
-          {% for item in items %}
-            <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
-          {% endfor %}
-        {% if multiple %}
+    {% endif %}
+    {% for item in items %}
+      <div{{ item.attributes.addClass('field--item') }}>{{ item.content }}</div>
+    {% endfor %}
+    {% if multiple %}
       </div>
     {% endif %}
   </div>

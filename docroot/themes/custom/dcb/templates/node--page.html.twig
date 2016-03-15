@@ -86,7 +86,13 @@
   {% endif %}
 
   <div{{ content_attributes }}>
-    {{ content }}
+    {{ content|without('body') }}
+
+    {% if node.body.value %}
+      <div class="intro-header btn-bg">
+        {{ content.body }}
+      </div>
+    {% endif %}
   </div>
 
 </article>
