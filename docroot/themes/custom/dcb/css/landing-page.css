@@ -158,6 +158,15 @@ h4 {
     }
 }
 
+.dcb-title {
+    margin-top: 10px;
+}
+
+.dcb-form-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .network-name {
     text-transform: uppercase;
     font-weight: 400;
