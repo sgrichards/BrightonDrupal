@@ -1,0 +1,9 @@
+display_denied_message: true
+access_denied_message: 'Please register or login to submit a session!'
+access_denied_message_type: status
+redirect_authenticated_users_to: ''
+user_login_path: /user/register
+default_redirect_code: '302'
+match_noredirect_pages: ''
+_core:
+  default_config_hash: '-1ZIdfQLvs6psCwwGG3c78TfK9qOfyglvkkGmCr5j_M'
