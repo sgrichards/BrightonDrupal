@@ -20,7 +20,6 @@ h6 {
     font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 700;
 }
-    
 
 h1,
 h2,
@@ -30,8 +29,21 @@ h4 {
     font-weight: 400;
 }
 
+a {
+    color: #00C862;
+}
+
+a:hover {
+    color: #89ccf0;
+}
+
 .navbar {
     margin-bottom: 0;
+}
+
+.navbar-nav.navbar a:hover,
+.navbar-nav.navbar a:focus {
+    background: none;
 }
 
 .navbar-header h1 {
@@ -126,6 +138,11 @@ h4 {
     position: relative;
     padding-top: 5%;
     padding-bottom: 5%;
+}
+
+.intro-header.basic-page {
+    text-align: left;
+    padding-top: 0px;
 }
 
 .intro-divider {
@@ -278,4 +295,14 @@ h4 {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+#user-register-form #edit-mail,
+#user-login-form,
+#user-register-form .form-item-pass {
+    width: 300px;
+}
+
+#user-pass {
+    width: 500px;
 }
