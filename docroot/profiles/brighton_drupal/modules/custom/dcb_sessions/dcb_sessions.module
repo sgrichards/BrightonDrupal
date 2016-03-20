@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains dcb_sessions.module..
+ * Contains dcb_sessions.module.
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;

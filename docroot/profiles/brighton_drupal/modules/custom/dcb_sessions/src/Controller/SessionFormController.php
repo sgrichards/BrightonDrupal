@@ -32,8 +32,10 @@ class SessionFormController extends ControllerBase {
       'field_fields' => array(),
     ));
 
+    // @todo: pre-populate event value
+    // @todo detect if session submissions are open
+
     $form = $this->entityFormBuilder()->getForm($node, 'session_submission');
-    $form['#title'] = $this->t('Submit a Session');
 
     return $form;
   }
