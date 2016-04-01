@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements hook_help().
@@ -29,4 +30,19 @@ function dcb_sessions_help($route_name, RouteMatchInterface $route_match) {
  */
 function dcb_sessions_entity_type_build(array &$entity_types) {
   $entity_types['node']->setFormClass('session_submission', 'Drupal\node\NodeForm');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function dcb_sessions_form_node_session_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $account = \Drupal::currentUser();
+  // redirect users from the node sessino form
+  if ($account->id() != 1 && !in_array('administrator', $account->getRoles())) {
+    $response = new RedirectResponse(\Drupal::url('user.page'));
+    $response->send();
+  }
 }

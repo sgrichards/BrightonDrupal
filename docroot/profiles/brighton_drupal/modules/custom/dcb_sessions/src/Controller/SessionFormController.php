@@ -23,11 +23,13 @@ class SessionFormController extends ControllerBase {
    */
   public function build() {
 
+    $account = \Drupal::currentUser();
+
     $node = Node::create(array(
       'type' => 'session',
       'title' => '',
       'langcode' => 'en',
-      'uid' => '',
+      'uid' => $account->id(),
       'status' => 0,
       'field_fields' => array(),
     ));
