@@ -10,7 +10,7 @@ _core:
   default_config_hash: 1TQP4b3ZnlzvIH9bj6cpCz_SyUHdJjLQkZnHpikjjhw
 id: dcb_page_title
 theme: dcb
-region: content
+region: header
 weight: -7
 provider: null
 plugin: page_title_block

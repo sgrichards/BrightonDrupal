@@ -1,9 +1,13 @@
 uuid: 729d8901-e1b3-445a-8a56-86c4f04d7abf
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - core.entity_form_mode.user.register
+    - field.field.user.user.field_bio
+    - field.field.user.user.field_drupal_org
+    - field.field.user.user.field_profile_image
+    - field.field.user.user.field_twitter
   module:
     - user
 id: user.user.register
@@ -16,6 +20,10 @@ content:
     settings: {  }
     third_party_settings: {  }
 hidden:
+  field_bio: true
+  field_drupal_org: true
+  field_profile_image: true
+  field_twitter: true
   language: true
   path: true
   timezone: true

@@ -6,4 +6,5 @@ id: speaker
 label: Speaker
 weight: 3
 is_admin: null
-permissions: {  }
+permissions:
+  - 'view own unpublished content'

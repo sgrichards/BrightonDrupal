@@ -1,4 +1,4 @@
-uuid: 20ce49bf-610a-426d-b63d-61589e74b236
+uuid: 29e6ecf0-0d7a-4ed3-b800-e3f6029c2eae
 langcode: en
 status: true
 dependencies:
@@ -7,7 +7,6 @@ dependencies:
     - field.field.user.user.field_drupal_org
     - field.field.user.user.field_profile_image
     - field.field.user.user.field_twitter
-    - image.style.thumbnail
   module:
     - image
     - link
@@ -18,39 +17,41 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
-  account:
-    weight: 0
+  field_bio:
+    weight: 1
+    label: above
     settings: {  }
     third_party_settings: {  }
-  field_bio:
-    type: text_textarea
-    weight: 4
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
+    type: text_default
   field_drupal_org:
-    type: link_default
     weight: 2
+    label: above
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
+    type: link
   field_profile_image:
-    type: image_image
-    weight: 1
+    weight: 0
+    label: above
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
+    type: image
   field_twitter:
-    type: link_default
     weight: 3
+    label: above
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
     third_party_settings: {  }
+    type: link
 hidden:
-  language: true
-  path: true
-  timezone: true
+  member_for: true

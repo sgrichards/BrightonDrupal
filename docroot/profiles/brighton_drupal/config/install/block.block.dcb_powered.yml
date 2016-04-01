@@ -1,6 +1,6 @@
 uuid: e39a3237-06af-4bb2-be5e-94c90a6cb0be
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -10,8 +10,8 @@ _core:
   default_config_hash: iggZSiUKz4mYP1YPJ8SsUfFu79HIgOTt6IDy3Up59aM
 id: dcb_powered
 theme: dcb
-region: footer
-weight: -7
+region: '-1'
+weight: -6
 provider: null
 plugin: system_powered_by_block
 settings:

@@ -12,3 +12,5 @@ permissions:
   - 'access content'
   - 'create session content'
   - 'edit own session content'
+  - 'access toolbar'
+  - 'view own unpublished content'

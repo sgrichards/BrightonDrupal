@@ -1,6 +1,6 @@
 uuid: c4fd73de-206a-472d-9b00-d392310514c2
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - help
@@ -10,8 +10,8 @@ _core:
   default_config_hash: MhtNdV__HKRTab0ZPjkPNfYL4Ng4UPBucDLoC7Rg5Eo
 id: dcb_help
 theme: dcb
-region: help
-weight: -7
+region: '-1'
+weight: -1
 provider: null
 plugin: help_block
 settings:
