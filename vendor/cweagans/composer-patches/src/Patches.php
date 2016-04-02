@@ -36,6 +36,10 @@ class Patches implements PluginInterface, EventSubscriberInterface {
    */
   protected $io;
   /**
+   * @var EventDispatcher $eventDispatcher
+   */
+  protected $eventDispatcher;
+  /**
    * @var ProcessExecutor $executor
    */
   protected $executor;
@@ -53,6 +57,7 @@ class Patches implements PluginInterface, EventSubscriberInterface {
   public function activate(Composer $composer, IOInterface $io) {
     $this->composer = $composer;
     $this->io = $io;
+    $this->eventDispatcher = $composer->getEventDispatcher();
     $this->executor = new ProcessExecutor($this->io);
     $this->patches = array();
   }
@@ -61,14 +66,14 @@ class Patches implements PluginInterface, EventSubscriberInterface {
    * Returns an array of event names this subscriber wants to listen to.
    */
   public static function getSubscribedEvents() {
-    return [
+    return array(
       ScriptEvents::PRE_INSTALL_CMD => "checkPatches",
       ScriptEvents::PRE_UPDATE_CMD => "checkPatches",
       PackageEvents::PRE_PACKAGE_INSTALL => "gatherPatches",
       PackageEvents::PRE_PACKAGE_UPDATE => "gatherPatches",
       PackageEvents::POST_PACKAGE_INSTALL => "postInstall",
       PackageEvents::POST_PACKAGE_UPDATE => "postInstall",
-    ];
+    );
   }
 
   /**
@@ -82,25 +87,9 @@ class Patches implements PluginInterface, EventSubscriberInterface {
       $installationManager = $this->composer->getInstallationManager();
       $packages = $localRepository->getPackages();
 
-      $tmp_patches = array();
-
-      // First, try to get the patches from the root composer.json.
-      $extra = $this->composer->getPackage()->getExtra();
-      if (isset($extra['patches'])) {
-        $this->io->write('<info>Gathering patches for root package.</info>');
-        $tmp_patches = $extra['patches'];
-      }
-      // If it's not specified there, look for a patches-file definition.
-      else if (isset($extra['patches-file'])) {
-        $this->io->write('<info>Gathering patches from patch file.</info>');
-        $patches = file_get_contents($extra['patches-file']);
-        $patches = json_decode($patches, TRUE);
-        if (isset($patches['patches'])) {
-          $tmp_patches = $patches['patches'];
-        }
-      }
-      else {
-        // @todo: should we throw an exception here?
+      $tmp_patches = $this->grabPatches();
+      if ($tmp_patches == FALSE) {
+        $this->io->write('<info>No patches supplied.</info>');
         return;
       }
 
@@ -145,23 +134,9 @@ class Patches implements PluginInterface, EventSubscriberInterface {
       return;
     }
 
-    // First, try to get the patches from the root composer.json.
-    $extra = $this->composer->getPackage()->getExtra();
-    if (isset($extra['patches'])) {
-      $this->io->write('<info>Gathering patches for root package.</info>');
-      $this->patches = $extra['patches'];
-    }
-    // If it's not specified there, look for a patches-file definition.
-    else if (isset($extra['patches-file'])) {
-      $this->io->write('<info>Gathering patches from patch file.</info>');
-      $patches = file_get_contents($extra['patches-file']);
-      $patches = json_decode($patches, TRUE);
-      if (isset($patches['patches'])) {
-        $this->patches = $patches['patches'];
-      }
-    }
-    else {
-      // @todo: should we throw an exception here?
+    $this->patches = $this->grabPatches();
+    if ($this->patches == FALSE) {
+      $this->io->write('<info>No patches supplied.</info>');
       return;
     }
 
@@ -189,6 +164,61 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     // Make sure we don't gather patches again. Extra keys in $this->patches
     // won't hurt anything, so we'll just stash it there.
     $this->patches['_patchesGathered'] = TRUE;
+  }
+
+  /**
+   * Get the patches from root composer or external file
+   * @return Patches
+   * @throws \Exception
+   */
+  public function grabPatches() {
+      // First, try to get the patches from the root composer.json.
+    $extra = $this->composer->getPackage()->getExtra();
+    if (isset($extra['patches'])) {
+      $this->io->write('<info>Gathering patches for root package.</info>');
+      $patches = $extra['patches'];
+      return $patches;
+    }
+    // If it's not specified there, look for a patches-file definition.
+    elseif (isset($extra['patches-file'])) {
+      $this->io->write('<info>Gathering patches from patch file.</info>');
+      $patches = file_get_contents($extra['patches-file']);
+      $patches = json_decode($patches, TRUE);
+      $error = json_last_error();
+      if ($error != 0) {
+        switch ($error) {
+          case JSON_ERROR_DEPTH:
+            $msg = ' - Maximum stack depth exceeded';
+            break;
+          case JSON_ERROR_STATE_MISMATCH:
+            $msg =  ' - Underflow or the modes mismatch';
+            break;
+          case JSON_ERROR_CTRL_CHAR:
+            $msg = ' - Unexpected control character found';
+            break;
+          case JSON_ERROR_SYNTAX:
+            $msg =  ' - Syntax error, malformed JSON';
+            break;
+          case JSON_ERROR_UTF8:
+            $msg =  ' - Malformed UTF-8 characters, possibly incorrectly encoded';
+            break;
+          default:
+            $msg =  ' - Unknown error';
+            break;
+          }
+          throw new \Exception('There was an error in the supplied patches file:' . $msg);
+        }
+      if (isset($patches['patches'])) {
+        $patches = $patches['patches'];
+        return $patches;
+      }
+      elseif(!$patches) {
+        throw new \Exception('There was an error in the supplied patch file');
+      }
+    }
+    else {
+      return FALSE;
+    }
   }
 
   /**
@@ -221,16 +251,21 @@ class Patches implements PluginInterface, EventSubscriberInterface {
     $localRepository = $this->composer->getRepositoryManager()->getLocalRepository();
     $localPackage = $localRepository->findPackage($package_name, $package->getVersion());
     $extra = $localPackage->getExtra();
-    $extra['patches_applied'] = [];
+    $extra['patches_applied'] = array();
 
     foreach ($this->patches[$package_name] as $description => $url) {
       $this->io->write('    <info>' . $url . '</info> (<comment>' . $description. '</comment>)');
       try {
+        $this->eventDispatcher->dispatch(NULL, new PatchEvent(PatchEvents::PRE_PATCH_APPLY, $package, $url, $description));
         $this->getAndApplyPatch($downloader, $install_path, $url);
+        $this->eventDispatcher->dispatch(NULL, new PatchEvent(PatchEvents::POST_PATCH_APPLY, $package, $url, $description));
         $extra['patches_applied'][$description] = $url;
       }
       catch (\Exception $e) {
         $this->io->write('   <error>Could not apply patch! Skipping.</error>');
+        if (getenv('COMPOSER_EXIT_ON_PATCH_FAILURE')) {
+          throw new \Exception("Cannot apply patch $description ($url)!");
+        }
       }
     }
     $localPackage->setExtra($extra);
@@ -269,12 +304,19 @@ class Patches implements PluginInterface, EventSubscriberInterface {
    * @throws \Exception
    */
   protected function getAndApplyPatch(RemoteFilesystem $downloader, $install_path, $patch_url) {
-    // Generate random (but not cryptographically so) filename.
-    $filename = uniqid("/tmp/") . ".patch";
 
-    // Download file from remote filesystem to this location.
-    $hostname = parse_url($patch_url, PHP_URL_HOST);
-    $downloader->copy($hostname, $patch_url, $filename, FALSE);
+    // Local patch file.
+    if (file_exists($patch_url)) {
+      $filename = $patch_url;
+    }
+    else {
+      // Generate random (but not cryptographically so) filename.
+      $filename = uniqid("/tmp/") . ".patch";
+
+      // Download file from remote filesystem to this location.
+      $hostname = parse_url($patch_url, PHP_URL_HOST);
+      $downloader->copy($hostname, $patch_url, $filename, FALSE);
+    }
 
     // Modified from drush6:make.project.inc
     $patched = FALSE;
@@ -303,9 +345,10 @@ class Patches implements PluginInterface, EventSubscriberInterface {
       }
     }
 
-    // Clean up the old patch file.
-    unlink($filename);
-
+    // Clean up the temporary patch file.
+    if (isset($hostname)) {
+      unlink($filename);
+    }
     // If the patch *still* isn't applied, then give up and throw an Exception.
     // Otherwise, let the user know it worked.
     if (!$patched) {
