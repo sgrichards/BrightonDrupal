@@ -7,6 +7,8 @@
 
 use Drupal\Core\Routing\RouteMatchInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Implements hook_help().
@@ -45,4 +47,63 @@ function dcb_sessions_form_node_session_form_alter(&$form, \Drupal\Core\Form\For
     $response = new RedirectResponse(\Drupal::url('user.page'));
     $response->send();
   }
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function dcb_sessions_toolbar() {
+  $user = \Drupal::currentUser();
+
+  // Add logout & user account links or login link.
+  $links_cache_contexts = [];
+  if ($user->isAuthenticated()) {
+    $links = array(
+      'my-sessions' => array(
+        'title' => t('My Sessions'),
+        'url' => Url::fromRoute('view.your_sessions.page_1'),
+        'attributes' => array(
+          'title' => t('My Sessions'),
+        ),
+      ),
+    );
+    // The "Edit user account" link is per-user.
+    $links_cache_contexts[] = 'user';
+  }
+
+  $items['sessions'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => 'My Sessions',
+      '#url' => Url::fromRoute('view.your_sessions.page_1'),
+      '#attributes' => array(
+        'title' => t('My sessions'),
+      ),
+      '#cache' => [
+        'contexts' => [
+          // Cacheable per user, because the current user's name is shown.
+          'user',
+        ],
+      ],
+    ),
+    'tray' => array(
+      '#heading' => t('Session actions'),
+      'sessions_links' => array(
+        '#cache' => [
+          // Cacheable per "authenticated or not", because the links to
+          // display depend on that.
+          'contexts' => Cache::mergeContexts(array('user.roles:authenticated'), $links_cache_contexts),
+        ],
+        '#theme' => 'links__toolbar_sessions',
+        '#links' => $links,
+        '#attributes' => array(
+          'class' => array('toolbar-menu'),
+        ),
+      ),
+    ),
+    '#weight' => 100,
+  );
+
+  return $items;
 }
