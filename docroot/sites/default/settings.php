@@ -716,6 +716,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  */
 
 $config_directories['sync'] = 'profiles/brighton_drupal/config/install';
+$config_directories['vcs'] = 'profiles/brighton_drupal/config/install';
 
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/commcamp/dcb2016-settings.inc';
