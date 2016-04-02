@@ -40,13 +40,34 @@ function dcb_sessions_entity_type_build(array &$entity_types) {
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  * @param $form_id
  */
-function dcb_sessions_form_node_session_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  $account = \Drupal::currentUser();
-  // redirect users from the node sessino form
-  if ($account->id() != 1 && !in_array('administrator', $account->getRoles())) {
-    $response = new RedirectResponse(\Drupal::url('user.page'));
-    $response->send();
+function dcb_sessions_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $foo = 'bar';
+  switch ($form_id) {
+    case "node_session_form":
+
+      $account = \Drupal::currentUser();
+      // redirect users from the default node session form
+      if ($account->id() != 1 && !in_array('administrator', $account->getRoles())) {
+        $response = new RedirectResponse(\Drupal::url('user.page'));
+        $response->send();
+      }
+
+      break;
+
+    case "node_session_session_submission_form":
+      // add additional submit handler
+      $form['actions']['submit']['#submit'][] = 'dcb_sessions_form_submission_handler';
+      break;
   }
+}
+
+/**
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function dcb_sessions_form_submission_handler(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  drupal_set_message("Thank you for your submission - you're awesome, we'll be in touch!");
 }
 
 /**
