@@ -715,7 +715,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * Keep this code block at the end of this file to take full effect.
  */
 
-$config_directories['sync'] = '../config';
+$config_directories['sync'] = '../config/default';
 
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/commcamp/dcb2016-settings.inc';
