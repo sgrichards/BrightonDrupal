@@ -41,7 +41,7 @@ function dcb_sessions_entity_type_build(array &$entity_types) {
  * @param $form_id
  */
 function dcb_sessions_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  $foo = 'bar';
+
   switch ($form_id) {
     case "node_session_form":
 
@@ -62,6 +62,7 @@ function dcb_sessions_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $f
 }
 
 /**
+ * Form submit handler
  * @param $form
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  * @param $form_id
