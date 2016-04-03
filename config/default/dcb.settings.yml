@@ -14,6 +14,6 @@ logo:
   url: ''
   use_default: 0
 cdn_provider_import_data: ''
-navbar_position: static-top
+navbar_position: fixed-top
 forms_smart_descriptions: 0
 forms_required_has_error: 1

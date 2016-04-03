@@ -1,6 +1,5 @@
 module:
   admin_toolbar: 0
-  bd_sessions: 0
   block: 0
   block_content: 0
   breakpoint: 0
@@ -51,7 +50,6 @@ module:
   menu_link_content: 1
   pathauto: 1
   views: 10
-  brighton_drupal: 1000
 theme:
   stable: 0
   bootstrap: 0
