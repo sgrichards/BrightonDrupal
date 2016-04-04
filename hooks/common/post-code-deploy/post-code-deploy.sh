@@ -20,10 +20,10 @@ repo_type="$6"
 echo "$site.$target_env: The $source_branch branch has been updated on $target_env."
 
 echo "Importing any config changes."
-drush @$site.$target_env cim vcs -v
+drush @$site.$target_env cim vcs -v -y
 
 echo "Running any outstanding updates"
-drush @$site.target_env updatedb -y -v
+drush @$site.$target_env updatedb -y -v
 
 echo "Clearing the cache."
 drush @$site.$target_env cr -v
