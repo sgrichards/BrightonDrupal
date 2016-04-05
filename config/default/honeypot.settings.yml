@@ -6,14 +6,12 @@ unprotected_forms:
   - honeypot_settings_form
 protect_all_forms: false
 log: false
-element_name: url
+element_name: first_name
 time_limit: 5
 expire: 300
 form_settings:
-  user_register_form: false
-  user_pass: false
-  webforms: false
-  feedback_contact_message_form: false
-  _contact_message_form: false
+  user_register_form: true
+  user_pass: true
+  node_type_node_form: false
 _core:
   default_config_hash: jEhrePho9bAz_8-E-zPMXvlx4knpphzUdaiQJX-xc8Q
