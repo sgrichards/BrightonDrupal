@@ -1,0 +1,88 @@
+diff --git a/acquia_connector.module b/acquia_connector.module
+index a7cd5ff..0eff250 100644
+--- a/acquia_connector.module
++++ b/acquia_connector.module
+@@ -98,47 +98,50 @@ function acquia_connector_cron() {
+  * Implements hook_toolbar().
+  */
+ function acquia_connector_toolbar() {
+-  $link = [
+-    '#type' => 'link',
+-    '#attributes' => [
+-      'class' => [
+-        'toolbar-icon'
++  if (\Drupal::currentUser()->hasPermission('administer site configuration')) {
++    $link = [
++      '#type' => 'link',
++      '#attributes' => [
++        'class' => [
++          'toolbar-icon'
++        ],
+       ],
+-    ],
+-  ];
++    ];
+ 
+-  if (Subscription::isActive()) {
+-    $subscription = \Drupal::config('acquia_connector.settings')->get('subscription_data');
+-    if (is_array($subscription['expiration_date']) && isset($subscription['active']) && $subscription['active'] !== FALSE) {
+-      $link['#title'] = t('Subscription active (expires @date)', array('@date' => format_date(strtotime($subscription['expiration_date']['value']), 'custom', 'Y/n/j')));
+-      $link['#attributes']['class'][] = 'acquia-active-subscription';
+-      $link['#url'] = Url::fromUri($subscription['href']);
++    if (Subscription::isActive()) {
++      $subscription = \Drupal::config('acquia_connector.settings')
++        ->get('subscription_data');
++      if (is_array($subscription['expiration_date']) && isset($subscription['active']) && $subscription['active'] !== FALSE) {
++        $link['#title'] = t('Subscription active (expires @date)', array('@date' => format_date(strtotime($subscription['expiration_date']['value']), 'custom', 'Y/n/j')));
++        $link['#attributes']['class'][] = 'acquia-active-subscription';
++        $link['#url'] = Url::fromUri($subscription['href']);
++      }
+     }
+-  }
+ 
+-  if (empty($link['#url'])) {
+-    $link['#title'] = t('Subscription not active');
+-    $link['#attributes']['class'][] = 'acquia-inactive-subscription';
+-    $link['#url'] = Url::fromUri('https://insight.acquia.com');
+-  }
++    if (empty($link['#url'])) {
++      $link['#title'] = t('Subscription not active');
++      $link['#attributes']['class'][] = 'acquia-inactive-subscription';
++      $link['#url'] = Url::fromUri('https://insight.acquia.com');
++    }
+ 
+-  return [
+-    'acquia_connector' => [
+-      '#type' => 'toolbar_item',
+-      'tab' => $link,
+-      '#weight' => 200,
+-      '#cache' => [
+-        'contexts' => [
+-          'user.roles:authenticated',
++    return [
++      'acquia_connector' => [
++        '#type' => 'toolbar_item',
++        'tab' => $link,
++        '#weight' => 200,
++        '#cache' => [
++          'contexts' => [
++            'user.roles:authenticated',
++          ],
+         ],
+-      ],
+-      '#attached' => [
+-        'library' => [
+-          'acquia_connector/acquia_connector.icons',
++        '#attached' => [
++          'library' => [
++            'acquia_connector/acquia_connector.icons',
++          ],
+         ],
+       ],
+-    ],
+-  ];
++    ];
++  }
+ }
+ 
+ /**
