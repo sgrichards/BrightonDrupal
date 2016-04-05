@@ -18,3 +18,19 @@ function dcb_theme_suggestions_alter(array &$suggestions, array $variables, $hoo
     $suggestions[] = $hook . '__' . $variables['element']['#form_id'];
   }
 }
+
+/**
+ * Implements hook_preprocess().
+ * @param $variables
+ * @param $hook
+ * @param $info
+ */
+function dcb_preprocess(&$variables, $hook, $info) {
+  switch ($hook) {
+    case "form_element":
+      if ($variables['type'] == 'password' || $variables['type'] == 'password_confirm') {
+        unset ($variables['attributes']['class']);
+      }
+      break;
+  }
+}

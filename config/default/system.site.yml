@@ -1,0 +1,15 @@
+name: 'DrupalCamp Brighton 2016'
+mail: admin@example.com
+slogan: 'Drupalling on the south coast'
+page:
+  403: ''
+  404: ''
+  front: /node/2
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: 8vLcB7kl0qrSKsF05J9ud9u-RZ5ozPXpf_mG0q8LkDQ
+uuid: ababdf06-b996-4b06-b437-551402965fa5
+mail_notification: ''

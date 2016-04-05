@@ -58,23 +58,36 @@ class DumpCommand extends ContainerAwareCommand
 
         if (!$file) {
             $date = new \DateTime();
+            $siteRoot = rtrim($this->getSite()->getSiteRoot(), '/');
             $file = sprintf(
                 '%s/%s-%s.sql',
-                $this->getSite()->getSiteRoot(),
+                $siteRoot,
                 $databaseConnection['database'],
                 $date->format('Y-m-d-h-i-s')
             );
         }
 
-        $command = sprintf(
-            'mysqldump --user=%s --password=%s --host=%s --port=%s %s > %s',
-            $databaseConnection['username'],
-            $databaseConnection['password'],
-            $databaseConnection['host'],
-            $databaseConnection['port'],
-            $databaseConnection['database'],
-            $file
-        );
+        if ($databaseConnection['driver'] == 'mysql') {
+            $command = sprintf(
+                'mysqldump --user=%s --password=%s --host=%s --port=%s %s > %s',
+                $databaseConnection['username'],
+                $databaseConnection['password'],
+                $databaseConnection['host'],
+                $databaseConnection['port'],
+                $databaseConnection['database'],
+                $file
+            );
+        } elseif ($databaseConnection['driver'] == 'pgsql') {
+            $command = sprintf(
+                'PGPASSWORD="%s" pg_dumpall -w -U %s -h %s -p %s -l %s -f %s',
+                $databaseConnection['password'],
+                $databaseConnection['username'],
+                $databaseConnection['host'],
+                $databaseConnection['port'],
+                $databaseConnection['database'],
+                $file
+            );
+        }
 
         if ($learning) {
             $io->commentBlock($command);

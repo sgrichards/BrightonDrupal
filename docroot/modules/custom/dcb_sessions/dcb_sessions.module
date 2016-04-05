@@ -1,0 +1,131 @@
+<?php
+
+/**
+ * @file
+ * Contains dcb_sessions.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Url;
+use Drupal\Core\Cache\Cache;
+
+/**
+ * Implements hook_help().
+ */
+function dcb_sessions_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dcb_sessions module.
+    case 'help.page.dcb_sessions':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Manage sessions on dcb') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ * @param array $entity_types
+ */
+function dcb_sessions_entity_type_build(array &$entity_types) {
+  $entity_types['node']->setFormClass('session_submission', 'Drupal\node\NodeForm');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function dcb_sessions_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  switch ($form_id) {
+    case "node_session_form":
+
+      $account = \Drupal::currentUser();
+      // redirect users from the default node session form
+      if ($account->id() != 1 && !in_array('administrator', $account->getRoles())) {
+        $response = new RedirectResponse(\Drupal::url('user.page'));
+        $response->send();
+      }
+
+      break;
+
+    case "node_session_session_submission_form":
+      // add additional submit handler
+      $form['actions']['submit']['#submit'][] = 'dcb_sessions_form_submission_handler';
+      break;
+  }
+}
+
+/**
+ * Form submit handler
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function dcb_sessions_form_submission_handler(&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  drupal_set_message("Thank you for your submission - you're awesome, we'll be in touch!");
+}
+
+/**
+ * Implements hook_toolbar().
+ */
+function dcb_sessions_toolbar() {
+  $user = \Drupal::currentUser();
+
+  // Add logout & user account links or login link.
+  $links_cache_contexts = [];
+  if ($user->isAuthenticated()) {
+    $links = array(
+      'my-sessions' => array(
+        'title' => t('My Sessions'),
+        'url' => Url::fromRoute('view.your_sessions.page_1'),
+        'attributes' => array(
+          'title' => t('My Sessions'),
+        ),
+      ),
+    );
+    // The "Edit user account" link is per-user.
+    $links_cache_contexts[] = 'user';
+  }
+
+  $items['sessions'] = array(
+    '#type' => 'toolbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => 'My Sessions',
+      '#url' => Url::fromRoute('view.your_sessions.page_1'),
+      '#attributes' => array(
+        'title' => t('My sessions'),
+      ),
+      '#cache' => [
+        'contexts' => [
+          // Cacheable per user, because the current user's name is shown.
+          'user',
+        ],
+      ],
+    ),
+    'tray' => array(
+      '#heading' => t('Session actions'),
+      'sessions_links' => array(
+        '#cache' => [
+          // Cacheable per "authenticated or not", because the links to
+          // display depend on that.
+          'contexts' => Cache::mergeContexts(array('user.roles:authenticated'), $links_cache_contexts),
+        ],
+        '#theme' => 'links__toolbar_sessions',
+        '#links' => $links,
+        '#attributes' => array(
+          'class' => array('toolbar-menu'),
+        ),
+      ),
+    ),
+    '#weight' => 100,
+  );
+
+  return $items;
+}

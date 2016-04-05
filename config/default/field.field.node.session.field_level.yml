@@ -1,0 +1,31 @@
+uuid: 5aef8735-d16e-42a2-8702-2a7132870b28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_level
+    - node.type.session
+    - taxonomy.vocabulary.skill_level
+  content:
+    - 'taxonomy_term:skill_level:21cbece1-478b-42a8-a34c-763b8548ff6e'
+id: node.session.field_level
+field_name: field_level
+entity_type: node
+bundle: session
+label: Level
+description: 'Select a difficulty level for your session.'
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: 21cbece1-478b-42a8-a34c-763b8548ff6e
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      skill_level: skill_level
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

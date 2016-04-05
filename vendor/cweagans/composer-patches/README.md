@@ -1,6 +1,6 @@
 # composer-patches
 
-Simple patches plugin for Composer.
+Simple patches plugin for Composer. Applies a patch from a local or remote file to any package required with composer.
 
 ## Usage
 
@@ -25,8 +25,6 @@ Example composer.json:
 }
 
 ```
-
-Note that the post-package-install part is mandatory for now. For some reason, Composer didn't invoke my event listeners, so we're going with the faster option.
 
 ## Using an external patch file
 

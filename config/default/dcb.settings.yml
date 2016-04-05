@@ -1,0 +1,19 @@
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://brightondrupal.dev/themes/custom/dcb/favicon.ico'
+  use_default: 1
+schema: '8000'
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: 1
+  node_user_picture: false
+logo:
+  path: 'public://dcb2016logo.png'
+  url: ''
+  use_default: 0
+cdn_provider_import_data: ''
+navbar_position: fixed-top
+forms_smart_descriptions: 0
+forms_required_has_error: 1

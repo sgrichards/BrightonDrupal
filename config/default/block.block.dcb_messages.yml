@@ -1,0 +1,22 @@
+uuid: cc91573b-829e-4a58-8d63-99c421ae8e8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dcb
+_core:
+  default_config_hash: 9RnnTUBcn0WRWXfrGOnId2H0Q31uQUeu_F5TnDxl2yg
+id: dcb_messages
+theme: dcb
+region: navigation
+weight: -8
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

@@ -63,7 +63,7 @@
 #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {# Navbar #}
-{% if page.navigation %}
+{% if (page.navigation or page.navigation_collapsible) %}
   {% block navbar %}
     {%
       set navbar_classes = [
@@ -75,7 +75,7 @@
     <header{{ navbar_attributes.addClass(navbar_classes) }} id="navbar" role="banner">
       <div class="container topnav">
         <div class="navbar-header">
-          <a href="../index.html"><h3><i class="glyphicon glyphicon-chevron-left"></i>Back to Brighton Drupal Site</h3></a>
+          <a href="http://www.brightondrupal.org.uk"><h3><i class="glyphicon glyphicon-chevron-left"></i>Back to Brighton Drupal Site</h3></a>
           {# .btn-navbar is used as the toggle for collapsed navbar content #}
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">{{ 'Toggle navigation'|t }}</span>

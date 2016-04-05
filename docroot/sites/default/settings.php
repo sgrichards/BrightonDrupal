@@ -715,21 +715,10 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * Keep this code block at the end of this file to take full effect.
  */
 
-$databases['default']['default'] = array (
-  'database' => 'drupal',
-  'username' => 'drupal',
-  'password' => 'drupal',
-  'prefix' => '',
-  'host' => 'localhost',
-  'port' => '',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-
-$config_directories['sync'] = 'profiles/brighton_drupal/config/install';
+$config_directories['sync'] = '../config/default';
 
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/dcb2016/dcb2016-settings.inc';
+  require '/var/www/site-php/commcamp/dcb2016-settings.inc';
 }
 
 if (file_exists(__DIR__ . '/settings.local.php')) {
