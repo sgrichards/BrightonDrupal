@@ -5,10 +5,36 @@
  * Contains dcb_sessions.module.
  */
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Cache\Cache;
+
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function dcb_sessions_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  $entity_type_id = $field_definition->getTargetEntityTypeId();
+  $field_name = $field_definition->getName();
+
+  // stop users who don't have the 'administer nodes' permission
+  // from editing various fields on 'session' nodes
+  if ($entity_type_id === 'node') {
+    if ($field_name === 'field_session_status' || $field_name === 'field_time_slot') {
+      if ($operation === 'edit') {
+        return AccessResult::forbiddenIf(!$account->hasPermission('administer nodes'));
+      }
+    }
+  }
+
+  // otherwise, this module itself doesn't care
+  return AccessResult::neutral();
+}
+
 
 /**
  * Implements hook_help().
@@ -32,33 +58,6 @@ function dcb_sessions_help($route_name, RouteMatchInterface $route_match) {
  */
 function dcb_sessions_entity_type_build(array &$entity_types) {
   $entity_types['node']->setFormClass('session_submission', 'Drupal\node\NodeForm');
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- * @param $form
- * @param \Drupal\Core\Form\FormStateInterface $form_state
- * @param $form_id
- */
-function dcb_sessions_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-
-  switch ($form_id) {
-    case "node_session_form":
-
-      $account = \Drupal::currentUser();
-      // redirect users from the default node session form
-      if ($account->id() != 1 && !in_array('administrator', $account->getRoles())) {
-        $response = new RedirectResponse(\Drupal::url('user.page'));
-        $response->send();
-      }
-
-      break;
-
-    case "node_session_session_submission_form":
-      // add additional submit handler
-      $form['actions']['submit']['#submit'][] = 'dcb_sessions_form_submission_handler';
-      break;
-  }
 }
 
 /**
