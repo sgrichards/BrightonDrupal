@@ -14,3 +14,4 @@ permissions:
   - 'edit own session content'
   - 'access toolbar'
   - 'view own unpublished content'
+  - 'access site-wide contact form'
