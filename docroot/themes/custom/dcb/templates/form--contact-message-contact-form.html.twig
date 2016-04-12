@@ -12,6 +12,9 @@
  * @ingroup themeable
  */
 #}
-<form{{ attributes }}>
-  {{ children }}
-</form>
+<div class="container dcb-form-wrapper">
+    <h1>{{ title }}</h1>
+    <form{{ attributes }}>
+      {{ children }}
+    </form>
+</div>
