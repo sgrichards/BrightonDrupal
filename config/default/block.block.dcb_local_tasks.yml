@@ -9,7 +9,7 @@ _core:
 id: dcb_local_tasks
 theme: dcb
 region: header
-weight: -6
+weight: -5
 provider: null
 plugin: local_tasks_block
 settings:
