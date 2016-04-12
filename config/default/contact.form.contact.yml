@@ -1,0 +1,10 @@
+uuid: 23c8dbf0-895c-4c40-b000-e4718d990ad5
+langcode: en
+status: true
+dependencies: {  }
+id: contact
+label: Contact
+recipients:
+  - talktome@drupalcampbrighton.co.uk
+reply: 'Thanks for your message'
+weight: 0
