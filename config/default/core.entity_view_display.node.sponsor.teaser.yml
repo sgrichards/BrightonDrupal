@@ -8,18 +8,26 @@ dependencies:
     - field.field.node.sponsor.field_sponsor_package
     - field.field.node.sponsor.field_sponsor_weight
     - field.field.node.sponsor.field_url
+    - image.style.thumbnail
     - node.type.sponsor
   module:
+    - image
     - user
 id: node.sponsor.teaser
 targetEntityType: node
 bundle: sponsor
 mode: teaser
 content:
-  links:
-    weight: 100
+  field_logo:
+    type: image
+    weight: 1
+    label: visually_hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    third_party_settings: {  }
 hidden:
-  field_logo: true
   field_sponsor_package: true
   field_sponsor_weight: true
   field_url: true
+  links: true
