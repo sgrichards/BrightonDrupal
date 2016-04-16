@@ -3,22 +3,18 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.sponsor_package.body
+    - field.field.node.sponsor_package.field_sponsor_weight
     - node.type.sponsor_package
   module:
-    - text
     - user
 id: node.sponsor_package.default
 targetEntityType: node
 bundle: sponsor_package
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
-    third_party_settings: {  }
   links:
     weight: 100
-hidden: {  }
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_sponsor_weight: true

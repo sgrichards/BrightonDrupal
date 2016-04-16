@@ -1,0 +1,5 @@
+name: dcb_view_paragraphs
+type: module
+description: Functionality to allow paragraphs to display a rendered view.
+core: 8.x
+package: dcb

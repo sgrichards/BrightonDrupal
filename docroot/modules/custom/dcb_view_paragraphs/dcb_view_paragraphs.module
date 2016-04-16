@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function dcb_view_paragraphs_entity_extra_field_info() {
+  $info['paragraph']['embedded_view']['display']['dcb_view_paragraphs_view'] = [
+    'label' => t('Rendered view'),
+    'description' => t('The rendered view'),
+    'weight' => 10,
+    'visible' => FALSE,
+  ];
+  return $info;
+}
+
+
+/**
+ * Implements hook_entity_view().
+ */
+function dcb_view_paragraphs_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if ($entity->getEntityTypeId() === 'paragraph' && $entity->bundle() === 'embedded_view') {
+    $view_id = $entity->field_paragraph_view_id->value;
+    $view_display = $entity->field_paragraph_view_display->value;
+
+    if ($display->getComponent('dcb_view_paragraphs_view')) {
+      $build['dcb_view_paragraphs_view'] = [
+        '#type' => 'view',
+        '#name' => $view_id,
+        '#display_id' => $view_display,
+      ];
+    }
+  }
+}

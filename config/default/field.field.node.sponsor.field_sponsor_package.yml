@@ -10,7 +10,7 @@ id: node.sponsor.field_sponsor_package
 field_name: field_sponsor_package
 entity_type: node
 bundle: sponsor
-label: 'Sponsor Package'
+label: 'Sponsorship package'
 description: ''
 required: false
 translatable: false
@@ -22,5 +22,6 @@ settings:
     target_bundles:
       sponsor_package: sponsor_package
     sort:
-      field: _none
+      field: field_sponsor_weight
+      direction: ASC
 field_type: entity_reference

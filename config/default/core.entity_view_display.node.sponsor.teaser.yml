@@ -1,26 +1,33 @@
 uuid: cec4b83f-170c-4419-bd00-c95cf354323f
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.sponsor.body
+    - field.field.node.sponsor.field_logo
+    - field.field.node.sponsor.field_sponsor_package
+    - field.field.node.sponsor.field_sponsor_weight
+    - field.field.node.sponsor.field_url
+    - image.style.thumbnail
     - node.type.sponsor
   module:
-    - text
+    - image
     - user
 id: node.sponsor.teaser
 targetEntityType: node
 bundle: sponsor
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
+  field_logo:
+    type: image
+    weight: 1
+    label: visually_hidden
     settings:
-      trim_length: 600
+      image_style: thumbnail
+      image_link: ''
     third_party_settings: {  }
-  links:
-    weight: 100
-hidden: {  }
+hidden:
+  field_sponsor_package: true
+  field_sponsor_weight: true
+  field_url: true
+  links: true
