@@ -296,3 +296,30 @@ a:hover {
 p.copyright {
     margin: 15px 0 0;
 }
+
+
+/* sponsors list */
+
+.dcb-sponsor-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dcb-sponsor-list-item {
+  margin-right: 20px;
+  margin-bottom: 2em;
+}
+
+.dcb-sponsor-list-item img {
+  border: 1px solid black;
+  background: white;
+  width: 150px;
+  max-height: 150px;
+}
+
+.dcb-sponsor-list-item .name {
+  display: block;
+  padding: 0.5em 0;
+  width: 100%;
+  text-align: center;
+}

@@ -3,45 +3,39 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.sponsor.body
     - field.field.node.sponsor.field_logo
     - field.field.node.sponsor.field_sponsor_package
+    - field.field.node.sponsor.field_sponsor_weight
     - field.field.node.sponsor.field_url
+    - image.style.thumbnail
     - node.type.sponsor
   module:
     - image
     - link
-    - text
     - user
 id: node.sponsor.default
 targetEntityType: node
 bundle: sponsor
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
-    third_party_settings: {  }
   field_logo:
-    weight: 102
-    label: above
+    weight: 1
+    label: visually_hidden
     settings:
-      image_style: ''
+      image_style: thumbnail
       image_link: ''
     third_party_settings: {  }
     type: image
   field_sponsor_package:
-    weight: 104
-    label: above
+    weight: 3
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
     type: entity_reference_label
   field_url:
-    weight: 103
-    label: above
+    weight: 2
+    label: visually_hidden
     settings:
       trim_length: 80
       url_only: false
@@ -51,5 +45,8 @@ content:
     third_party_settings: {  }
     type: link
   links:
-    weight: 100
-hidden: {  }
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_sponsor_weight: true

@@ -1,0 +1,32 @@
+uuid: 8cdcc0ea-6d19-4d11-8600-c916de650bd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embedded_view.field_class
+    - field.field.paragraph.embedded_view.field_paragraph_title
+    - field.field.paragraph.embedded_view.field_paragraph_view_display
+    - field.field.paragraph.embedded_view.field_paragraph_view_id
+    - paragraphs.paragraphs_type.embedded_view
+id: paragraph.embedded_view.default
+targetEntityType: paragraph
+bundle: embedded_view
+mode: default
+content:
+  dcb_view_paragraphs_view:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+  field_paragraph_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  created: true
+  field_class: true
+  field_paragraph_view_display: true
+  field_paragraph_view_id: true
+  uid: true

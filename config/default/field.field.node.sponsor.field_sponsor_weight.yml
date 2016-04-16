@@ -1,0 +1,25 @@
+uuid: 7c56702b-c5d6-4989-af00-d268b725b267
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sponsor_weight
+    - node.type.sponsor
+id: node.sponsor.field_sponsor_weight
+field_name: field_sponsor_weight
+entity_type: node
+bundle: sponsor
+label: Weight
+description: 'This can be used to control the ordering of sponsors within a list. Lower numbers appear first. This can usually be left at 0.'
+required: true
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -3,29 +3,26 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.sponsor_package.body
+    - field.field.node.sponsor_package.field_sponsor_weight
     - node.type.sponsor_package
   module:
     - path
-    - text
 id: node.sponsor_package.default
 targetEntityType: node
 bundle: sponsor_package
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 31
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     settings: {  }
     third_party_settings: {  }
+  field_sponsor_weight:
+    weight: 32
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
   path:
     type: path
     weight: 30

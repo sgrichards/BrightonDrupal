@@ -1,0 +1,25 @@
+uuid: 931ce672-95e8-4678-8608-8b698bc12011
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sponsor_weight
+    - node.type.sponsor_package
+id: node.sponsor_package.field_sponsor_weight
+field_name: field_sponsor_weight
+entity_type: node
+bundle: sponsor_package
+label: Weight
+description: 'Used to control the weighting of sponsorship packages and/or individual sponsors. Items with lower numbers appear first in lists.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
