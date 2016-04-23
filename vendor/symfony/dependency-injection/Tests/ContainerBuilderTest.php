@@ -59,6 +59,28 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         }
     }
 
+    public function testCreateDeprecatedService()
+    {
+        $definition = new Definition('stdClass');
+        $definition->setDeprecated(true);
+
+        $that = $this;
+        $wasTriggered = false;
+
+        set_error_handler(function ($errno, $errstr) use ($that, &$wasTriggered) {
+            $that->assertSame(E_USER_DEPRECATED, $errno);
+            $that->assertSame('The "deprecated_foo" service is deprecated. You should stop using it, as it will soon be removed.', $errstr);
+            $wasTriggered = true;
+        });
+
+        $builder = new ContainerBuilder();
+        $builder->createService($definition, 'deprecated_foo');
+
+        restore_error_handler();
+
+        $this->assertTrue($wasTriggered);
+    }
+
     public function testRegister()
     {
         $builder = new ContainerBuilder();
@@ -104,8 +126,15 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals('Circular reference detected for service "baz", path: "baz".', $e->getMessage(), '->get() throws a LogicException if the service has a circular reference to itself');
         }
 
-        $builder->register('foobar', 'stdClass')->setScope('container');
         $this->assertTrue($builder->get('bar') === $builder->get('bar'), '->get() always returns the same instance if the service is shared');
+    }
+
+    public function testNonSharedServicesReturnsDifferentInstances()
+    {
+        $builder = new ContainerBuilder();
+        $builder->register('bar', 'stdClass')->setShared(false);
+
+        $this->assertNotSame($builder->get('bar'), $builder->get('bar'));
     }
 
     /**
@@ -127,6 +156,9 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $builder->get('foo');
     }
 
+    /**
+     * @group legacy
+     */
     public function testGetReturnsNullOnInactiveScope()
     {
         $builder = new ContainerBuilder();
@@ -135,6 +167,9 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($builder->get('foo', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
+    /**
+     * @group legacy
+     */
     public function testGetReturnsNullOnInactiveScopeWhenServiceIsCreatedByAMethod()
     {
         $builder = new ProjectContainer();
@@ -477,6 +512,18 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(array(), $builder->findTaggedServiceIds('foobar'), '->findTaggedServiceIds() returns an empty array if there is annotated services');
     }
 
+    public function testFindUnusedTags()
+    {
+        $builder = new ContainerBuilder();
+        $builder
+            ->register('foo', 'Bar\FooClass')
+            ->addTag('kernel.event_listener', array('foo' => 'foo'))
+            ->addTag('kenrel.event_listener', array('bar' => 'bar'))
+        ;
+        $builder->findTaggedServiceIds('kernel.event_listener');
+        $this->assertEquals(array('kenrel.event_listener'), $builder->findUnusedTags(), '->findUnusedTags() returns an array with unused tags');
+    }
+
     public function testFindDefinition()
     {
         $container = new ContainerBuilder();
@@ -771,6 +818,19 @@ class ContainerBuilderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertTrue($classInList);
     }
+
+    public function testAutowiring()
+    {
+        $container = new ContainerBuilder();
+
+        $container->register('a', __NAMESPACE__.'\A');
+        $bDefinition = $container->register('b', __NAMESPACE__.'\B');
+        $bDefinition->setAutowired(true);
+
+        $container->compile();
+
+        $this->assertEquals('a', (string) $container->getDefinition('b')->getArgument(0));
+    }
 }
 
 class FooClass
@@ -782,5 +842,16 @@ class ProjectContainer extends ContainerBuilder
     public function getFoobazService()
     {
         throw new InactiveScopeException('foo', 'request');
+    }
+}
+
+class A
+{
+}
+
+class B
+{
+    public function __construct(A $a)
+    {
     }
 }
