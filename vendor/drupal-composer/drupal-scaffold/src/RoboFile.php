@@ -15,7 +15,7 @@ class RoboFile extends \Robo\Tasks {
    * @return string
    */
   protected function getTmpDir() {
-    return realpath(sys_get_temp_dir()) . DIRECTORY_SEPARATOR . '/drupal-scaffold-' . time();
+    return realpath(sys_get_temp_dir()) . DIRECTORY_SEPARATOR . 'drupal-scaffold-' . time();
   }
 
   /**
@@ -81,7 +81,7 @@ class RoboFile extends \Robo\Tasks {
     $this->taskRsync()
       ->fromPath("$tmpDir/$fetchDirName/")
       ->toPath($webroot)
-      ->args('-a', '-v', '-z')
+      ->args('-a', '-v', '-z', '--no-group', '--no-owner')
       ->includeFilter($includes)
       ->exclude($excludes)
       ->run();
