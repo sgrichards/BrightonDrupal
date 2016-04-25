@@ -303,11 +303,12 @@ p.copyright {
 .dcb-sponsor-list {
   display: flex;
   flex-wrap: wrap;
+  text-align: center;
+  border-bottom: 1px solid #eee;
 }
 
 .dcb-sponsor-list-item {
-  margin-right: 20px;
-  margin-bottom: 2em;
+  margin: auto;
 }
 
 .dcb-sponsor-list-item img {
@@ -320,5 +321,9 @@ p.copyright {
   display: block;
   padding: 0.5em 0;
   width: 100%;
+  text-align: center;
+}
+
+.view-sponsors-list {
   text-align: center;
 }
