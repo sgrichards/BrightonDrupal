@@ -13,15 +13,13 @@ namespace Symfony\Component\VarDumper\Tests;
 
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\CliDumper;
-use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
+use Symfony\Component\VarDumper\Test\VarDumperTestCase;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CliDumperTest extends \PHPUnit_Framework_TestCase
+class CliDumperTest extends VarDumperTestCase
 {
-    use VarDumperTestTrait;
-
     public function testGet()
     {
         require __DIR__.'/Fixtures/dumb-var.php';
@@ -44,8 +42,17 @@ class CliDumperTest extends \PHPUnit_Framework_TestCase
         $out = preg_replace('/[ \t]+$/m', '', $out);
         $intMax = PHP_INT_MAX;
         $res = (int) $var['res'];
-
+        $closure54 = '';
         $r = defined('HHVM_VERSION') ? '' : '#%d';
+
+        if (PHP_VERSION_ID >= 50400) {
+            $closure54 = <<<EOTXT
+
+    class: "Symfony\Component\VarDumper\Tests\CliDumperTest"
+    this: Symfony\Component\VarDumper\Tests\CliDumperTest {{$r} …}
+EOTXT;
+        }
+
         $this->assertStringMatchesFormat(
             <<<EOTXT
 array:24 [
@@ -73,9 +80,7 @@ array:24 [
     +foo: "foo"
     +"bar": "bar"
   }
-  "closure" => Closure {{$r}
-    class: "Symfony\Component\VarDumper\Tests\CliDumperTest"
-    this: Symfony\Component\VarDumper\Tests\CliDumperTest {{$r} …}
+  "closure" => Closure {{$r}{$closure54}
     parameters: {
       \$a: {}
       &\$b: {
