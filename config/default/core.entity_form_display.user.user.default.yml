@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.user.user.field_bio
     - field.field.user.user.field_drupal_org
+    - field.field.user.user.field_name
     - field.field.user.user.field_profile_image
     - field.field.user.user.field_twitter
     - image.style.thumbnail
@@ -22,6 +23,8 @@ content:
     weight: 0
     settings: {  }
     third_party_settings: {  }
+  contact:
+    weight: 5
   field_bio:
     type: text_textarea
     weight: 4
@@ -36,6 +39,13 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_name:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_profile_image:
     type: image_image
     weight: 1

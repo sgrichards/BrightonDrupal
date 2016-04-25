@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.user.user.field_bio
     - field.field.user.user.field_drupal_org
+    - field.field.user.user.field_name
     - field.field.user.user.field_profile_image
     - field.field.user.user.field_twitter
   module:
@@ -34,6 +35,13 @@ content:
       target: ''
     third_party_settings: {  }
     type: link
+  field_name:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
   field_profile_image:
     weight: 0
     label: above
