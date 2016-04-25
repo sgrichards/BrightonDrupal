@@ -20,13 +20,7 @@ function sqlsync_drush_command() {
       'target' => 'A site-alias or the name of a subdirectory within /sites whose database you want to replace.',
     ),
     'required-arguments' => TRUE,
-    'options' => array(
-      'skip-tables-key' => 'A key in the $skip_tables array. See example.drushrc.php. Optional.',
-      'skip-tables-list' => 'A comma-separated list of tables to exclude completely. Optional.',
-      'structure-tables-key' => 'A key in the $structure_tables array. See example.drushrc.php. Optional.',
-      'structure-tables-list' => 'A comma-separated list of tables to include for structure, but not data. Optional.',
-      'tables-key' => 'A key in the $tables array. Optional.',
-      'tables-list' => 'A comma-separated list of tables to transfer. Optional.',
+    'options' => drush_sql_get_table_selection_options() + array(
       // 'cache' => 'Skip dump if result file exists and is less than "cache" hours old. Optional; default is 24 hours.',
       // 'no-cache' => 'Do not cache the sql-dump file.',
       'no-dump' => 'Do not dump the sql database; always use an existing dump file.',
@@ -35,7 +29,10 @@ function sqlsync_drush_command() {
       'source-db-url' => 'Database specification for source system to dump from.',
       'source-remote-port' => 'Override sql database port number in source-db-url. Optional.',
       'source-remote-host' => 'Remote machine to run sql-dump file on. Optional; default is local machine.',
-      'source-dump' => 'The destination for the dump file, or the path to the dump file when --no-dump is specified.',
+      'source-dump' => array(
+        'description' => 'The destination for the dump file, or the path to the dump file when --no-dump is specified.',
+        'example-value' => '/dumpdir/db.sql',
+      ),
       'source-database' => 'A key in the $db_url (D6) or $databases (D7+) array which provides the data.',
       'source-target' => array(
         'description' => 'A key within the SOURCE database identifying a particular server in the database group.',
@@ -47,7 +44,10 @@ function sqlsync_drush_command() {
       'target-db-url' => '',
       'target-remote-port' => '',
       'target-remote-host' => '',
-      'target-dump' => 'A path for saving the dump file on target. Mandatory when using --no-sync.',
+      'target-dump' => array(
+        'description' => 'A path for saving the dump file on target. Mandatory when using --no-sync.',
+        'example-value' => '/dumpdir/db.sql.gz',
+      ),
       'target-database' => 'A key in the $db_url (D6) or $databases (D7+) array which shall receive the data.',
       'target-target' => array(
         'description' => 'Oy. A key within the TARGET database identifying a particular server in the database group.',

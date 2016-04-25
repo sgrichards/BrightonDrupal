@@ -15,3 +15,5 @@ permissions:
   - 'access toolbar'
   - 'view own unpublished content'
   - 'access site-wide contact form'
+  - 'use text format authenticated'
+  - 'use text format basic_html'

@@ -12,15 +12,13 @@
 namespace Symfony\Component\VarDumper\Tests\Caster;
 
 use Symfony\Component\VarDumper\Caster\Caster;
-use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
+use Symfony\Component\VarDumper\Test\VarDumperTestCase;
 
 /**
  * @author Nicolas Grekas <p@tchwork.com>
  */
-class CasterTest extends \PHPUnit_Framework_TestCase
+class CasterTest extends VarDumperTestCase
 {
-    use VarDumperTestTrait;
-
     private $referenceArray = array(
         'null' => null,
         'empty' => false,

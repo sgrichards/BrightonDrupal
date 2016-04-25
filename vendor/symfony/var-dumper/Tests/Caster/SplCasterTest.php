@@ -11,15 +11,13 @@
 
 namespace Symfony\Component\VarDumper\Tests\Caster;
 
-use Symfony\Component\VarDumper\Test\VarDumperTestTrait;
+use Symfony\Component\VarDumper\Test\VarDumperTestCase;
 
 /**
  * @author Grégoire Pineau <lyrixx@lyrixx.info>
  */
-class SplCasterTest extends \PHPUnit_Framework_TestCase
+class SplCasterTest extends VarDumperTestCase
 {
-    use VarDumperTestTrait;
-
     public function getCastFileInfoTests()
     {
         return array(

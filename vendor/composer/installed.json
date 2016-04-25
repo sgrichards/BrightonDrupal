@@ -5452,71 +5452,6 @@
         ]
     },
     {
-        "name": "symfony/var-dumper",
-        "version": "v3.0.4",
-        "version_normalized": "3.0.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/var-dumper.git",
-            "reference": "3841ed86527d18ee2c35fe4afb1b2fc60f8fae79"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/3841ed86527d18ee2c35fe4afb1b2fc60f8fae79",
-            "reference": "3841ed86527d18ee2c35fe4afb1b2fc60f8fae79",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.5.9",
-            "symfony/polyfill-mbstring": "~1.0"
-        },
-        "require-dev": {
-            "twig/twig": "~1.20|~2.0"
-        },
-        "suggest": {
-            "ext-symfony_debug": ""
-        },
-        "time": "2016-03-10 10:34:12",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "Resources/functions/dump.php"
-            ],
-            "psr-4": {
-                "Symfony\\Component\\VarDumper\\": ""
-            },
-            "exclude-from-classmap": [
-                "/Tests/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "Symfony mechanism for exploring and dumping PHP variables",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "debug",
-            "dump"
-        ]
-    },
-    {
         "name": "jakub-onderka/php-console-color",
         "version": "0.1",
         "version_normalized": "0.1.0.0",
@@ -5770,18 +5705,152 @@
         ]
     },
     {
-        "name": "drush/drush",
-        "version": "8.0.5",
-        "version_normalized": "8.0.5.0",
+        "name": "drupal/ctools",
+        "version": "8.3.0-alpha23",
+        "version_normalized": "8.3.0.0-alpha23",
         "source": {
             "type": "git",
-            "url": "https://github.com/drush-ops/drush.git",
-            "reference": "1f53daa63505f18286791e899de614e27d4cfdc9"
+            "url": "https://git.drupal.org/project/ctools",
+            "reference": "1eb136e1989b79283d9af8a0a2781ec6a9a3c866"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/drush-ops/drush/zipball/1f53daa63505f18286791e899de614e27d4cfdc9",
-            "reference": "1f53daa63505f18286791e899de614e27d4cfdc9",
+            "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.0-alpha23.zip",
+            "reference": null,
+            "shasum": null
+        },
+        "require": {
+            "drupal/core": "8.*"
+        },
+        "replace": {
+            "drupal/ctools_block": "self.version",
+            "drupal/ctools_views": "self.version"
+        },
+        "suggest": {
+            "drupal/block": "Required by drupal/ctools_views",
+            "drupal/core": "Required by drupal/ctools_block, drupal/ctools_views",
+            "drupal/views": "Required by drupal/ctools_views"
+        },
+        "time": "2016-02-05 19:52:56",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-3.x": "8.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Provides a number of utility and helper APIs for Drupal developers and site builders.",
+        "homepage": "https://www.drupal.org/project/ctools"
+    },
+    {
+        "name": "drupal/r4032login",
+        "version": "dev-8.x-1.x",
+        "version_normalized": "dev-8.x-1.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/r4032login",
+            "reference": "4b2077aa70e3f7b00b8a9cba25af5b948ba2e3b9"
+        },
+        "require": {
+            "drupal/core": "8.*"
+        },
+        "time": "2016-03-01 13:45:54",
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-8.x-1.x": "8.1.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packagist.drupal-composer.org/downloads/",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "description": "Redirect anonymous users from 403 Access Denied pages to the /user/login page.",
+        "homepage": "https://www.drupal.org/project/r4032login"
+    },
+    {
+        "name": "symfony/var-dumper",
+        "version": "v2.8.4",
+        "version_normalized": "2.8.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/var-dumper.git",
+            "reference": "1f840df081f59cbe25140742bbe94a0dfac0222a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/var-dumper/zipball/1f840df081f59cbe25140742bbe94a0dfac0222a",
+            "reference": "1f840df081f59cbe25140742bbe94a0dfac0222a",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.9",
+            "symfony/polyfill-mbstring": "~1.0"
+        },
+        "require-dev": {
+            "twig/twig": "~1.20|~2.0"
+        },
+        "suggest": {
+            "ext-symfony_debug": ""
+        },
+        "time": "2016-03-07 14:04:32",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.8-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "Resources/functions/dump.php"
+            ],
+            "psr-4": {
+                "Symfony\\Component\\VarDumper\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony mechanism for exploring and dumping PHP variables",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "debug",
+            "dump"
+        ]
+    },
+    {
+        "name": "drush/drush",
+        "version": "8.1.0",
+        "version_normalized": "8.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drush-ops/drush.git",
+            "reference": "d06e80cc2b0427322b292aed9d440eb19b50ea92"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drush-ops/drush/zipball/d06e80cc2b0427322b292aed9d440eb19b50ea92",
+            "reference": "d06e80cc2b0427322b292aed9d440eb19b50ea92",
             "shasum": ""
         },
         "require": {
@@ -5789,8 +5858,9 @@
             "php": ">=5.4.5",
             "psr/log": "~1.0",
             "psy/psysh": "~0.6",
-            "symfony/var-dumper": "~2.7|~3.0",
-            "symfony/yaml": "~2.3|~3.0"
+            "symfony/console": "~2.7",
+            "symfony/var-dumper": "~2.7",
+            "symfony/yaml": "~2.3"
         },
         "require-dev": {
             "phpunit/phpunit": "4.*",
@@ -5800,7 +5870,7 @@
             "drush/config-extra": "Provides configuration workflow commands, such as config-merge.",
             "ext-pcntl": "*"
         },
-        "time": "2016-03-08 21:00:41",
+        "time": "2016-04-24 14:39:44",
         "bin": [
             "drush",
             "drush.launcher",
@@ -5876,7 +5946,7 @@
         "source": {
             "type": "git",
             "url": "https://git.drupal.org/project/devel",
-            "reference": "ca8954d9611ed3f020e66aec0d3a6bf485a494b7"
+            "reference": "5efd60daa5d8e47af94d5cf610903072b27cb5d7"
         },
         "require": {
             "drupal/core": "8.*"
@@ -5891,7 +5961,7 @@
             "drupal/core": "Required by drupal/devel_generate, drupal/devel_node_access, drupal/kint, drupal/webprofiler",
             "drupal/menu_ui": "Required by drupal/devel_node_access"
         },
-        "time": "2016-04-19 06:23:46",
+        "time": "2016-04-24 14:29:34",
         "type": "drupal-module",
         "extra": {
             "branch-alias": {
@@ -5913,74 +5983,5 @@
         ],
         "description": "Various blocks, pages, and functions for developers.",
         "homepage": "http://drupal.org/project/devel"
-    },
-    {
-        "name": "drupal/ctools",
-        "version": "8.3.0-alpha23",
-        "version_normalized": "8.3.0.0-alpha23",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/ctools",
-            "reference": "1eb136e1989b79283d9af8a0a2781ec6a9a3c866"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://ftp.drupal.org/files/projects/ctools-8.x-3.0-alpha23.zip",
-            "reference": null,
-            "shasum": null
-        },
-        "require": {
-            "drupal/core": "8.*"
-        },
-        "replace": {
-            "drupal/ctools_block": "self.version",
-            "drupal/ctools_views": "self.version"
-        },
-        "suggest": {
-            "drupal/block": "Required by drupal/ctools_views",
-            "drupal/core": "Required by drupal/ctools_block, drupal/ctools_views",
-            "drupal/views": "Required by drupal/ctools_views"
-        },
-        "time": "2016-02-05 19:52:56",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-3.x": "8.3.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Provides a number of utility and helper APIs for Drupal developers and site builders.",
-        "homepage": "https://www.drupal.org/project/ctools"
-    },
-    {
-        "name": "drupal/r4032login",
-        "version": "dev-8.x-1.x",
-        "version_normalized": "dev-8.x-1.x",
-        "source": {
-            "type": "git",
-            "url": "https://git.drupal.org/project/r4032login",
-            "reference": "4b2077aa70e3f7b00b8a9cba25af5b948ba2e3b9"
-        },
-        "require": {
-            "drupal/core": "8.*"
-        },
-        "time": "2016-03-01 13:45:54",
-        "type": "drupal-module",
-        "extra": {
-            "branch-alias": {
-                "dev-8.x-1.x": "8.1.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "notification-url": "https://packagist.drupal-composer.org/downloads/",
-        "license": [
-            "GPL-2.0+"
-        ],
-        "description": "Redirect anonymous users from 403 Access Denied pages to the /user/login page.",
-        "homepage": "https://www.drupal.org/project/r4032login"
     }
 ]
