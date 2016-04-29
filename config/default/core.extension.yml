@@ -1,5 +1,6 @@
 module:
   admin_toolbar: 0
+  big_pipe: 0
   block: 0
   block_content: 0
   breakpoint: 0
@@ -26,7 +27,6 @@ module:
   help: 0
   honeypot: 0
   image: 0
-  kint: 0
   layout_plugin: 0
   link: 0
   menu_ui: 0

@@ -61,6 +61,22 @@ function dcb_sessions_entity_type_build(array &$entity_types) {
 }
 
 /**
+ * Implements hook_form_alter().
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function dcb_sessions_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  switch ($form_id) {
+    case "node_session_session_submission_form":
+      // add additional submit handler
+      $form['actions']['submit']['#submit'][] = 'dcb_sessions_form_submission_handler';
+      break;
+  }
+}
+
+/**
  * Form submit handler
  * @param $form
  * @param \Drupal\Core\Form\FormStateInterface $form_state
