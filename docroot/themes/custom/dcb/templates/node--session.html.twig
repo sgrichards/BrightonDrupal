@@ -65,28 +65,34 @@
  * @ingroup themeable
  */
 #}
-<article{{ attributes.addClass('container') }}>
 
-  {{ title_prefix }}
-  {% if not page %}
-    <h2{{ title_attributes }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {% endif %}
-  {{ title_suffix }}
+{%
+  set classes = [
+    'dcb-session',
+    'container'
+  ]
+%}
 
-  {% if display_submitted %}
-    <footer>
-      {{ author_picture }}
-      <div{{ author_attributes }}>
-        {% trans %}Submitted by {{ author_name }} on {{ date }}{% endtrans %}
-        {{ metadata }}
-      </div>
-    </footer>
-  {% endif %}
+<article{{ attributes.addClass(classes) }}>
 
-  <div{{ content_attributes }}>
-    {{ content }}
-  </div>
+    {{ title_prefix }}
+    {% if not page %}
+        <h2{{ title_attributes }}>
+            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+        </h2>
+    {% endif %}
+    {{ title_suffix }}
+
+    {% trans %}Submitted by {{ author_name }}{% endtrans %}
+
+    <div{{ content_attributes }}>
+        {{ content.body }}
+
+        <div class="session-meta">
+            {{ content.field_categories }}
+            {{ content.field_level }}
+            {{ content.field_session_status }}
+        </div>
+    </div>
 
 </article>

@@ -24,7 +24,8 @@
     "drupal/console": "~0.10",
     "drupal/devel": "8.x-1.x-dev",
     "drupal/ctools": "8.3.0-alpha23",
-    "drupal/r4032login": "8.1.*"
+    "drupal/r4032login": "8.1.*",
+    "raveren/kint": "^1.0"
   },
   "require-dev": {
     "behat/mink": "~1.6",
