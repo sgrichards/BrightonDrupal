@@ -9,11 +9,10 @@ label: 'Authenticated user'
 weight: 1
 is_admin: false
 permissions:
-  - 'access content'
-  - 'create session content'
-  - 'edit own session content'
-  - 'access toolbar'
-  - 'view own unpublished content'
-  - 'access site-wide contact form'
-  - 'use text format authenticated'
-  - 'use text format basic_html'
+  0: 'access content'
+  2: 'edit own session content'
+  3: 'access toolbar'
+  4: 'view own unpublished content'
+  5: 'access site-wide contact form'
+  6: 'use text format authenticated'
+  7: 'use text format basic_html'

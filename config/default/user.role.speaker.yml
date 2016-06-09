@@ -8,3 +8,4 @@ weight: 3
 is_admin: null
 permissions:
   - 'view own unpublished content'
+  - 'create session content'
