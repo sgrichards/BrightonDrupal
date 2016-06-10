@@ -12,6 +12,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Cache\Cache;
+use Drupal\node\NodeInterface;
 
 
 /**
@@ -24,7 +25,7 @@ function dcb_sessions_entity_field_access($operation, FieldDefinitionInterface $
   // stop users who don't have the 'administer nodes' permission
   // from editing various fields on 'session' nodes
   if ($entity_type_id === 'node') {
-    if ($field_name === 'field_session_status' || $field_name === 'field_time_slot') {
+    if ($field_name === 'field_session_status' || $field_name === 'field_time_slot' || $field_name === 'field_timeslot' || $field_name === 'field_location') {
       if ($operation === 'edit') {
         return AccessResult::forbiddenIf(!$account->hasPermission('administer nodes'));
       }
@@ -143,4 +144,49 @@ function dcb_sessions_toolbar() {
   );
 
   return $items;
+}
+
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function dcb_sessions_entity_extra_field_info() {
+  $info['node']['day']['display']['timeslots'] = [
+    'label' => t('List of timeslots'),
+    'description' => t('View of all timeslots on this day'),
+    'weight' => 10,
+    'visible' => FALSE,
+  ];
+  $info['taxonomy_term']['timeslot']['display']['sessions'] = [
+    'label' => t('List of sessions'),
+    'description' => t('View of all sessions in this timeslot'),
+    'weight' => 10,
+    'visible' => FALSE,
+  ];
+  return $info;
+}
+
+
+/**
+ * Implements hook_entity_view().
+ */
+function dcb_sessions_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+
+  // show the list of timeslots on the day node
+  if ($entity->getEntityTypeId() === 'node' && $entity->bundle() === 'day') {
+    /** @var NodeInterface $node */
+    $node = $entity;
+    if ($display->getComponent('timeslots') && $node->hasField('field_date') && !$node->get('field_date')->isEmpty()) {
+      $build['timeslots'] = views_embed_view('day_timeslots', 'default', $node->get('field_date')->value);
+    }
+  }
+
+  //$build['sessions']['#markup'] = 'test ' . $entity->getEntityTypeId() . ' ' . $entity->bundle();
+  // show the list of sessions in a timeslot
+  if ($entity->getEntityTypeId() === 'taxonomy_term' && $entity->bundle() === 'timeslot') {
+    if ($display->getComponent('sessions')) {
+      $build['sessions'] = views_embed_view('timeslot_sessions', 'default', $entity->id());
+    }
+  }
+
 }

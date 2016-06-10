@@ -3,6 +3,7 @@ global-styling:
     theme:
       css/style.css: {}
       css/landing-page.css: {}
+      css/schedule.css: {}
       font-awesome/css/font-awesome.min.css: {}
   js:
     theme:

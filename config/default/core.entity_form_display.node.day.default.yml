@@ -1,0 +1,58 @@
+uuid: 39b798b3-60f0-447b-a616-d19adfefefa8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.day.field_date
+    - node.type.day
+  module:
+    - datetime
+    - path
+id: node.day.default
+targetEntityType: node
+bundle: day
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+  field_date:
+    weight: 31
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+  path:
+    type: path
+    weight: 30
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

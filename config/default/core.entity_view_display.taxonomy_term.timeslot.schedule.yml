@@ -1,0 +1,43 @@
+uuid: 63a5d779-2acd-4495-a7b5-46e4c8083a62
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.schedule
+    - field.field.taxonomy_term.timeslot.field_date
+    - field.field.taxonomy_term.timeslot.field_finish
+    - field.field.taxonomy_term.timeslot.field_start
+    - taxonomy.vocabulary.timeslot
+  module:
+    - text
+id: taxonomy_term.timeslot.schedule
+targetEntityType: taxonomy_term
+bundle: timeslot
+mode: schedule
+content:
+  description:
+    type: text_default
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_finish:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_start:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  sessions:
+    weight: 3
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_date: true

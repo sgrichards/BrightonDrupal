@@ -1,8 +1,9 @@
-uuid: 9ea7b5c8-4c88-448c-8529-41c345adec1a
+uuid: eca49b9d-fbc6-40b5-b9b3-9b5718551a92
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.schedule
     - field.field.node.session.body
     - field.field.node.session.field_categories
     - field.field.node.session.field_event_ref
@@ -14,62 +15,32 @@ dependencies:
     - field.field.node.session.field_timeslot
     - node.type.session
   module:
-    - text
     - user
-id: node.session.default
+id: node.session.schedule
 targetEntityType: node
 bundle: session
-mode: default
+mode: schedule
 content:
-  body:
-    type: text_default
-    weight: 0
-    label: hidden
-    settings: {  }
-    third_party_settings: {  }
-  field_categories:
-    weight: 1
-    label: above
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
-  field_level:
-    weight: 3
-    label: inline
-    settings:
-      link: false
-    third_party_settings: {  }
-    type: entity_reference_label
   field_location:
-    type: entity_reference_label
-    weight: -4
+    weight: 3
     label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
-  field_session_status:
-    weight: 2
-    label: inline
     settings:
       link: false
     third_party_settings: {  }
     type: entity_reference_label
   field_speaker_name:
-    weight: -10
+    type: string
+    weight: 0
     label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
-  field_timeslot:
-    type: entity_reference_label
-    weight: -5
-    label: hidden
-    settings:
-      link: false
-    third_party_settings: {  }
 hidden:
+  body: true
+  field_categories: true
   field_event_ref: true
+  field_level: true
+  field_session_status: true
   field_time_slot: true
+  field_timeslot: true
   links: true

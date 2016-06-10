@@ -1,0 +1,18 @@
+uuid: 7bc01aed-ee00-4935-ac9d-d5c1b54ae6e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Day
+type: day
+description: 'Schedule for a single day.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

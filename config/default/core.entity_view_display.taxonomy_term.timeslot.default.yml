@@ -1,0 +1,47 @@
+uuid: 53d12188-4a33-4768-8225-a058ed0b49f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.timeslot.field_date
+    - field.field.taxonomy_term.timeslot.field_finish
+    - field.field.taxonomy_term.timeslot.field_start
+    - taxonomy.vocabulary.timeslot
+  module:
+    - datetime
+    - text
+id: taxonomy_term.timeslot.default
+targetEntityType: taxonomy_term
+bundle: timeslot
+mode: default
+content:
+  description:
+    type: text_default
+    weight: 3
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_date:
+    type: datetime_default
+    weight: 0
+    label: hidden
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+  field_finish:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+  field_start:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+hidden:
+  sessions: true

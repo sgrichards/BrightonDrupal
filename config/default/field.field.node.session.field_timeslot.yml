@@ -1,0 +1,28 @@
+uuid: cf88f398-3483-4291-9ab1-9ef16ad5fa48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_timeslot
+    - node.type.session
+    - taxonomy.vocabulary.timeslot
+id: node.session.field_timeslot
+field_name: field_timeslot
+entity_type: node
+bundle: session
+label: Timeslot
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      timeslot: timeslot
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

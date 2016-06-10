@@ -65,39 +65,17 @@
  * @ingroup themeable
  */
 #}
+<div{{ attributes }}>
 
-{%
-  set classes = [
-    'dcb-session',
-    'container'
-  ]
-%}
-
-<article{{ attributes.addClass(classes) }}>
-
-    {{ title_prefix }}
-    {% if not page %}
-        <h2{{ title_attributes }}>
-            <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-        </h2>
-    {% endif %}
-    {{ title_suffix }}
-
-    <h3>{{ content.field_speaker_name }}</h3>
-
-  {#{% trans %}Submitted by {{ author_name }}{% endtrans %}#}
-
+  <h3{{ title_attributes }}>
+    <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+  </h3>
 
   <div{{ content_attributes }}>
-        {{ content.body }}
+    {{ content }}
+  </div>
 
-      <div class="session-meta">
-            <strong>{{ content.field_timeslot }}</strong>
-            <strong>{{ content.field_location }}</strong>
-            {{ content.field_categories }}
-            {{ content.field_level }}
-            {{ content.field_session_status }}
-        </div>
-    </div>
+  {# TODO: remove this #}
+  <p></p>
 
-</article>
+</div>

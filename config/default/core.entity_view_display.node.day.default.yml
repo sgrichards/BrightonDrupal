@@ -1,0 +1,24 @@
+uuid: 92258f1c-ceaa-4a05-b69d-f9d1d19c2b19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.day.field_date
+    - node.type.day
+  module:
+    - user
+id: node.day.default
+targetEntityType: node
+bundle: day
+mode: default
+content:
+  links:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+  timeslots:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_date: true

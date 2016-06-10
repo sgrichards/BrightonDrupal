@@ -1,0 +1,19 @@
+uuid: 1c3bb956-51d0-4596-8e63-31b739e27e09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_finish
+    - taxonomy.vocabulary.timeslot
+id: taxonomy_term.timeslot.field_finish
+field_name: field_finish
+entity_type: taxonomy_term
+bundle: timeslot
+label: Finish
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

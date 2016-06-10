@@ -1,0 +1,9 @@
+uuid: 999b5698-12b2-403f-9041-9877a762c85c
+langcode: en
+status: true
+dependencies: {  }
+name: Timeslot
+vid: timeslot
+description: ''
+hierarchy: 0
+weight: 0

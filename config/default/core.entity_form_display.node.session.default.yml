@@ -7,8 +7,11 @@ dependencies:
     - field.field.node.session.field_categories
     - field.field.node.session.field_event_ref
     - field.field.node.session.field_level
+    - field.field.node.session.field_location
     - field.field.node.session.field_session_status
+    - field.field.node.session.field_speaker_name
     - field.field.node.session.field_time_slot
+    - field.field.node.session.field_timeslot
     - node.type.session
   module:
     - datetime
@@ -44,16 +47,33 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: options_buttons
+  field_location:
+    type: options_select
+    weight: 41
+    settings: {  }
+    third_party_settings: {  }
   field_session_status:
     weight: 34
     settings: {  }
     third_party_settings: {  }
     type: options_select
+  field_speaker_name:
+    weight: -4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
   field_time_slot:
     weight: 33
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+  field_timeslot:
+    type: options_select
+    weight: 40
+    settings: {  }
+    third_party_settings: {  }
   path:
     type: path
     weight: 30

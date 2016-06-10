@@ -1,0 +1,21 @@
+uuid: 57d69c3c-40df-4989-8a26-71a5362e7026
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_date
+    - taxonomy.vocabulary.timeslot
+  module:
+    - datetime
+id: taxonomy_term.timeslot.field_date
+field_name: field_date
+entity_type: taxonomy_term
+bundle: timeslot
+label: Date
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

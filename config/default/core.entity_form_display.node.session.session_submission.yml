@@ -8,8 +8,11 @@ dependencies:
     - field.field.node.session.field_categories
     - field.field.node.session.field_event_ref
     - field.field.node.session.field_level
+    - field.field.node.session.field_location
     - field.field.node.session.field_session_status
+    - field.field.node.session.field_speaker_name
     - field.field.node.session.field_time_slot
+    - field.field.node.session.field_timeslot
     - node.type.session
   module:
     - text
@@ -48,8 +51,11 @@ content:
 hidden:
   created: true
   field_event_ref: true
+  field_location: true
   field_session_status: true
+  field_speaker_name: true
   field_time_slot: true
+  field_timeslot: true
   path: true
   promote: true
   sticky: true

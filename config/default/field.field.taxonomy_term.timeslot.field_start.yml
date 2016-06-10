@@ -1,0 +1,19 @@
+uuid: ad7f7635-6bf4-4aeb-949e-d4ca046a8839
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_start
+    - taxonomy.vocabulary.timeslot
+id: taxonomy_term.timeslot.field_start
+field_name: field_start
+entity_type: taxonomy_term
+bundle: timeslot
+label: Start
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

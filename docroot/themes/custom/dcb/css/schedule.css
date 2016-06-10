@@ -1,0 +1,67 @@
+.timeslot {
+  margin-bottom: 20px;
+}
+
+.timeslot:not(:last-child) {
+  border-bottom: 1px dashed #ccc;
+}
+
+.timeslot-description {
+  padding-bottom: 20px;
+}
+
+
+.timeslot-time {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.timeslot-description {
+  text-align: center;
+}
+
+
+.item {
+  border: 1px solid #eee;
+  background: #eee;
+  padding: 0 1em;
+  margin-bottom: 20px;
+}
+
+.item .location {
+  font-weight: 700;
+}
+
+/* why is the bottom margin removed on 'p:last-child' in overrides.css? */
+.item p {
+  margin: 10px 0;
+}
+
+
+@media screen and (min-width: 768px) {
+
+  /* flexbox on larger screens */
+  .items {
+    display: flex;
+  }
+  .item {
+    flex: 1;
+  }
+  .item:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  /* bit more vertical space between things on larger screens */
+  .timeslot,
+  .item {
+    margin-bottom: 30px;
+  }
+  .timeslot-time {
+    margin-bottom: 25px;
+  }
+  .timeslot-description {
+    padding-bottom: 30px;
+  }
+}
